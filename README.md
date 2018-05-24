@@ -5,4 +5,6 @@ Reduce the frustration of linux administration!
 
 ### [Text editors as root](TextEditorSudo.md)
 
+### [VirtualBox Guest Additions](VirtualBoxGuestAdditions.md)
+
 ### [Environment Variables](EnvironmentVariables.md)
