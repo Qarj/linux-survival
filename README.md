@@ -8,3 +8,7 @@ Reduce the frustration of linux administration!
 ### [VirtualBox Guest Additions](VirtualBoxGuestAdditions.md)
 
 ### [Environment Variables](EnvironmentVariables.md)
+
+### [Build Python 3](BuildPython3.md)
+
+### [SSL](SSL.md)
