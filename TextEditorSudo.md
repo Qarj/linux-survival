@@ -1,7 +1,7 @@
 # Setup and Start Text Editors
 
 Tested with:
-- Ubuntu 18.04
+- Ubuntu 16.04, Ubuntu 18.04
 
 ## Sublime 3
 

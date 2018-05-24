@@ -1,7 +1,7 @@
 # Desktop shortcut to open File Manager as root
 
 Tested with:
-- Ubuntu 18.04
+- Ubuntu 16.04, Ubuntu 18.04
 
 Open new terminal (CTRL-ALT T) then:
 ```
