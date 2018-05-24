@@ -32,17 +32,19 @@ cd Python-3.6.5
 
 Configure it:
 ```
-./configure
+./configure --enable-optimizations --enable-shared
 ```
 Note that the `./configure` step suggests using the `--enable-optimizations` flag. Apparently this will make
 Python run about 10% faster, but takes about 40 minutes to build since it forces running the tests.
 
-Build it - approx 2 mins:
+The `--enabled-shared` option is needed for mod_wsgi.
+
+Build it - approx 2 mins (without the `--enable-optimizations` option):
 ```
 make
 ```
 
-Test it - approx 15 mins:
+Test it - approx 15 mins (redundant if you used `--enable-optimizations`):
 ```
 make test
 ```
@@ -51,3 +53,20 @@ Install it:
 ```
 sudo make install
 ```
+
+### Debugging
+
+#### python3: error while loading shared libraries: libpython3.6m.so.1.0: cannot open shared object file: No such file or directory
+
+```
+ldd /usr/local/bin/python3
+```
+
+Create a symbolic link to fix the problem:
+```
+sudo ln -s /usr/local/lib/libpython3.6m.so.1.0 /usr/lib/libpython3.6m.so.1.0
+```
+
+See compile time possibilities to stop this error in the first place:
+https://stackoverflow.com/questions/7880454/python-executable-not-finding-libpython-shared-library
+
