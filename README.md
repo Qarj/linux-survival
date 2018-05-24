@@ -12,3 +12,7 @@ Reduce the frustration of linux administration!
 ### [Build Python 3](BuildPython3.md)
 
 ### [SSL](SSL.md)
+
+## commands
+
+### [wget](wget.md)
