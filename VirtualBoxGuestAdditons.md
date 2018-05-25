@@ -36,8 +36,31 @@ Now fix the CD mount options:
 gedit /etc/fstab
 ```
 
-In the `/dev/sr0/ row change `user,noauto` to `user,noauto,exec`. Save, close.
+In the `/dev/sr0/` row change `user,noauto` to `user,noauto,exec`. Save, close.
 
 Then insert the image, click `Run`.
 
 Restart.
+
+## CentOS 7
+
+ALT-F2 -> `gnome-control-center` -> type `keyboard` in search -> Keyboard
+
+Scroll to bottom, click `+`
+
+Name `Terminal`
+Command `gnome-terminal`
+Set Shortcut... -> CTRL-ALT-T
+Click `Add`
+
+CTRL-ALT-T:
+```
+su -
+yum update kernel*
+reboot
+```
+
+CTRL-ALT-T:
+```
+```
+
