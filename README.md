@@ -13,6 +13,8 @@ Reduce the frustration of linux administration!
 
 ### [SSL](SSL.md)
 
+### [User Admin](UserAdmin.md)
+
 ## commands
 
 ### [wget](wget.md)
