@@ -62,9 +62,12 @@ reboot
 
 CTRL-ALT-T:
 ```
+su -
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-yum install gcc kernel-devel kernel-headers dkms make bzip2 perl
+yum install kernel-devel kernel-headers dkms gcc make bzip2 perl
 KERN_DIR=/usr/src/kernels/`uname -r`/build
 export KERN_DIR
 ```
+
+Then insert the image, click `Run`.
 
