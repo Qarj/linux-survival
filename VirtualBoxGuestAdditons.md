@@ -53,7 +53,14 @@ Command `gnome-terminal`
 Set Shortcut... -> CTRL-ALT-T
 Click `Add`
 
-CTRL-ALT-T:
+CTRL-ALT-T: (if network is disabled on boot)
+```
+su -
+cd /etc/sysconfig/network-scripts/
+sed -i -e 's@^ONBOOT=no@ONBOOT=yes@' ifcfg-enp0s3
+```
+Might be called `ifcfg-eth0`.
+
 ```
 su -
 yum update kernel*
@@ -71,3 +78,6 @@ export KERN_DIR
 
 Then insert the image, click `Run`.
 
+```
+reboot
+```
