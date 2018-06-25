@@ -3,3 +3,6 @@ global turn off auto crlf:
 
 git config --global core.autocrlf false
 
+global turn off treating a permissions change as a change:
+
+git config --global core.filemode false
