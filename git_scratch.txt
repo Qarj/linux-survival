@@ -1,0 +1,5 @@
+
+global turn off auto crlf:
+
+git config --global core.autocrlf false
+
