@@ -17,4 +17,5 @@ Reduce the frustration of linux administration!
 
 ## commands
 
+### [git](git.md)
 ### [wget](wget.md)
