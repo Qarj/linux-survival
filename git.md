@@ -4,7 +4,7 @@
 ```
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
-git config credential.helper store
+git config --global credential.helper store
 git config --global core.autocrlf false
 git config --global core.filemode false
 ```
