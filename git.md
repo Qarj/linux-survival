@@ -15,3 +15,13 @@ The last one turns off treating a permissions change as change.
 ```
 git remote prune origin
 ```
+
+## CentOs
+
+```
+su -
+gpasswd -a test wheel
+usermod -aG wheel test
+su - test
+sudo yum install git
+```
