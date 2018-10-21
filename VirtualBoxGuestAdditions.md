@@ -1,6 +1,6 @@
 # VirtualBox Guest Additions
 
-## Ubuntu 16.04, Ubuntu 18.04
+## Ubuntu 16.04, Ubuntu 18.04, Ubuntu 18.10
 
 CTRL-ALT-T:
 ```
