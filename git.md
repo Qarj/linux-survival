@@ -25,3 +25,10 @@ usermod -aG wheel test
 su - test
 sudo yum install git
 ```
+
+## Preview Markdown of README.md
+```
+pip install grip
+cd repo
+grip
+```
