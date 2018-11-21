@@ -16,6 +16,10 @@ If many error messages (saw on Ubuntu 18.10, might need)
 sudo apt-get install libgtk2.0
 ```
 
+Find summary at bottom
+1. CTRL-SHIFT-F
+2. Unclick `Use Buffer` and `Show Context` icons to left
+3. Click `...` and select `Add Current File` to get `<current file>` in `Where:`
 
 ## Notepad++
 
