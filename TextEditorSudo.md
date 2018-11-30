@@ -21,6 +21,15 @@ Find summary at bottom
 2. Unclick `Use Buffer` and `Show Context` icons to left
 3. Click `...` and select `Add Current File` to get `<current file>` in `Where:`
 
+Tab key fix - Preferences -> Settings
+```
+{
+    "tab_completion": false,
+    "auto_complete_commit_on_tab": false
+}
+```
+https://stackoverflow.com/questions/26328890/is-it-possible-to-stop-tab-autocomplete-in-sublime-text-2
+
 ## Notepad++
 
 https://github.com/mmtrt/notepad-plus-plus/
