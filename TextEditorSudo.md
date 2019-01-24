@@ -3,6 +3,7 @@
 Tested with:
 - Ubuntu 16.04, Ubuntu 18.04
 
+
 ## Sublime 3
 
 https://www.sublimetext.com/docs/3/linux_repositories.html
@@ -18,7 +19,7 @@ sudo apt-get install libgtk2.0
 
 Find summary at bottom
 1. CTRL-SHIFT-F
-2. Unclick `Use Buffer` and `Show Context` icons to left
+2. De-select `Use Buffer` and `Show Context` icons to left
 3. Click `...` and select `Add Current File` to get `<current file>` in `Where:`
 
 Tab key fix - Preferences -> Settings
@@ -29,6 +30,36 @@ Tab key fix - Preferences -> Settings
 }
 ```
 https://stackoverflow.com/questions/26328890/is-it-possible-to-stop-tab-autocomplete-in-sublime-text-2
+
+
+## Visual Studio Code
+
+```
+sudo apt install curl
+```
+
+```
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+```
+
+```
+sudo apt-get install apt-transport-https
+sudo apt-get update
+sudo apt-get install code
+```
+
+```
+code newfile.txt
+```
+
+```
+code .
+```
+
+https://code.visualstudio.com/docs/setup/linux
+
 
 ## Notepad++
 

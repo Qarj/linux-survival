@@ -1,7 +1,12 @@
 # linux-survival
 Reduce the frustration of linux administration!
 
-### [Desktop shortcut to open File Manager as root](FileManagerSudo.md)
+Ubuntu sanity essential
+```
+sudo apt-get remove -y unattended-upgrades -qq
+```
+
+### [Desktop short cut to open File Manager as root](FileManagerSudo.md)
 
 ### [Text editors as root](TextEditorSudo.md)
 
