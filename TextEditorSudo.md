@@ -58,8 +58,22 @@ code newfile.txt
 code .
 ```
 
+Shortcut | Description
+-------- | -----------
+CTRL-B   | Toggle sidebar
+ALT-↑    | Move line up
+ALT-Z    | Toggle word wrap
+CTRL-W   | Close Editor Window
+CTRL-K P | Copy path of active file
+CTRK-K R | Show active file in explorer
+CTRL-K O | Show active file in new window
+CTRL-K Z | Zen mode, Esc Ecs to exit
+CTRL-SHIFT-V | Show Markdown preview
+
+
 https://code.visualstudio.com/docs/setup/linux
 
+https://code.visualstudio.com/docs/getstarted/tips-and-tricks
 
 ## Notepad++
 
