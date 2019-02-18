@@ -22,6 +22,7 @@ sudo apt-get remove -y unattended-upgrades -qq
 
 ## commands
 
+### [misc](cmd.md) ps
 ### [git](git.md)
 ### [wget](wget.md)
 ### [crontab](crontab.md)
