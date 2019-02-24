@@ -8,16 +8,17 @@ sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite
 ```
 
 Go to https://www.python.org/downloads/source/ and figure out the URL for the latest
-Python 3 release, e.g. https://www.python.org/downloads/release/python-365/
+Python 3 release, e.g. https://www.python.org/downloads/release/python-372/
 
 Now determine the URL of the tarball, it might be:
 
-https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz
+https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz
 
 Download it with curl:
 ```
+cd ~
 sudo apt install curl
-curl https://www.python.org/ftp/python/3.6.5/Python-3.6.5.tgz -o python3.tgz
+curl https://www.python.org/ftp/python/3.7.2/Python-3.7.2.tgz -o python3.tgz
 ```
 
 Unzip the file:
@@ -25,12 +26,12 @@ Unzip the file:
 tar xvzf python3.tgz
 ```
 
-CD into the new directory created e.g. `Python-3.6.5`:
+CD into the new directory created e.g. `Python-3.7.2`:
 ```
-cd Python-3.6.5
+cd Python-3.7.2
 ```
 
-Configure it:
+Configure it option 1:
 ```
 ./configure --enable-optimizations --enable-shared
 ```
@@ -38,6 +39,11 @@ Note that the `./configure` step suggests using the `--enable-optimizations` fla
 Python run about 10% faster, but takes about 40 minutes to build since it forces running the tests.
 
 The `--enabled-shared` option is needed for mod_wsgi.
+
+Configure option 2 for local libraries (See StackOverflow below):
+```
+./configure --enable-shared --prefix=/usr/local LDFLAGS="-Wl,--rpath=/usr/local/lib"
+```
 
 Build it - approx 2 mins (without the `--enable-optimizations` option):
 ```
@@ -52,6 +58,11 @@ make test
 Install it:
 ```
 sudo make install
+```
+
+Check version
+```
+python3.7 --version
 ```
 
 ### Debugging
