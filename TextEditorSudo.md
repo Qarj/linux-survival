@@ -63,13 +63,16 @@ Shortcut | Description
 CTRL-B   | Toggle sidebar
 ALT-↑    | Move line up
 ALT-Z    | Toggle word wrap
+ALT-ENTER | Select all occurrences of find match
 CTRL-W   | Close Editor Window
 CTRL-K P | Copy path of active file
 CTRK-K R | Show active file in explorer
 CTRL-K O | Show active file in new window
-CTRL-K Z | Zen mode, Esc Ecs to exit
+CTRL-K Z | Zen mode, Esc Esc to exit
+CTRL-K CTRL-F | Format selection
 CTRL-SHIFT-V | Show Markdown preview
-
+SHIFT-ALT-F | Format whole document
+F12 | Go to definition
 
 https://code.visualstudio.com/docs/setup/linux
 
