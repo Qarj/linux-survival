@@ -137,3 +137,61 @@ sudo mkswap /swapfile
 sudo swapon /swapfile
 grep SwapTotal /proc/meminfo
 ```
+
+## Dropbox
+
+```
+sudo apt-get install python3-gpg
+```
+
+Sign into the Dropbox from the website in Chrome.
+
+Then select Install, then open the `.deb` file.
+Will need to restart Nautilus.
+
+## Opera
+
+https://vitux.com/how-to-install-uninstall-opera-browser-on-ubuntu/
+
+```
+wget -qO- https://deb.opera.com/archive.key | sudo apt-key add -
+sudo add-apt-repository "deb [arch=i386,amd64] https://deb.opera.com/opera-stable/ stable non-free"
+sudo apt install opera-stable
+```
+
+## Configure mouse buttons
+
+https://askubuntu.com/questions/152297/how-to-configure-extra-buttons-in-logitech-mouse
+
+```
+sudo apt-get install xbindkeys xautomation x11-utils
+```
+
+```
+xev
+```
+
+Forward arrow - button 9
+```
+ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
+    root 0x1e8, subw 0x1800002, time 7104012, (16,45), root:(318,134),
+    state 0x0, button 9, same_screen YES
+```
+
+Backward arrow - button 8
+```
+ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
+    root 0x1e8, subw 0x1800002, time 7192536, (30,44), root:(332,133),
+    state 0x0, button 8, same_screen YES
+```
+
+More bind examples: https://medium.com/@Aenon/bind-mouse-buttons-to-keys-or-scripts-under-linux-with-xbindkeys-and-xvkbd-7e6e6fcf4cba
+
+## Canon P-208II Scanner
+
+Linux 32-bit driver appears to work
+
+https://www.canon-europe.com/support/consumer_products/products/scanners/others/imageformula_p-208ii.html?type=drivers&driverdetailid=tcm:13-1238891&os=linux&language=en
+
+Check out: http://gscan2pdf.sourceforge.net/
+
