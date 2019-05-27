@@ -7,10 +7,10 @@ Reduce the frustration of linux administration!
 
 Alternative in TTY
 ```
-CTRL-ALT-F1
+CTRL-ALT-F3
 pgrep chrome
 kill -9 1234
-CTRL-ALT-F7
+CTRL-ALT-F1
 ```
 
 Or from tty
@@ -47,3 +47,4 @@ sudo apt-get remove -y unattended-upgrades -qq
 ### [wget](wget.md)
 ### [crontab](crontab.md)
 
+## [Ubuntu 18.04 System Build](Ubuntu1804Build.md)
