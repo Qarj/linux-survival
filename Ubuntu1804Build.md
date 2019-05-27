@@ -69,3 +69,71 @@ python3 $(which hp-setup)
 Note running `hp-doctor` will give an error message about not being able to communicate with printer (even though it detects it).
 Running `hp-setup` sorts it out.
 
+## VirtualBox 6.0
+
+https://tecadmin.net/install-virtualbox-on-ubuntu-18-04/
+
+```
+sudo apt update
+sudo apt upgrade
+```
+
+```
+wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+```
+
+```
+sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian bionic contrib"
+```
+
+```
+sudo apt install virtualbox-6.0
+```
+
+```
+virtualbox
+```
+
+https://www.itzgeek.com/how-tos/mini-howtos/how-to-install-virtualbox-extension.html
+
+```
+cd /tmp
+wget https://download.virtualbox.org/virtualbox/6.0.0/Oracle_VM_VirtualBox_Extension_Pack-6.0.0.vbox-extpack
+```
+
+```
+File/Preferences/Extensions
+```
+Then browse to downloaded file in `/tmp`
+
+## VMWare Workstation Player
+
+https://linuxize.com/post/how-to-install-vmware-workstation-player-on-ubuntu-18-04/
+
+CTRL-ALT-T
+```
+sudo apt install build-essential
+sudo apt install linux-headers-$(uname -r)
+wget https://www.vmware.com/go/getplayer-linux
+chmod +x getplayer-linux
+sudo ./getplayer-linux
+```
+
+Probably should not install as sudo...
+```
+sudo chown -R $USER:$USER ~/.vmware
+```
+
+## Increase SWAP file size to 8GB
+
+https://bogdancornianu.com/change-swap-size-in-ubuntu/
+
+
+```
+sudo swapoff -a
+sudo dd if=/dev/zero of=/swapfile bs=1G count=8
+sudo mkswap /swapfile
+sudo swapon /swapfile
+grep SwapTotal /proc/meminfo
+```
