@@ -185,7 +185,29 @@ ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
     state 0x0, button 8, same_screen YES
 ```
 
-More bind examples: https://medium.com/@Aenon/bind-mouse-buttons-to-keys-or-scripts-under-linux-with-xbindkeys-and-xvkbd-7e6e6fcf4cba
+More bind examples:
+- https://medium.com/@Aenon/bind-mouse-buttons-to-keys-or-scripts-under-linux-with-xbindkeys-and-xvkbd-7e6e6fcf4cba
+- http://xahlee.info/linux/linux_xvkbd_tutorial.html
+
+Forward
+```
+Toggle Left Click
+
+Left Button Down
+Left Button Up
+wait 97 ms
+Repeat until pressed again
+```
+
+Backward
+```
+Mega Left Click
+
+Left Button Down
+Left Button Up
+wait 25 ms
+Repeat while pressed
+```
 
 ## Canon P-208II Scanner
 
@@ -194,4 +216,15 @@ Linux 32-bit driver appears to work
 https://www.canon-europe.com/support/consumer_products/products/scanners/others/imageformula_p-208ii.html?type=drivers&driverdetailid=tcm:13-1238891&os=linux&language=en
 
 Check out: http://gscan2pdf.sourceforge.net/
+
+## Wine
+
+```
+winecfg
+wine cmd.exe
+```
+
+## Archive Manager (rebranded File Roller?)
+
+Seems to work fine.
 
