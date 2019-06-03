@@ -255,7 +255,7 @@ Comment=Update data
 Exec=wine 'C:\\Program Files (x86)\\TradeSkillMaster Application\\app\\TSMApplication.exe'
 Terminal=false
 Type=Application
-Icon=TSMApplication
+Icon=774F_TSMApplication.0
 StartupNotify=false
 ```
 
