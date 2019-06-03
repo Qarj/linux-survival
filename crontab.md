@@ -1,16 +1,29 @@
 # crontab
 
 list
+```
 crontab -l
+```
 
 edit
+```
 crontab -e
+```
+
+changed editor
+```
+select-editor
+```
 
 delete all
+```
 crontab -r
+```
 
 edit for another user
+```
 crontab -u username -l r
+```
 
 fields
 ```
@@ -27,6 +40,12 @@ Every hour
 0       *       *       *               *
 ```
 
+Run script every hour
+```
+22      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
+```
+
+
 Every 5 mins
 ```
 */5     *       *       *               *
@@ -35,8 +54,10 @@ Every 5 mins
 Note that Date and Day Of Week fields are logically ORd i.e. if one true, job will be run
 
 Every 90 minutes
+```
 0       */3     *       *               *
 30      1/3     *       *               *
+```
 
 23:30 on the last day of every month
 ```

@@ -228,3 +228,52 @@ wine cmd.exe
 
 Seems to work fine.
 
+## Install TSM
+
+```
+wine cmd.exe
+cd Z:\media\sea_pro\Install\TSM
+setup.exe
+```
+
+Set WOW location
+```
+/media/windows/Users/Public/Games/FakeWarcarft/World of Warcraft/
+```
+
+Start on boot
+```
+nano ~/.config/autostart/tsm.deskop
+```
+
+Copy Paste
+```
+[Desktop Entry]
+Name=TradeSkillMaster Desktop App
+GenericName=TSM Updater
+Comment=Update data
+Exec=wine 'C:\\Program Files (x86)\\TradeSkillMaster Application\\app\\TSMApplication.exe'
+Terminal=false
+Type=Application
+Icon=TSMApplication
+StartupNotify=false
+```
+
+
+## Update TSM each hour
+
+```
+cd ~/git
+git clone https://bitbucket.org/Qarj/addons
+cd addons/TSM4
+chmod +x AppData.lua_updater.sh
+```
+
+```
+crontab -e
+```
+
+Copy Paste
+```
+22      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
+```
