@@ -277,3 +277,64 @@ Copy Paste
 ```
 22      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
 ```
+
+## Setup Radio Stations
+
+Rhythm Box - Click `Add` min menu bar
+
+Bayern 2
+http://streams.br.de/bayern2nord_2.m3u
+
+
+## Langenscheidt
+
+Install Version 4.0, Revision 20.1
+https://www.langenscheidt.com/kundenservice/updates-und-patches
+
+The version inside the DAF folder is the right one.
+
+code ~/Desktop/eDict.desktop
+```
+[Desktop Entry]
+Name=eDict
+Exec=env WINEPREFIX="/home/tim/.wine" wine start /unix /home/tim/.wine/dosdevices/c:/Program\ Files\ \(x86\)/Langenscheidt/e-Dictionaries/eW_lkg.exe
+Type=Application
+StartupNotify=true
+Path=/home/tim/.wine/dosdevices/c:/Program Files (x86)/Langenscheidt/e-Dictionaries
+Icon=38F3_ew_lkg.0
+StartupWMClass=eW_lkg.exe
+```
+
+Path to determine icon location - look at the .desktop files
+```
+/home/tim/.local/share/applications/wine/Programs/Langenscheidt e-Dictionaries
+```
+
+
+## Monitor blanking
+
+Dell U2711 monitor does not go off when power save mode entered
+```
+xset dpms force off
+```
+https://unix.stackexchange.com/questions/42203/turning-off-dual-monitors-with-xset-dpms-force-off-does-not-work-why
+
+## CPU Monitor
+
+```
+sudo apt install htop
+htop
+```
+
+## Minimise to dock
+
+```
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+```
+
+## Setup Templates
+
+.txt
+.xlsx
+.docx
+
