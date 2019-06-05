@@ -18,6 +18,12 @@ Or from tty
 sudo service lightdm restart
 ```
 
+### install lock
+
+```
+ps aux | grep -i apt
+sudo kill -9 <pid>
+```
 
 ### Ubuntu sanity essential
 ```

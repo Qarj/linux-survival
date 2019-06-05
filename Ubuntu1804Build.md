@@ -332,6 +332,79 @@ htop
 gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 ```
 
+Then restore default behaviour since it is annoying
+```
+gsettings reset org.gnome.shell.extensions.dash-to-dock click-action
+```
+
+## Network monitor
+http://localhost:2605/index.html
+
+http://codebox.org.uk/pages/bitmeteros-downloads
+https://github.com/codebox
+
+Download and double click on .deb file.
+
+https://codebox.net/pages/bitmeteros-faq
+
+```
+chromium-browser --app=http://localhost:2605/index.html
+```
+
+Create desktop shortcut
+
+```
+which chromium-browser
+```
+
+code ~/Desktop/BitMeter.desktop
+```
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/usr/bin/chromium-browser --app=http://localhost:2605/index.html
+Name=BitMeter
+Comment=BitMeter OS
+Icon=none
+```
+
+Make it trustable
+```
+chmod 777 ~/Desktop/BitMeter.desktop
+```
+
+
+## BitMeter Python 2 Client
+
+Accept MS Eula by using TAB key then enter
+```
+sudo apt install make gcc libgtk-3-dev libwebkitgtk-dev libwebkitgtk-3.0-dev libgstreamer-gl1.0-0 freeglut3 freeglut3-dev python-gst-1.0 python3-gst-1.0 libglib2.0-dev ubuntu-restricted-extras libgstreamer-plugins-base1.0-dev
+```
+
+Takes 5+ mins, installed version 4.0.6 - June 2019
+```
+sudo pip install wxpython
+```
+
+```
+git clone https://github.com/codebox/bitmeteros-python-client.git
+```
+
+https://askubuntu.com/questions/1073145/how-to-install-wxpython-4-ubuntu-18-04
+
+To accept MS Eula:
+https://askubuntu.com/questions/16225/how-can-i-accept-the-microsoft-eula-agreement-for-ttf-mscorefonts-installer
+
+
+## Install Chromium
+
+```
+sudo apt install chromium-browser
+```
+
+
 ## Setup Templates
 
 .txt
