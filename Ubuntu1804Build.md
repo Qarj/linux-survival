@@ -405,6 +405,88 @@ sudo apt install chromium-browser
 ```
 
 
+## Take Snip
+
+Select snip area
+```
+SHIFT + Print Screen
+```
+
+## G502 Mouse
+
+Slow down acceleration
+https://www.reddit.com/r/linux_gaming/comments/9hqzib/logitech_g502_on_linux/
+
+
+## Enable esync
+
+https://github.com/lutris/lutris/wiki/How-to:-Esync
+
+```
+ulimit -Hn
+```
+
+Should be >= 524288
+
+```
+sudo nano /etc/systemd/system.conf
+sudo nano /etc/systemd/user.conf
+```
+
+add
+```
+DefaultLimitNOFILE=524288
+```
+
+## Irfanview
+
+Irfanview when installed in Windows is portable, there is no need to install it in wine.
+
+However to associate with files will require the Linux path to be converted to a Windows path
+with a script.
+
+```
+gedit ~/.wine/Irfan
+```
+
+Copy Paste
+```
+ #!/bin/sh
+
+WINEPROGRAM="/media/windows/Program Files (x86)/IrfanView/i_view32.exe"
+PROGRAMPARM=`winepath -w "$*"`
+wine start /unix "$WINEPROGRAM" "$PROGRAMPARM"
+exit 0
+```
+
+```
+chmod +x ~/.wine/Irfan
+```
+
+Now add the .desktop file so the script appears in the list of known applications
+```
+sudo gedit /usr/share/applications/Irfan.desktop
+```
+
+Copy Paste
+```
+[Desktop Entry]
+Name=Irfanview
+GenericName=Irfanview
+Comment=Irfan Image Viewer
+Exec=/home/tim/.wine/Irfan %f
+Terminal=false
+Type=Application
+Icon=/home/tim/.local/share/icons/hicolor/256x256/apps/IrfanView.png
+StartupNotify=false
+```
+
+The 256x256 `IrfanView.png` icon can easily be found on the internet, just download it
+as an icon in your home folder.
+
+/home/tim/.local/share/icons/hicolor/256x256/apps/IrfanView.png
+
+
 ## Setup Templates
 
 .txt
