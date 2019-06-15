@@ -30,6 +30,11 @@ sudo kill -9 <pid>
 sudo apt-get remove -y unattended-upgrades -qq
 ```
 
+### find
+```
+sudo find / -name "myfile"
+```
+
 ### [Desktop short cut to open File Manager as root](FileManagerSudo.md)
 
 ### [Text editors as root](TextEditorSudo.md)

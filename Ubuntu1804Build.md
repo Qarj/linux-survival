@@ -486,6 +486,221 @@ as an icon in your home folder.
 
 /home/tim/.local/share/icons/hicolor/256x256/apps/IrfanView.png
 
+## Support exFAT USB
+
+```
+sudo apt install exfat-fuse exfat-utils
+```
+
+## Setup Vivald browser
+
+https://vivaldi.com/
+
+Download and double click on the `.deb` file
+
+## Keyboard shortcuts
+
+Settings / Devices / Keyboard / Launchers
+
+Assign home folder to `Super + E`
+Assign command `gnome-system-monitor` to `CTRL-SHIFT-ESC`
+
+## Disable ipv6 on boot
+https://itsfoss.com/disable-ipv6-ubuntu-linux/
+
+```
+sudo gedit /etc/sysctl.conf
+```
+
+Add lines to end
+```
+net.ipv6.conf.all.disable_ipv6=1
+net.ipv6.conf.default.disable_ipv6=1
+net.ipv6.conf.lo.disable_ipv6=1
+```
+
+Activate
+```
+sudo sysctl -p
+```
+
+Check
+```
+ip a
+```
+
+## Install 7-Zip
+
+```
+sudo apt install p7zip-full p7zip-rar
+```
+
+## Install command line tool neofetch
+
+```
+sudo apt install neofetch
+```
+
+## Install command line tool youtube-dl
+
+```
+sudo wget https://yt-dl.org/latest/youtube-dl -O /usr/local/bin/youtube-dl
+sudo chmod a+x /usr/local/bin/youtube-dl
+hash -r
+```
+
+```
+youtube-dl <url>
+```
+
+## Install Stacer
+
+```
+sudo add-apt-repository ppa:oguzhaninan/stacer -y
+sudo apt-get update
+sudo apt-get install stacer -y
+```
+
+```
+stacer
+```
+
+Add to CTRL-ALT-DEL by first reassigning logout to CTRL-ALT-END
+
+
+## Install Sayonara music player
+
+```
+sudo apt-add-repository ppa:lucioc/sayonara
+sudo apt-get update
+sudo apt-get install sayonara
+```
+
+## Check temps
+
+```
+sudo apt install lm-sensors hddtemp
+sudo sensors-detect
+```
+
+Check
+```
+sensors
+```
+
+## Install Notepadqq
+
+```
+sudo snap install --classic notepadqq
+```
+
+```
+notepadqq
+```
+
+## Brave browser
+https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux
+
+```
+curl -s https://brave-browser-apt-release.s3.brave.com/brave-core.asc | sudo apt-key --keyring /etc/apt/trusted.gpg.d/brave-browser-release.gpg add -
+
+source /etc/os-release
+
+echo "deb [arch=amd64] https://brave-browser-apt-release.s3.brave.com/ $UBUNTU_CODENAME main" | sudo tee /etc/apt/sources.list.d/brave-browser-release-${UBUNTU_CODENAME}.list
+
+sudo apt update
+
+sudo apt install brave-keyring brave-browser
+```
+
+## Install Insync for OneDrive and Google Drive
+
+https://www.insynchq.com/3
+
+
+## Install Notepad++
+
+Install from Ubuntu Software.
+
+Now make a script to launch from the command line.
+
+```
+sudo gedit /usr/local/bin/npp
+```
+
+Copy Paste
+```
+ #!/bin/sh
+
+/snap/bin/notepad-plus-plus "$*"
+exit 0
+```
+
+```
+sudo chmod +x /usr/local/bin/npp
+```
+
+
+## Easy Find
+Find across all folders except /media
+
+```
+sudo gedit /usr/local/bin/efind
+```
+
+Copy Paste
+```
+#!/bin/bash
+if [ "$EUID" -ne 0 ]
+  then echo "Not running as SUDO !!!"
+fi
+
+echo ""
+echo find / -path /media -prune -o -name "$1" -print 2\>\&1 \| grep -v "Permission denied"
+echo ""
+
+find / -path /media -prune -o -name "$1" -print 2>&1 | grep -v "Permission denied"
+exit 0
+```
+
+```
+sudo chmod +x /usr/local/bin/efind
+```
+
+```
+efind README.md
+```
+
+## Global Find
+Find across all folders including /media
+
+```
+sudo gedit /usr/local/bin/gfind
+```
+
+Copy Paste
+```
+#!/bin/bash
+if [ "$EUID" -ne 0 ]
+  then echo "Not running as SUDO !!!"
+fi
+
+echo ""
+echo find / -name "$1" 2\>\&1 \| grep -v "Permission denied"
+echo ""
+
+find / -name "$1" 2>&1 | grep -v "Permission denied"
+exit 0
+```
+
+```
+sudo chmod +x /usr/local/bin/gfind
+```
+
+```
+gfind notepad++.exe
+```
+
 
 ## Setup Templates
 
