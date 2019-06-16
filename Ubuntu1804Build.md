@@ -282,6 +282,36 @@ Copy Paste
 22      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
 ```
 
+## Install Twitch - what a piece of junk!
+
+https://www.twitch.tv/downloads
+
+Download TwitchSetup.exe
+
+Copy to wow prefix
+```
+cp ~/Downloads/TwitchSetup.exe ~/Games/world-of-warcraft/drive_c/users/Public/
+```
+
+Start installer
+```
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/Public/TwitchSetup.exe'
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/tim/Application Data/Twitch/Bin/CurseClientUpdater.exe'
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/tim/Application Data/Twitch/Bin/Twitch.exe'
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/tim/Application Data/Twitch/Bin/UninstallTwitch.exe'
+```
+
+```
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/tim/Application Data/Twitch/Bin/UninstallTwitch.exe'
+```
+
+## Instal WowMatrix instead
+
+Download it anywhere and it can be started without installing
+```
+WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/Public/Public/WowMatrix.exe'
+```
+
 ## Setup Radio Stations
 
 Rhythm Box - Click `Add` min menu bar
@@ -740,6 +770,21 @@ exit 0
 sudo chmod +x /usr/local/bin/ue
 ```
 
+## Install Handbrake
+
+https://handbrake.fr/
+
+https://launchpad.net/~stebbins/+archive/ubuntu/handbrake-releases
+```
+sudo add-apt-repository ppa:stebbins/handbrake-releases
+sudo apt-get update
+sudo apt-get install handbrake-gtk
+sudo apt-get install handbrake-cli
+```
+
+## Install Slack
+
+https://slack.com/intl/en-gb/downloads/linux
 
 
 ## Setup Templates
