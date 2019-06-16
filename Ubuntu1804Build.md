@@ -125,6 +125,13 @@ Probably should not install as sudo...
 sudo chown -R $USER:$USER ~/.vmware
 ```
 
+## Patch VMWare Workstation Player
+
+```
+cd /media/pro/VMs/macOS 10.14/Patch Tool/unlocker210
+sudo bash ./lnx-install.sh
+```
+
 ## Increase SWAP file size to 8GB
 
 https://bogdancornianu.com/change-swap-size-in-ubuntu/
