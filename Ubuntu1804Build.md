@@ -794,6 +794,47 @@ sudo apt-get install handbrake-cli
 https://slack.com/intl/en-gb/downloads/linux
 
 
+## Install MapSource
+
+https://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin/WINE_MapSource
+
+
+Download 6.16.3 https://www8.garmin.com/support/download_details.jsp?id=209
+```
+cd ~/Downloads
+7z x MapSource_6163.exe
+wine start MSmain.msi
+wine MapSource_6163.exe
+```
+
+Quit MapSource, then install a map from https://openmtbmap.org
+
+```
+wine mtbgreat-britain.exe
+```
+
+Start MapSource again
+
+```
+wine ~/.wine/drive_c/MapSource/MapSource.exe
+```
+
+Select the map using the menus
+```
+View -> Switch to Product -> select the map
+```
+
+USB workaround
+```
+wine doesn't support usb, so you need the garmin_gps module. If it's installed on your system, it should load automatically after attaching your device and switching it on.
+You should now have a device ttyUSB0, which you need to symlink as com1 for wine: ln -s /dev/ttyUSB0 ~/.wine/dosdevices/com1
+Run MapSource: wine ~/.wine/drive_c/MapSource/MapSource.exe
+Go to Settings -> Transfer, there you can select a serial port. Select COM1.
+Click the map selection tool from the buttons and select an area.
+Select Transfer -> Transfer to device. If everything went fine, it'll detect your garmin device attached to the serial port and you can start your upload.
+```
+
+
 ## Setup Templates
 
 .txt
