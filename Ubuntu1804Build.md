@@ -259,6 +259,10 @@ Icon=774F_TSMApplication.0
 StartupNotify=false
 ```
 
+Saved Variables location
+```
+/media/windows/Users/Public/Games/World of Warcraft/_retail_/WTF/Account/WINBER/SavedVariables/
+```
 
 ## Update TSM each hour
 
@@ -700,6 +704,42 @@ sudo chmod +x /usr/local/bin/gfind
 ```
 gfind notepad++.exe
 ```
+
+## Install Skype
+
+`.deb` file seems to work
+
+## Install UltraEdit
+
+Start from command line
+```
+sudo uex README.md
+```
+
+Make a script to start as a detached process
+```
+sudo gedit /usr/local/bin/ue
+```
+
+Copy Paste
+```
+#!/bin/bash
+if [ "$EUID" -ne 0 ]
+  then echo "Not running as SUDO !!!"
+fi
+
+echo ""
+echo nohup uex $* \> /dev/null 2\>\&1 \&
+echo ""
+
+nohup uex $* > /dev/null 2>&1 &
+exit 0
+```
+
+```
+sudo chmod +x /usr/local/bin/ue
+```
+
 
 
 ## Setup Templates
