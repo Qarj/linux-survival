@@ -69,6 +69,13 @@ python3 $(which hp-setup)
 Note running `hp-doctor` will give an error message about not being able to communicate with printer (even though it detects it).
 Running `hp-setup` sorts it out.
 
+### Notes
+
+The printer is listed 2 times in Chrome. The correct one is
+- HP-LaserJet-Professional-P1102w
+
+https://askubuntu.com/questions/1070450/hplip-hp-device-manager-print-job-has-completed-but-nothing-happens-hp-la
+
 ## VirtualBox 6.0
 
 https://tecadmin.net/install-virtualbox-on-ubuntu-18-04/
