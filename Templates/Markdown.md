@@ -6,11 +6,11 @@
 
 ## Table of Contents
 
-[Unordered List](#unordered-list)
-[Ordered List](#ordered-list)
-[Embed Image](#embed-image)
-[A table example](#a-table)
-[Task List](#a-task-list)
+* [Unordered List](#unordered-list)
+* [Ordered List](#ordered-list)
+* [Embed Image](#embed-image)
+* [A table example](#a-table)
+* [Task List](#a-task-list)
 
 ## Unordered List
 
