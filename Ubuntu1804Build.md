@@ -231,6 +231,8 @@ https://www.canon-europe.com/support/consumer_products/products/scanners/others/
 
 Check out: http://gscan2pdf.sourceforge.net/
 
+Solution: Install VMWare Workstation Player, Install Windows 10, Install Canon Driver and Software, then plug into USB 2 port. (USB 3 port will scan, then hang.)
+
 ## Wine
 
 ```
@@ -841,10 +843,28 @@ Click the map selection tool from the buttons and select an area.
 Select Transfer -> Transfer to device. If everything went fine, it'll detect your garmin device attached to the serial port and you can start your upload.
 ```
 
+## List USB devices
+
+```
+sudo apt install input-utils
+```
+
+```
+sudo lsusb
+```
 
 ## Setup Templates
 
+Copy files in `Templates` folder from this project to `~/Templates` 
+
+File types
+```
 .txt
 .xlsx
 .docx
+.pptx
+.odg
+```
+
+This will enable the `New Document` right click menu in Nautilus.
 
