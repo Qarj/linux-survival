@@ -28,7 +28,7 @@
 
 ## Embed Image
 
-![BitMeter Desktop](resources/BitMeter-Desktop.png?raw=true "BitMeter-Desktop icon")
+![BitMeter Desktop](/resources/BitMeter-Desktop.png?raw=true "BitMeter-Desktop icon")
 
 # A table
 
