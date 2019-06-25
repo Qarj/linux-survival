@@ -295,7 +295,7 @@ crontab -e
 
 Copy Paste
 ```
-22      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
+*/30      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
 ```
 
 ## Install Twitch - what a piece of junk!
@@ -868,3 +868,31 @@ File types
 
 This will enable the `New Document` right click menu in Nautilus.
 
+## Simple Box
+
+`_lin_sync.bash`
+```
+THIS_MACHINE="$(hostname)"
+MESSAGE="Bash script commit ${THIS_MACHINE} $(date)"
+
+echo $MESSAGE
+
+git pull
+git add .
+git commit -m "${MESSAGE}"
+git push
+```
+
+```
+chmod +x _lin_sync.bash
+```
+
+```
+crontab -e
+```
+
+Copy Paste
+```
+22      3,8        *       *               *   /home/tim/git/a1/_lin_sync.bash
+40      16,17      *       *               *   /home/tim/git/a1/_lin_sync.bash
+```
