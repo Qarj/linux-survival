@@ -114,6 +114,60 @@ File/Preferences/Extensions
 ```
 Then browse to downloaded file in `/tmp`
 
+https://askubuntu.com/questions/25596/how-to-set-up-usb-for-virtualbox
+https://github.com/dnschneid/crouton/wiki/VirtualBox-udev-integration
+For USB to work
+
+This might be enough:
+```
+sudo usermod -aG vboxusers `whoami`
+```
+
+Note: Win 10 guest does not work with NTFS formatted USB
+
+
+```
+cp /usr/lib/virtualbox/VBoxCreateUSBNode.sh ~/Downloads/
+sudo mv ~/Downloads/VBoxCreateUSBNode.sh /usr/local/
+sudo chmod 755 /usr/local/VBoxCreateUSBNode.sh
+sudo chown root:root /usr/local/VBoxCreateUSBNode.sh
+```
+
+```
+getent group vboxusers | awk -F: '{printf "Group %s with GID=%d\n", $1, $3}'
+```
+Remember number like `128`
+
+~/Downloads/virtualbox.rules
+```
+SUBSYSTEM=="usb_device", ACTION=="add", RUN+="/usr/local/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass} 126"
+SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass} 126"
+SUBSYSTEM=="usb_device", ACTION=="remove", RUN+="/usr/local/VBoxCreateUSBNode.sh --remove $major $minor"
+SUBSYSTEM=="usb", ACTION=="remove", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/VBoxCreateUSBNode.sh --remove $major $minor"
+```
+
+```
+sudo cp ~/Downloads/virtualbox.rules /etc/udev/rules.d/
+sudo rm /etc/udev/rules.d/*-virtualbox.rules
+```
+
+Edit file and replace 126 with 128
+```
+sudo nano /etc/udev/rules.d/virtualbox.rules
+```
+
+Reload
+```
+sudo udevadm control --reload
+```
+
+```
+sudo adduser $USER vboxusers
+sudo adduser root vboxusers
+```
+Then logout of user session and login.
+
+
 ## VMWare Workstation Player
 
 https://linuxize.com/post/how-to-install-vmware-workstation-player-on-ubuntu-18-04/
@@ -542,7 +596,7 @@ as an icon in your home folder.
 sudo apt install exfat-fuse exfat-utils
 ```
 
-## Setup Vivald browser
+## Setup Vivaldi browser
 
 https://vivaldi.com/
 
@@ -554,6 +608,11 @@ Settings / Devices / Keyboard / Launchers
 
 Assign home folder to `Super + E`
 Assign command `gnome-system-monitor` to `CTRL-SHIFT-ESC`
+Assign command `gedit` to `Super + N` (Change Focus the active notification to `Alt + Super + N` first)
+Assign command `gnome-control-center sound` to `CTRL-ALT-H`
+Assign command `gnome-control-center keyboard` to `CTRL-ALT-K`
+Assign command `npp /home/tim/git/scrapbook/Deutsch/Wörter.md` to `CTRL-ALT-G`
+Assign command `gnome-calculator` to `SUPER-C`
 
 ## Disable ipv6 on boot
 https://itsfoss.com/disable-ipv6-ubuntu-linux/
@@ -872,14 +931,20 @@ This will enable the `New Document` right click menu in Nautilus.
 
 `_lin_sync.bash`
 ```
+#!/bin/bash
+
+# change directory to script directory
+cd ${0%/*}
+
 THIS_MACHINE="$(hostname)"
 MESSAGE="Bash script commit ${THIS_MACHINE} $(date)"
 
 echo $MESSAGE
 
-git pull
 git add .
 git commit -m "${MESSAGE}"
+git pull
+git commit --no-edit -m "Possible Linux auto merge"
 git push
 ```
 
