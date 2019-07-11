@@ -290,9 +290,23 @@ Solution: Install VMWare Workstation Player, Install Windows 10, Install Canon D
 ## Wine
 
 ```
+sudo apt install winetricks
+```
+
+```
 winecfg
 wine cmd.exe
 ```
+
+```
+WINEARCH=win32 WINEPREFIX=~/wine/testbottle winetricks
+```
+
+For .NET prereqs, installing dotnet35 first and dotnet452 afterwards is probably enough.
+
+For games - dxvk
+
+
 
 ## Archive Manager (rebranded File Roller?)
 
