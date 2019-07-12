@@ -26,6 +26,7 @@ sudo mkdir /media/windows
 sudo mkdir /media/pro
 sudo mkdir /media/sea_pro
 sudo mkdir /media/raptor
+sudo mkdir /media/crucial
 sudo cp /etc/fstab /etc/fstab-backup
 ```
 
@@ -38,9 +39,17 @@ UUID=5448442B48440DE4                     /media/windows  ntfs-3g auto,user,rw  
 UUID=AAA02127A020FC07                     /media/pro      ntfs-3g auto,user,rw      0       0
 UUID=067652C97652B8DF                     /media/sea_pro  ntfs-3g auto,user,rw      0       0
 UUID=EC02614902611A3A                     /media/raptor   ntfs-3g auto,user,rw      0       0
+UUID=17633fa6-f229-4a54-bc65-08ee72b75435 /media/crucial  ext4    auto,user,rw      0       2
 ```
+(Last field value of 2 means filesystem checked last, 1 means root, 0 means don't check)
+
 
 Reboot.
+
+To see list of partitions without the loop clutter
+```
+lsblk -o name,mountpoint,label,size,fstype,uuid | egrep -v "^loop"
+```
 
 ## Printer Driver
 
