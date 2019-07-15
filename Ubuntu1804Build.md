@@ -39,7 +39,7 @@ UUID=5448442B48440DE4                     /media/windows  ntfs-3g auto,user,rw  
 UUID=AAA02127A020FC07                     /media/pro      ntfs-3g auto,user,rw      0       0
 UUID=067652C97652B8DF                     /media/sea_pro  ntfs-3g auto,user,rw      0       0
 UUID=EC02614902611A3A                     /media/raptor   ntfs-3g auto,user,rw      0       0
-UUID=17633fa6-f229-4a54-bc65-08ee72b75435 /media/crucial  ext4    auto,user,rw      0       2
+UUID=12fca4a6-2f56-45d1-949d-371dafa2b9e8 /media/mx500    ext4    defaults          0       0
 ```
 (Last field value of 2 means filesystem checked last, 1 means root, 0 means don't check)
 
@@ -984,3 +984,76 @@ Copy Paste
 22      3,8        *       *               *   /home/tim/git/a1/_lin_sync.bash
 40      16,17      *       *               *   /home/tim/git/a1/_lin_sync.bash
 ```
+
+## Keyboard shortcuts
+
+```
+sudo apt install compizconfig-settings-manager
+```
+
+## Format a drive as ext4
+
+Remove from fstab
+```
+sudo gedit /etc/fstab
+```
+
+Find what it is called, eg `/dev/sdg`
+```
+sudo fdisk -l
+```
+
+unmount it - note the partition number 1 in this case
+```
+sync
+sudo umount /dev/sdg1
+```
+
+```
+sudo fdisk /dev/sdg
+```
+
+delete partition, repeat till all gone
+```
+d
+```
+
+new partition
+```
+n
+```
+
+primary partition
+```
+p
+```
+
+partition number
+```
+1
+```
+
+accept defaults for sectors
+
+Choose to remove ntfs partition if prompted.
+
+Change partition type to Linux
+```
+t
+83
+```
+
+https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/
+
+Reboot if prompted
+```
+Re-reading the partition table failed.: Device or resource busy
+
+The kernel still uses the old table. The new table will be used at the next reboot or after you run partprobe(8) or kpartx(8).
+```
+
+Format - note the 1 for partition 1
+```
+sudo mkfs.ext4 /dev/sdg1
+```
+
