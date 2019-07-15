@@ -11,7 +11,7 @@ Then insert the image, click `Run`.
 
 Restart.
 
-## Debain 9
+## Debian 9
 
 Activities -> Settings -> Keyboard
 
