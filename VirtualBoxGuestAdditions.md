@@ -3,6 +3,7 @@
 ## Ubuntu 16.04, Ubuntu 18.04, Ubuntu 18.10
 
 CTRL-ALT-T:
+
 ```
 sudo apt install linux-headers-$(uname -r) build-essential dkms
 ```
@@ -23,6 +24,7 @@ Shortcut -> click `Edit` then tap CTRL-ALT-T
 Click `Add`
 
 CTRL-ALT-T:
+
 ```
 su -
 apt update
@@ -32,6 +34,7 @@ m-a prepare
 ```
 
 Now fix the CD mount options:
+
 ```
 gedit /etc/fstab
 ```
@@ -54,11 +57,13 @@ Set Shortcut... -> CTRL-ALT-T
 Click `Add`
 
 CTRL-ALT-T: (if network is disabled on boot)
+
 ```
 su -
 cd /etc/sysconfig/network-scripts/
 sed -i -e 's@^ONBOOT=no@ONBOOT=yes@' ifcfg-enp0s3
 ```
+
 Might be called `ifcfg-eth0`.
 
 ```
@@ -68,6 +73,7 @@ reboot
 ```
 
 CTRL-ALT-T:
+
 ```
 su -
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
@@ -81,3 +87,15 @@ Then insert the image, click `Run`.
 ```
 reboot
 ```
+
+# Sharing Folders
+
+One or all of these are needed for shared folder to be available user `test` on guest
+
+```
+sudo adduser $USER vboxsf
+sudo adduser root vboxsf
+sudo usermod -G vboxsf -a test
+```
+
+Reboot guest.

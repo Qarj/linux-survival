@@ -1,6 +1,7 @@
 # Ubuntu 18.04 System Build
 
 ## Gnome Tweaks
+
 Install from Ubuntu Software.
 
 http://ubuntuhandbook.org/index.php/2018/09/pin-app-shortcut-desktop-ubuntu-18-04/
@@ -12,11 +13,13 @@ Nautilus - from `Files/Preferences`, select option `Show action to create symbol
 https://askubuntu.com/questions/769469/symlinks-to-windows-folder-breaking
 
 Pre-reqs
+
 ```
 sudo apt-get install ntfs-3g
 ```
 
 To see which drives to mount
+
 ```
 sudo blkid
 ```
@@ -33,7 +36,9 @@ sudo cp /etc/fstab /etc/fstab-backup
 ```
 sudo gedit /etc/fstab
 ```
+
 Copy-Paste at end
+
 ```
 UUID=5448442B48440DE4                     /media/windows  ntfs-3g auto,user,rw      0       0
 UUID=AAA02127A020FC07                     /media/pro      ntfs-3g auto,user,rw      0       0
@@ -41,12 +46,13 @@ UUID=067652C97652B8DF                     /media/sea_pro  ntfs-3g auto,user,rw  
 UUID=EC02614902611A3A                     /media/raptor   ntfs-3g auto,user,rw      0       0
 UUID=12fca4a6-2f56-45d1-949d-371dafa2b9e8 /media/mx500    ext4    defaults          0       0
 ```
-(Last field value of 2 means filesystem checked last, 1 means root, 0 means don't check)
 
+(Last field value of 2 means filesystem checked last, 1 means root, 0 means don't check)
 
 Reboot.
 
 To see list of partitions without the loop clutter
+
 ```
 lsblk -o name,mountpoint,label,size,fstype,uuid | egrep -v "^loop"
 ```
@@ -56,6 +62,7 @@ lsblk -o name,mountpoint,label,size,fstype,uuid | egrep -v "^loop"
 https://askubuntu.com/questions/1058742/how-to-install-hp-printer-in-ubuntu-18-04
 
 Uninstall
+
 ```
 sudo apt-get purge hplip hplip-data hplip-doc hplip-gui hpijs-ppds \
 libsane-hpaio printer-driver-hpcups printer-driver-hpijs
@@ -65,6 +72,7 @@ sudo apt-get autoremove
 ```
 
 Install
+
 ```
 sudo apt install build-essential python3-dev libqt4-dev
 sudo apt-get install python3-pyqt4
@@ -81,6 +89,7 @@ Running `hp-setup` sorts it out.
 ### Notes
 
 The printer is listed 2 times in Chrome. The correct one is
+
 - HP-LaserJet-Professional-P1102w
 
 https://askubuntu.com/questions/1070450/hplip-hp-device-manager-print-job-has-completed-but-nothing-happens-hp-la
@@ -121,6 +130,7 @@ wget https://download.virtualbox.org/virtualbox/6.0.0/Oracle_VM_VirtualBox_Exten
 ```
 File/Preferences/Extensions
 ```
+
 Then browse to downloaded file in `/tmp`
 
 https://askubuntu.com/questions/25596/how-to-set-up-usb-for-virtualbox
@@ -128,12 +138,12 @@ https://github.com/dnschneid/crouton/wiki/VirtualBox-udev-integration
 For USB to work
 
 This might be enough:
+
 ```
 sudo usermod -aG vboxusers `whoami`
 ```
 
 Note: Win 10 guest does not work with NTFS formatted USB
-
 
 ```
 cp /usr/lib/virtualbox/VBoxCreateUSBNode.sh ~/Downloads/
@@ -145,9 +155,11 @@ sudo chown root:root /usr/local/VBoxCreateUSBNode.sh
 ```
 getent group vboxusers | awk -F: '{printf "Group %s with GID=%d\n", $1, $3}'
 ```
+
 Remember number like `128`
 
 ~/Downloads/virtualbox.rules
+
 ```
 SUBSYSTEM=="usb_device", ACTION=="add", RUN+="/usr/local/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass} 126"
 SUBSYSTEM=="usb", ACTION=="add", ENV{DEVTYPE}=="usb_device", RUN+="/usr/local/VBoxCreateUSBNode.sh $major $minor $attr{bDeviceClass} 126"
@@ -161,11 +173,13 @@ sudo rm /etc/udev/rules.d/*-virtualbox.rules
 ```
 
 Edit file and replace 126 with 128
+
 ```
 sudo nano /etc/udev/rules.d/virtualbox.rules
 ```
 
 Reload
+
 ```
 sudo udevadm control --reload
 ```
@@ -174,14 +188,15 @@ sudo udevadm control --reload
 sudo adduser $USER vboxusers
 sudo adduser root vboxusers
 ```
-Then logout of user session and login.
 
+Then logout of user session and login.
 
 ## VMWare Workstation Player
 
 https://linuxize.com/post/how-to-install-vmware-workstation-player-on-ubuntu-18-04/
 
 CTRL-ALT-T
+
 ```
 sudo apt install build-essential
 sudo apt install linux-headers-$(uname -r)
@@ -191,6 +206,7 @@ sudo ./getplayer-linux
 ```
 
 Probably should not install as sudo...
+
 ```
 sudo chown -R $USER:$USER ~/.vmware
 ```
@@ -202,10 +218,32 @@ cd /media/pro/VMs/macOS 10.14/Patch Tool/unlocker210
 sudo bash ./lnx-install.sh
 ```
 
+## Post setup settings
+
+Settings -> Privacy
+
+- Usage & History
+- Purge Rubbish Bin contents & Temporary Files
+- Problem Reporting
+- Connectivity Checking
+
+Once in a while
+
+```
+sudo apt autoremove
+```
+
+## Clean up VMWare cache and clear bash history on logout
+
+```
+echo 'rm -r ~/.cache/vmware/drag_and_drop' >> ~/.bash_logout
+echo 'history -c' >> ~/.bash_logout
+cat ~/.bash_logout
+```
+
 ## Increase SWAP file size to 8GB
 
 https://bogdancornianu.com/change-swap-size-in-ubuntu/
-
 
 ```
 sudo swapoff -a
@@ -249,6 +287,7 @@ xev
 ```
 
 Forward arrow - button 9
+
 ```
 ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
     root 0x1e8, subw 0x1800002, time 7104012, (16,45), root:(318,134),
@@ -256,6 +295,7 @@ ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
 ```
 
 Backward arrow - button 8
+
 ```
 ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
     root 0x1e8, subw 0x1800002, time 7192536, (30,44), root:(332,133),
@@ -263,10 +303,12 @@ ButtonRelease event, serial 37, synthetic NO, window 0x1800001,
 ```
 
 More bind examples:
+
 - https://medium.com/@Aenon/bind-mouse-buttons-to-keys-or-scripts-under-linux-with-xbindkeys-and-xvkbd-7e6e6fcf4cba
 - http://xahlee.info/linux/linux_xvkbd_tutorial.html
 
 Forward
+
 ```
 Toggle Left Click
 
@@ -277,6 +319,7 @@ Repeat until pressed again
 ```
 
 Backward
+
 ```
 Mega Left Click
 
@@ -315,8 +358,6 @@ For .NET prereqs, installing dotnet35 first and dotnet452 afterwards is probably
 
 For games - dxvk
 
-
-
 ## Archive Manager (rebranded File Roller?)
 
 Seems to work fine.
@@ -330,16 +371,19 @@ setup.exe
 ```
 
 Set WOW location
+
 ```
 /media/windows/Users/Public/Games/FakeWarcarft/World of Warcraft/
 ```
 
 Start on boot
+
 ```
 nano ~/.config/autostart/tsm.deskop
 ```
 
 Copy Paste
+
 ```
 [Desktop Entry]
 Name=TradeSkillMaster Desktop App
@@ -353,6 +397,7 @@ StartupNotify=false
 ```
 
 Saved Variables location
+
 ```
 /media/windows/Users/Public/Games/World of Warcraft/_retail_/WTF/Account/WINBER/SavedVariables/
 ```
@@ -371,6 +416,7 @@ crontab -e
 ```
 
 Copy Paste
+
 ```
 */30      *       *       *               *   /home/tim/git/addons/TSM4/AppData.lua_updater.sh
 ```
@@ -382,11 +428,13 @@ https://www.twitch.tv/downloads
 Download TwitchSetup.exe
 
 Copy to wow prefix
+
 ```
 cp ~/Downloads/TwitchSetup.exe ~/Games/world-of-warcraft/drive_c/users/Public/
 ```
 
 Start installer
+
 ```
 WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/Public/TwitchSetup.exe'
 WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/tim/Application Data/Twitch/Bin/CurseClientUpdater.exe'
@@ -401,6 +449,7 @@ WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c
 ## Instal WowMatrix instead
 
 Download it anywhere and it can be started without installing
+
 ```
 WINEPREFIX=~/Games/world-of-warcraft wine $HOME'/Games/world-of-warcraft/drive_c/users/Public/Public/WowMatrix.exe'
 ```
@@ -412,7 +461,6 @@ Rhythm Box - Click `Add` min menu bar
 Bayern 2
 http://streams.br.de/bayern2nord_2.m3u
 
-
 ## Langenscheidt
 
 Install Version 4.0, Revision 20.1
@@ -421,6 +469,7 @@ https://www.langenscheidt.com/kundenservice/updates-und-patches
 The version inside the DAF folder is the right one.
 
 code ~/Desktop/eDict.desktop
+
 ```
 [Desktop Entry]
 Name=eDict
@@ -433,17 +482,19 @@ StartupWMClass=eW_lkg.exe
 ```
 
 Path to determine icon location - look at the .desktop files
+
 ```
 /home/tim/.local/share/applications/wine/Programs/Langenscheidt e-Dictionaries
 ```
 
-
 ## Monitor blanking
 
 Dell U2711 monitor does not go off when power save mode entered
+
 ```
 xset dpms force off
 ```
+
 https://unix.stackexchange.com/questions/42203/turning-off-dual-monitors-with-xset-dpms-force-off-does-not-work-why
 
 ## CPU Monitor
@@ -460,11 +511,13 @@ gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
 ```
 
 Then restore default behaviour since it is annoying
+
 ```
 gsettings reset org.gnome.shell.extensions.dash-to-dock click-action
 ```
 
 ## Network monitor
+
 http://localhost:2605/index.html
 
 http://codebox.org.uk/pages/bitmeteros-downloads
@@ -485,6 +538,7 @@ which chromium-browser
 ```
 
 code ~/Desktop/BitMeter.desktop
+
 ```
 #!/usr/bin/env xdg-open
 [Desktop Entry]
@@ -498,19 +552,21 @@ Icon=none
 ```
 
 Make it trustable
+
 ```
 chmod 777 ~/Desktop/BitMeter.desktop
 ```
 
-
 ## BitMeter Python 2 Client
 
 Accept MS Eula by using TAB key then enter
+
 ```
 sudo apt install make gcc libgtk-3-dev libwebkitgtk-dev libwebkitgtk-3.0-dev libgstreamer-gl1.0-0 freeglut3 freeglut3-dev python-gst-1.0 python3-gst-1.0 libglib2.0-dev ubuntu-restricted-extras libgstreamer-plugins-base1.0-dev
 ```
 
 Takes 5+ mins, installed version 4.0.6 - June 2019
+
 ```
 sudo pip install wxpython
 ```
@@ -524,17 +580,16 @@ https://askubuntu.com/questions/1073145/how-to-install-wxpython-4-ubuntu-18-04
 To accept MS Eula:
 https://askubuntu.com/questions/16225/how-can-i-accept-the-microsoft-eula-agreement-for-ttf-mscorefonts-installer
 
-
 ## Install Chromium
 
 ```
 sudo apt install chromium-browser
 ```
 
-
 ## Take Snip
 
 Select snip area
+
 ```
 SHIFT + Print Screen
 ```
@@ -543,7 +598,6 @@ SHIFT + Print Screen
 
 Slow down acceleration
 https://www.reddit.com/r/linux_gaming/comments/9hqzib/logitech_g502_on_linux/
-
 
 ## Enable esync
 
@@ -561,6 +615,7 @@ sudo nano /etc/systemd/user.conf
 ```
 
 add
+
 ```
 DefaultLimitNOFILE=524288
 ```
@@ -577,6 +632,7 @@ gedit ~/.wine/Irfan
 ```
 
 Copy Paste
+
 ```
  #!/bin/sh
 
@@ -591,11 +647,13 @@ chmod +x ~/.wine/Irfan
 ```
 
 Now add the .desktop file so the script appears in the list of known applications
+
 ```
 sudo gedit /usr/share/applications/Irfan.desktop
 ```
 
 Copy Paste
+
 ```
 [Desktop Entry]
 Name=Irfanview
@@ -638,6 +696,7 @@ Assign command `npp /home/tim/git/scrapbook/Deutsch/Wörter.md` to `CTRL-ALT-G`
 Assign command `gnome-calculator` to `SUPER-C`
 
 ## Disable ipv6 on boot
+
 https://itsfoss.com/disable-ipv6-ubuntu-linux/
 
 ```
@@ -645,6 +704,7 @@ sudo gedit /etc/sysctl.conf
 ```
 
 Add lines to end
+
 ```
 net.ipv6.conf.all.disable_ipv6=1
 net.ipv6.conf.default.disable_ipv6=1
@@ -652,11 +712,13 @@ net.ipv6.conf.lo.disable_ipv6=1
 ```
 
 Activate
+
 ```
 sudo sysctl -p
 ```
 
 Check
+
 ```
 ip a
 ```
@@ -699,7 +761,6 @@ stacer
 
 Add to CTRL-ALT-DEL by first reassigning logout to CTRL-ALT-END
 
-
 ## Install Sayonara music player
 
 ```
@@ -716,6 +777,7 @@ sudo sensors-detect
 ```
 
 Check
+
 ```
 sensors
 ```
@@ -731,6 +793,7 @@ notepadqq
 ```
 
 ## Brave browser
+
 https://brave-browser.readthedocs.io/en/latest/installing-brave.html#linux
 
 ```
@@ -749,7 +812,6 @@ sudo apt install brave-keyring brave-browser
 
 https://www.insynchq.com/3
 
-
 ## Install Notepad++
 
 Install from Ubuntu Software.
@@ -761,6 +823,7 @@ sudo gedit /usr/local/bin/npp
 ```
 
 Copy Paste
+
 ```
  #!/bin/sh
 
@@ -772,8 +835,8 @@ exit 0
 sudo chmod +x /usr/local/bin/npp
 ```
 
-
 ## Easy Find
+
 Find across all folders except /media
 
 ```
@@ -781,6 +844,7 @@ sudo gedit /usr/local/bin/efind
 ```
 
 Copy Paste
+
 ```
 #!/bin/bash
 if [ "$EUID" -ne 0 ]
@@ -804,6 +868,7 @@ efind README.md
 ```
 
 ## Global Find
+
 Find across all folders including /media
 
 ```
@@ -811,6 +876,7 @@ sudo gedit /usr/local/bin/gfind
 ```
 
 Copy Paste
+
 ```
 #!/bin/bash
 if [ "$EUID" -ne 0 ]
@@ -840,16 +906,19 @@ gfind notepad++.exe
 ## Install UltraEdit
 
 Start from command line
+
 ```
 sudo uex README.md
 ```
 
 Make a script to start as a detached process
+
 ```
 sudo gedit /usr/local/bin/ue
 ```
 
 Copy Paste
+
 ```
 #!/bin/bash
 if [ "$EUID" -ne 0 ]
@@ -873,6 +942,7 @@ sudo chmod +x /usr/local/bin/ue
 https://handbrake.fr/
 
 https://launchpad.net/~stebbins/+archive/ubuntu/handbrake-releases
+
 ```
 sudo add-apt-repository ppa:stebbins/handbrake-releases
 sudo apt-get update
@@ -884,13 +954,12 @@ sudo apt-get install handbrake-cli
 
 https://slack.com/intl/en-gb/downloads/linux
 
-
 ## Install MapSource
 
 https://wiki.openstreetmap.org/wiki/OSM_Map_On_Garmin/WINE_MapSource
 
-
 Download 6.16.3 https://www8.garmin.com/support/download_details.jsp?id=209
+
 ```
 cd ~/Downloads
 7z x MapSource_6163.exe
@@ -911,11 +980,13 @@ wine ~/.wine/drive_c/MapSource/MapSource.exe
 ```
 
 Select the map using the menus
+
 ```
 View -> Switch to Product -> select the map
 ```
 
 USB workaround
+
 ```
 wine doesn't support usb, so you need the garmin_gps module. If it's installed on your system, it should load automatically after attaching your device and switching it on.
 You should now have a device ttyUSB0, which you need to symlink as com1 for wine: ln -s /dev/ttyUSB0 ~/.wine/dosdevices/com1
@@ -937,9 +1008,10 @@ sudo lsusb
 
 ## Setup Templates
 
-Copy files in `Templates` folder from this project to `~/Templates` 
+Copy files in `Templates` folder from this project to `~/Templates`
 
 File types
+
 ```
 .txt
 .xlsx
@@ -953,6 +1025,7 @@ This will enable the `New Document` right click menu in Nautilus.
 ## Simple Box
 
 `_lin_sync.bash`
+
 ```
 #!/bin/bash
 
@@ -980,6 +1053,7 @@ crontab -e
 ```
 
 Copy Paste
+
 ```
 22      3,8        *       *               *   /home/tim/git/a1/_lin_sync.bash
 40      16,17      *       *               *   /home/tim/git/a1/_lin_sync.bash
@@ -994,16 +1068,19 @@ sudo apt install compizconfig-settings-manager
 ## Format a drive as ext4
 
 Remove from fstab
+
 ```
 sudo gedit /etc/fstab
 ```
 
 Find what it is called, eg `/dev/sdg`
+
 ```
 sudo fdisk -l
 ```
 
 unmount it - note the partition number 1 in this case
+
 ```
 sync
 sudo umount /dev/sdg1
@@ -1014,21 +1091,25 @@ sudo fdisk /dev/sdg
 ```
 
 delete partition, repeat till all gone
+
 ```
 d
 ```
 
 new partition
+
 ```
 n
 ```
 
 primary partition
+
 ```
 p
 ```
 
 partition number
+
 ```
 1
 ```
@@ -1038,6 +1119,7 @@ accept defaults for sectors
 Choose to remove ntfs partition if prompted.
 
 Change partition type to Linux
+
 ```
 t
 83
@@ -1046,6 +1128,7 @@ t
 https://kwilson.io/blog/format-a-linux-disk-as-ext4-from-the-command-line/
 
 Reboot if prompted
+
 ```
 Re-reading the partition table failed.: Device or resource busy
 
@@ -1053,7 +1136,7 @@ The kernel still uses the old table. The new table will be used at the next rebo
 ```
 
 Format - note the 1 for partition 1
+
 ```
 sudo mkfs.ext4 /dev/sdg1
 ```
-
