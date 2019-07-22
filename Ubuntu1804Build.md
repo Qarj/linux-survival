@@ -671,6 +671,8 @@ as an icon in your home folder.
 
 /home/tim/.local/share/icons/hicolor/256x256/apps/IrfanView.png
 
+## Nomacs (irfanview alternative)
+
 ## Support exFAT USB
 
 ```
