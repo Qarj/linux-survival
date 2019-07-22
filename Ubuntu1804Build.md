@@ -1065,6 +1065,53 @@ Copy Paste
 sudo apt install compizconfig-settings-manager
 ```
 
+## Install Bluejeans by converting RPM package
+
+```
+sudo add-apt-repository universe
+sudo apt-get update
+sudo apt-get install alien
+sudo alien bluejeans-1.37.22.x86_64.rpm
+sudo dpkg -i bluejeans_1.37.22-2_amd64.deb
+```
+
+Converting with this command might remove the need for a symbolic link
+
+```
+sudo alien --to-deb bluejeans-*.rpm
+```
+
+Start manually, will see error about not finding `libudev.so.0`
+
+So find an appropriate library and create a symbolic link to it
+
+```
+cd /lib/x86_64-linux-gnu/
+sudo ln -s libudev.so.1.6.9 libudev.so.0
+```
+
+/opt/bluejeans/bluejeans-bin
+
+```
+gedit ~/Desktop/Bluejeans.desktop
+```
+
+```
+[Desktop Entry]
+Name=Bluejeans
+GenericName=Bluejeans app
+Comment=Bluejeans calls
+Exec=/opt/bluejeans/bluejeans-bin
+Terminal=false
+Type=Application
+Icon=/opt/bluejeans/icons/hicolor/256x256/apps/bluejeans.png
+StartupNotify=false
+```
+
+```
+chmod +x ~/Desktop/Bluejeans.desktop
+```
+
 ## Format a drive as ext4
 
 Remove from fstab
