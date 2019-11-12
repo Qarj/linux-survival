@@ -33,6 +33,10 @@ sudo restart gdm3           OR       sudo systemctl restart display-manager
 
 `Ctrl` + `Alt` + `F2` to get back to standard GUI
 
+### CTRL-ALT-BACKSPACE
+
+Will kill X server.
+
 ### install lock
 
 ```
