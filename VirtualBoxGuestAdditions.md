@@ -88,6 +88,21 @@ Then insert the image, click `Run`.
 reboot
 ```
 
+## LMDE 3 Cindy (Debian)
+
+Not sure if needed...
+
+```
+sudo apt update
+sudo apt upgrade
+sudo apt install build-essential module-assistant dkms
+sudo m-a prepare
+```
+
+Reboot.
+
+Insert image and `Run`.
+
 # Sharing Folders
 
 One or all of these are needed for shared folder to be available user `test` on guest
