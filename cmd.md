@@ -1,6 +1,8 @@
 # cmd
 
-## lshw
+https://linuxconfig.org/linux-commands
+
+## lshw - disk information
 
 sudo lshw -class disk
 
@@ -11,4 +13,3 @@ ps -A | grep firefox
 ## pkill
 
 pkill firefox
-

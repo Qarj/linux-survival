@@ -1,6 +1,6 @@
 # VirtualBox Guest Additions
 
-## Ubuntu 16.04, Ubuntu 18.04, Ubuntu 18.10
+## Ubuntu 16.04, Ubuntu 18.04, Ubuntu 20.04
 
 CTRL-ALT-T:
 

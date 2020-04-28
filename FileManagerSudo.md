@@ -1,15 +1,18 @@
 # Desktop shortcut to open File Manager as root
 
 Tested with:
-- Ubuntu 16.04, Ubuntu 18.04
 
-Open new terminal (CTRL-ALT T) then:
+-   Ubuntu 16.04, Ubuntu 18.04, Ubuntu 20.04
+
+Open new terminal (CTRL-ALT-T) then:
+
 ```
 sudo apt install lxqt-sudo
-gedit Desktop/sudomanager.desktop
+gedit ~/Desktop/sudomanager.desktop
 ```
 
 Copy paste:
+
 ```
 [Desktop Entry]
 Name=Sudo Manager
@@ -19,7 +22,9 @@ Icon=system-file-manager
 ```
 
 Save close then:
+
 ```
-chmod +x Desktop/sudomanager.desktop
+chmod +x ~/Desktop/sudomanager.desktop
 ```
 
+Right click on the icon and select `Allow Launching`.
