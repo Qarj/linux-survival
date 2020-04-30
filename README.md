@@ -82,6 +82,8 @@ sudo apt autoremove
 
 ### [Video Drivers / Tools](Video.md)
 
+### [Docker](Docker.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
