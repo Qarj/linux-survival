@@ -9,9 +9,16 @@ git config --global user.name "Tim Buckland"
 git config --global credential.helper store
 git config --global core.autocrlf false
 git config --global core.filemode false
+git config --global diff.tool meld
 ```
 
 The last one turns off treating a permissions change as change.
+
+## See changes between latest and previous commit
+
+```
+git difftool HEAD^ HEAD
+```
 
 ## Prune local branches not on remote
 
