@@ -17,7 +17,7 @@ The last one turns off treating a permissions change as change.
 ## See changes between latest and previous commit
 
 ```
-git difftool HEAD^ HEAD
+git difftool -d HEAD^ HEAD
 ```
 
 ## Prune local branches not on remote
