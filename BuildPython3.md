@@ -17,18 +17,18 @@ sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zli
 ```
 
 Go to https://www.python.org/downloads/source/ and figure out the URL for the latest
-Python 3 release, e.g. https://www.python.org/downloads/release/python-374/
+Python 3 release, e.g. https://www.python.org/downloads/release/python-383/
 
 Now determine the URL of the tarball, it might be:
 
-https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz
+https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz
 
 Download it with curl:
 
 ```
 cd ~/Downloads
 sudo apt install curl
-curl https://www.python.org/ftp/python/3.7.4/Python-3.7.4.tgz -o python3.tgz
+curl https://www.python.org/ftp/python/3.8.3/Python-3.8.3.tgz -o python3.tgz
 ```
 
 Unzip the file:
@@ -37,10 +37,10 @@ Unzip the file:
 tar xvzf python3.tgz
 ```
 
-CD into the new directory created e.g. `Python-3.7.4`:
+CD into the new directory created e.g. `Python-3.8.3`:
 
 ```
-cd Python-3.7.4
+cd Python-3.8.3
 ```
 
 Configure it option 1:
@@ -52,7 +52,7 @@ Configure it option 1:
 Note that the `./configure` step suggests using the `--enable-optimizations` flag. Apparently this will make
 Python run about 10% faster, but takes about 40 minutes to build since it forces running the tests.
 
-The `--enabled-shared` option is needed for mod_wsgi.
+The `--enabled-shared` option is needed for `mod_wsgi`.
 
 Configure option 2 for local libraries (See StackOverflow below):
 
@@ -82,7 +82,7 @@ sudo make install
 Check version
 
 ```
-python3.7 --version
+python3.8 --version
 ```
 
 ### Debugging
