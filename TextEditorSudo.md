@@ -15,7 +15,7 @@ sudo subl
 If many error messages (saw on Ubuntu 18.10, might need)
 
 ```
-sudo apt-get install libgtk2.0
+sudo apt install libgtk2.0
 ```
 
 Find summary at bottom
@@ -49,9 +49,9 @@ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode s
 ```
 
 ```
-sudo apt-get install apt-transport-https
-sudo apt-get update
-sudo apt-get install code
+sudo apt install apt-transport-https
+sudo apt update
+sudo apt install code
 ```
 
 ```
