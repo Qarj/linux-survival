@@ -7,13 +7,13 @@ CTRL-ALT-T and ensure needed prerequisite packages are installed:
 Ubuntu 16.04
 
 ```
-sudo apt-get install libreadline-gplv2-dev libncursesw5-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev
+sudo apt install build-essential zlib1g-dev libreadline-gplv2-dev libncursesw5-dev libnss3-dev libssl-dev libsqlite3-dev tk-dev libgdbm-dev libc6-dev libbz2-dev libffi-dev
 ```
 
 Ubuntu 18.04
 
 ```
-sudo apt-get install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
+sudo apt install build-essential libsqlite3-dev sqlite3 bzip2 libbz2-dev zlib1g-dev libssl-dev openssl libgdbm-dev libgdbm-compat-dev liblzma-dev libreadline-dev libncursesw5-dev libffi-dev uuid-dev
 ```
 
 Go to https://www.python.org/downloads/source/ and figure out the URL for the latest
