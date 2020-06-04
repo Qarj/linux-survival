@@ -84,11 +84,17 @@ sudo apt autoremove
 
 ### [Docker](Docker.md)
 
+### [Tomcat](Tomcat.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
 
 ### [git](git.md)
+
+### [mvn](Maven.md)
+
+### [start](start.md)
 
 ### [wget](wget.md)
 
