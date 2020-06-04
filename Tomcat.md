@@ -113,3 +113,21 @@ CATALINA_HOME in /usr/share/tomcat9 and
 CATALINA_BASE in /var/lib/tomcat9, following the rules from
 /usr/share/doc/tomcat9-common/RUNNING.txt.gz.
 ```
+
+## Create Jenkins user
+
+```
+sudo start gedit /var/lib/tomcat9/conf/tomcat-users.xml
+```
+
+Add into <tomcat-users> element
+
+```xml
+  <role rolename="manager-script"/>
+  <user username="deployer" password="deployer" roles="manager-script"/>
+```
+
+```
+sudo systemctl restart tomcat9
+sudo systemctl status tomcat9
+```
