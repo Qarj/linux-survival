@@ -45,6 +45,57 @@ Then insert the image, click `Run`.
 
 Restart.
 
+## CentOS 8
+
+Start the network automatically on boot
+```
+su -
+cd /etc/sysconfig/network-scripts/
+sed -i -e 's@^ONBOOT=no@ONBOOT=yes@' ifcfg-enp0s3
+```
+
+Might be called `ifcfg-eth0`.
+
+```
+sudo dnf install epel-release
+rpm -q epel-release
+.
+epel-release-8-8.el8.noarch
+```
+
+```
+sudo dnf install gcc make perl kernel-devel kernel-headers bzip2 dkms
+```
+
+Check that kernel-devel version matches the Linux kernel version
+```
+rpm -q kernel-devel
+.
+kernel-devel-4.18.0-193.14.2.el8_2.x86_64
+```
+
+Linux kernel
+```
+uname -r
+.
+4.18.0-193.14.2.el8_2.x86_64
+```
+
+Must do this even if kernel versions look the same to add headers
+```
+sudo dnf update kernel-*
+```
+
+```
+systemctl reboot
+```
+
+Finally, select `Devices/Insert Guest Additions CD image...` and click `Run`.
+
+```
+systemctl reboot
+```
+
 ## CentOS 7
 
 ALT-F2 -> `gnome-control-center` -> type `keyboard` in search -> Keyboard
