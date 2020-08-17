@@ -20,6 +20,12 @@ The last one turns off treating a permissions change as change.
 git difftool -d HEAD^ HEAD
 ```
 
+## See changes between commits to my current branch and master
+
+```
+git difftool -d master
+```
+
 ## Prune local branches not on remote
 
 ```
