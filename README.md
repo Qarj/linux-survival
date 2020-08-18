@@ -86,6 +86,8 @@ sudo apt autoremove
 
 ### [Tomcat](Tomcat.md)
 
+### [DNS](DNS.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
