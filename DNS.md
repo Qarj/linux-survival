@@ -76,3 +76,10 @@ Reboot (restart command given below didn't appear to update the DNS)
 ```
 sudo systemctl restart resolvconf.service
 ```
+
+Post reboot, check the symlink
+```
+ls -l /etc/resolv.conf
+.
+lrwxrwxrwx 1 root root 29 Aug 18 16:26 /etc/resolv.conf -> ../run/resolvconf/resolv.conf
+```
