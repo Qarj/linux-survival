@@ -43,3 +43,9 @@ pip install grip
 cd repo
 grip
 ```
+
+## Stop tracking a checked-in file
+
+```
+git update-index --skip-worktree video.mp4
+```
