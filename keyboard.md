@@ -17,3 +17,7 @@ nano /etc/xrdp/startwm.sh
 ```
 
 and change to use `startlxde` instead of `startxfce` (depending on x window manager)
+
+# Tab autocomplete fix for XFCE
+
+https://askubuntu.com/questions/517270/fix-for-xubuntu-xrdp-tab-autocomplete-in-multi-user-environment
