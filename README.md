@@ -88,6 +88,8 @@ sudo apt autoremove
 
 ### [DNS](DNS.md)
 
+### [Keyboard](keyboard.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
