@@ -10,6 +10,9 @@ git config --global credential.helper store
 git config --global core.autocrlf false
 git config --global diff.tool meld
 git config --global core.filemode false
+git config --global core.editor "code --wait"
+git config --global alias.lg "log --oneline --all"
+git config --global alias.summary "shortlog -n -s -e"
 ```
 
 The last one turns off treating a permissions change as change.
