@@ -3,9 +3,9 @@
 ## Setup new host
 
 ```
-git config --global http.postBuffer 1048576000
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
+git config --global http.postBuffer 1048576000
 git config --global credential.helper store
 git config --global core.autocrlf false
 git config --global diff.tool meld
