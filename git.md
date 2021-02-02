@@ -11,7 +11,7 @@ git config --global core.autocrlf false
 git config --global diff.tool meld
 git config --global core.filemode false
 git config --global core.editor "code --wait"
-git config --global alias.lg "log --oneline --all" --replace-all
+git config --global alias.lg "log --oneline --all --graph" --replace-all
 git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
 git config --global alias.summary "shortlog -n -s -e" --replace-all
