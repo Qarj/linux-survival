@@ -14,6 +14,7 @@ git config --global core.editor "code --wait"
 git config --global alias.lg "log --oneline --all --graph" --replace-all
 git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
+git config --global alias.undolast "reset --soft HEAD~1" --replace-all
 git config --global alias.summary "shortlog -n -s -e" --replace-all
 git config --global alias.changes "diff --name-status" --replace-all
 git config --global alias.meld "difftool -d" --replace-all
