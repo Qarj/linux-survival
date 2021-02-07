@@ -18,6 +18,9 @@ git config --global alias.undolast "reset --soft HEAD~1" --replace-all
 git config --global alias.summary "shortlog -n -s -e" --replace-all
 git config --global alias.changes "diff --name-status" --replace-all
 git config --global alias.meld "difftool -d" --replace-all
+git config --global alias.localb "branch -vv" --replace-all
+git config --global alias.remoteb "branch -r" --replace-all
+git config --global alias.pruneremote "remote prune origin" --replace-all
 ```
 
 The last one turns off treating a permissions change as change.
