@@ -6,7 +6,7 @@
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
 git config --global http.postBuffer 1048576000
-git config --global credential.helper manager-core
+git config --global credential.helper manager-core --replace-all
 git config --global core.autocrlf false
 git config --global diff.tool meld
 git config --global core.filemode false
@@ -21,7 +21,6 @@ git config --global alias.meld "difftool -d" --replace-all
 git config --global alias.localb "branch -vv" --replace-all
 git config --global alias.remoteb "branch -r" --replace-all
 git config --global alias.pruneremote "remote prune origin" --replace-all
-git config --global credential.helper manager-core --replace-all
 ```
 
 ```
