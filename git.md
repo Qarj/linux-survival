@@ -8,6 +8,7 @@ git config --global user.name "Tim Buckland"
 git config --global http.postBuffer 1048576000
 git config --global credential.helper manager-core --replace-all
 git config --global core.autocrlf false
+git config --global core.ignorecase false
 git config --global diff.tool meld
 git config --global core.filemode false
 git config --global core.editor "code --wait"
