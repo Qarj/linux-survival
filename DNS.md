@@ -13,6 +13,8 @@ lrwxrwxrwx 1 root root 39 May  4 11:34 /etc/resolv.conf -> ../run/systemd/resolv
 
 Check current configuration
 ```
+cat /etc/resolv.conf
+.
 # This file is managed by man:systemd-resolved(8). Do not edit.
 #
 # This is a dynamic resolv.conf file for connecting local clients to the
@@ -67,6 +69,7 @@ Add your nameservers
 sudo gedit /etc/resolvconf/resolv.conf.d/head
 ```
 
+Note - ignore the message about not editing this file - the message is for people viewing `/etc/resolv.conf`
 ```
 nameserver 8.8.8.8
 nameserver 8.8.4.4
