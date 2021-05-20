@@ -13,16 +13,17 @@ git config --global diff.tool meld
 git config --global core.filemode false
 git config --global core.editor "code --wait"
 git config --global mergetool.keepBackup false
+git config --global alias.alias "! git config --get-regexp ^alias\. | sed -e s/^alias\.// -e s/\ /\ =\ /" --replace-all
+git config --global alias.changes "diff --name-status" --replace-all
 git config --global alias.lg "log --oneline --all --graph" --replace-all
+git config --global alias.localb "branch -vv" --replace-all
+git config --global alias.meld "difftool -d" --replace-all
+git config --global alias.removelast "reset --mixed HEAD~1" --replace-all
+git config --global alias.remoteb "branch -r" --replace-all
+git config --global alias.summary "shortlog -n -s -e" --replace-all
+git config --global alias.pruneremote "remote prune origin" --replace-all
 git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
-git config --global alias.removelast "reset --mixed HEAD~1" --replace-all
-git config --global alias.summary "shortlog -n -s -e" --replace-all
-git config --global alias.changes "diff --name-status" --replace-all
-git config --global alias.meld "difftool -d" --replace-all
-git config --global alias.localb "branch -vv" --replace-all
-git config --global alias.remoteb "branch -r" --replace-all
-git config --global alias.pruneremote "remote prune origin" --replace-all
 ```
 
 ```
