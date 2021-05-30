@@ -41,6 +41,8 @@ OS name: "linux", version: "5.4.0-31-generic", arch: "amd64", family: "unix"
 
 # wget AuctioneerSuite
 
+Put desired regex in variable for higher compatibility.
+
 ```bash
 cd /home/tim/Downloads
 auctioneer_versions=$(wget -qO- https://www.auctioneeraddon.com/zip/versions.json)
