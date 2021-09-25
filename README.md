@@ -90,6 +90,8 @@ sudo apt autoremove
 
 ### [Keyboard](keyboard.md)
 
+### [nginx](nginx.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
