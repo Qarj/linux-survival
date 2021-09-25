@@ -66,14 +66,14 @@ sudo nano /etc/hosts
 Add lines
 
 ```
-127.0.0.1 www.totaljobs.local
-127.0.0.1 www.caterer.local
-127.0.0.1 www.cwjobs.local
+127.0.0.1 www.totaljobs.local.com
+127.0.0.1 www.caterer.local.com
+127.0.0.1 www.cwjobs.local.co.uk
 127.0.0.1 local.stepstone.de
 127.0.0.1 local.stepstone.fr
 ```
 
-# Create self signed certificate for .local
+# Create self signed certificate for local.com
 
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
 
@@ -91,7 +91,7 @@ England
 London
 Local Developer
 IT
-www.totaljobs.local
+local.com
 admin@local.local
 ```
 
@@ -121,7 +121,7 @@ sudo nano /etc/nginx/snippets/ssl-params.conf
 
 Copy paste
 
-```
+```bash
 ssl_protocols TLSv1.2;
 ssl_prefer_server_ciphers on;
 ssl_dhparam /etc/nginx/dhparam.pem; # commented out since we have not enabled strong encryption
@@ -230,6 +230,7 @@ server {
         proxy_set_header Accept-Encoding "";                            # turn off encoding so we can rewrite the html with the sub_filter
         sub_filter www.totaljobs.com www.totaljobs.local;               # fix any absolute links in the html
         sub_filter_once off;                                            # replace all matches, not just first
+        sub_filter_types text/html application/json;
 
         proxy_set_header Referer "https://www.totaljobs.com";
         proxy_pass https://www.totaljobs.com/;
@@ -284,4 +285,72 @@ Use curl to see the response header
 curl --insecure --head https://www.totaljobs.local/
 ```
 
+See the error log
+
+```
 cat /var/log/nginx/error.log
+```
+
+# Advanced nginx example - handle multiple servers with regex
+
+```bash
+server {
+    # handle very large response headers
+    proxy_busy_buffers_size   512k;
+    proxy_buffers   4 512k;
+    proxy_buffer_size   256k;
+
+    listen 443 ssl;                                  # ip v4
+    listen [::]:443 ssl;                             # ip v6
+    server_name ~^www\.(caterer|cwjobs|totaljobs)\.local\.(com|co\.uk)$;
+    include snippets/localdev-self-signed.conf;
+    include snippets/ssl-params.conf;
+
+    # divert /about to a locally running service
+    location /about/ {
+        add_header X-Local "/about/ pointing to local port";            # add response header
+        proxy_set_header Host "www.$1.local";
+        proxy_set_header X-Origin-Host "www.$1.local";
+        proxy_pass http://localhost/;
+    }
+
+    # go to the development environment for everything else
+    location / {
+        add_header X-Local "From upstream development environment";     # add response header
+
+        proxy_set_header Accept-Encoding "";                            # turn off encoding so we can rewrite the html with the sub_filter
+        sub_filter www.$1.$2 www.$1.local.$2;                           # fix any absolute links in the html
+        sub_filter_once off;                                            # replace all matches, not just first
+        sub_filter_types text/html application/json;
+
+        proxy_pass https://www.$1.$2/$uri;                              # note $uri is needed - proxy_pass works differently with variables
+        proxy_redirect https://www.$1.$2 https://www.$1.local.$2;       # rewrite 302 header host e.g. cwjobs sign in requires this
+
+        # remove hsts - this code required *AFTER* proxy_pass (maybe?)
+        proxy_hide_header strict-transport-security;
+        #add_header Strict-Transport-Security "max-age=0; includeSubDomains" always;  # to force browser to overwrite previously stored value
+    }
+
+}
+
+# redirect http:// to https:// - in real life change ports from 8090 to 80
+server {
+    listen 8090;
+    listen [::]:8090;
+    server_name ~^www\.(caterer|cwjobs|totaljobs)\.local\.(com|co\.uk)$;
+    return 302 https://www.$1.local.$2$request_uri;
+}
+```
+
+# Test advanced example
+
+https://www.caterer.local.com/
+http://www.caterer.local.com:8090/
+
+https://www.cwjobs.local.co.uk/
+http://www.cwjobs.local.co.uk:8090/
+
+https://www.totaljobs.local.com/
+http://www.totaljobs.local.com:8090/
+
+Login as a jobseeker to prove it all hangs together.
