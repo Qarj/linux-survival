@@ -92,6 +92,8 @@ sudo apt autoremove
 
 ### [nginx](nginx.md)
 
+### [bash](bash.md)
+
 ## commands
 
 ### [misc](cmd.md) ps
