@@ -127,8 +127,23 @@ sudo apt install unzip
 unzip -o chromedriver_linux64.zip -d .
 ```
 
+# arrays
+
+```sh
+DENYLIST=("rm" "ls" "cat" "crontab")
+VER=$(echo $BASH_VERSION | cut -d '.' -f1)
+
+for ITEM in "${DENYLIST[@]}"; do
+    if [[ $VER == *"$ITEM"* ]]; then
+        echo "Not accepted, sorry."
+        exit 1
+    fi
+done
+```
+
 # typical environment variables
 
 ```sh
 $BASH_VERSINFO      ${BASH_VERSINFO[0]:-0}
+$BASH_VERSION
 ```
