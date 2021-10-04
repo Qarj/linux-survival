@@ -14,6 +14,14 @@ ps -A | grep firefox
 
 pkill firefox
 
+## rsync
+
+`--list-only`
+
+```
+rsync --recursive --verbose '/home/tim/source_folder_name' '/home/tim/parent_folder_for_dest_folder'
+```
+
 ## tar
 
 `--strip-components` will stop high level directory creation with archive name

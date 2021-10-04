@@ -96,7 +96,7 @@ sudo apt autoremove
 
 ## commands
 
-### [misc](cmd.md) ps
+### [misc](cmd.md) ps pkill tar rysnc
 
 ### [git](git.md)
 
