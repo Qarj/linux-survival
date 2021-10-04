@@ -2,20 +2,22 @@
 
 # Core example showing
 
--   source
--   defining function, calling with parameter
--   setting output of shell command to variable
--   referring to variable
--   if statement checking exit code of previous command
+- source
+- defining function, calling with parameter
+- setting output of shell command to variable
+- referring to variable
+- if statement checking exit code of previous command
 
 Note that double square bracket is sometimes needed for if due to escaping and expansion considerations.
 
 ```sh
+readonly RELEASE="1.1.1"
+
 source utils.sh
 util1 "example"
 
 function search_item () {
-    COORDS="$(python3 search-window.py out/screenshot.png "targets/$1.png")"
+    local COORDS="$(python3 search-window.py out/screenshot.png "targets/$1.png")"
 
     if [ $? -eq 0 ]
     then
@@ -34,10 +36,10 @@ search_item "window_close"
 
 # nested for loop example
 
--   random generated between 0 and 59
--   inner for loop using seq to loop from 1 to $POST_TOTAL
--   breaking out of outer loop
--   send F5
+- random generated between 0 and 59
+- inner for loop using seq to loop from 1 to $POST_TOTAL
+- breaking out of outer loop
+- send F5
 
 ```sh
 function post_macro {
@@ -123,4 +125,10 @@ latest=$(cat LATEST_RELEASE)
 wget -N https://chromedriver.storage.googleapis.com/$latest/chromedriver_linux64.zip -O chromedriver_linux64.zip
 sudo apt install unzip
 unzip -o chromedriver_linux64.zip -d .
+```
+
+# typical environment variables
+
+```sh
+$BASH_VERSINFO      ${BASH_VERSINFO[0]:-0}
 ```
