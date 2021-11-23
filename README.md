@@ -94,6 +94,14 @@ sudo apt autoremove
 
 ### [bash](bash.md)
 
+### [Node.js](Node.js.md)
+
+### [NPM](NPM.md)
+
+### [React](React.md)
+
+### [util](util.md)
+
 ## commands
 
 ### [misc](cmd.md) ps pkill tar rysnc
