@@ -2,6 +2,13 @@
 
 https://docs.npmjs.com/cli-documentation/
 
+## Change version of NPM you are using
+
+```sh
+sudo npm install npm@7.24.2 -g
+sudo npm install npm@6.14.15 -g
+```
+
 ## Install a package globally
 
 ```
@@ -25,12 +32,15 @@ npm install --save-dev jest-puppeteer puppeteer jest
 Dev dependencies are not required for runtime.
 
 ## nodemon
+
 ```
 npm --global install nodemon
 ```
+
 Start program with nodemon instead of mode and changes will be automatically applied.
 
 ## Publish app
+
 ```
 npm login
 ```
@@ -46,6 +56,7 @@ npm major|minor|patch
 ## link
 
 Windows
+
 ```
 type NUL > .npmignore
 ```
@@ -55,11 +66,13 @@ npm cache verify
 ```
 
 In sub package called `wonder-lib`
+
 ```
 npm link
 ```
 
 In master package `bloggy`
+
 ```
 npm link ../wonder-lib
 ```
@@ -67,11 +80,13 @@ npm link ../wonder-lib
 ## view
 
 See repository connected to
+
 ```
 npm view connect
 ```
 
 Sample output
+
 ```
 connect@3.7.0 | MIT | deps: 4 | versions: 234
 High performance middleware framework

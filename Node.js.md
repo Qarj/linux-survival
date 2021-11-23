@@ -1,6 +1,34 @@
 # Install Node
 
-## Windows Install
+# Ubuntu Install latest LTS version 16
+
+```
+sudo apt install curl
+```
+
+```
+curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+Check node and npm versions
+
+```batch
+node -v
+npm -v
+```
+
+# Change installed version of Node.js
+
+```
+curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
+sudo apt-get install -y nodejs
+node --version
+.
+v14.18.1
+```
+
+# Windows Install
 
 Open up an administrator command prompt and install Chocolatey
 
@@ -19,22 +47,4 @@ Close command prompt and open another one. Then check the versions.
 ```
 npm --version
 node --version
-```
-
-## Ubuntu Install
-
-```
-sudo apt install curl
-```
-
-```
-curl -sL https://deb.nodesource.com/setup_11.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-Check node and npm versions
-
-```batch
-node -v
-npm -v
 ```
