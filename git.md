@@ -83,3 +83,23 @@ grip
 ```
 git update-index --skip-worktree video.mp4
 ```
+
+## Show lots of cloned repo info
+
+```
+git remote show origin
+```
+
+## Get git repo name
+
+```
+basename `git rev-parse --show-toplevel`
+repo_name=$(basename `git rev-parse --show-toplevel`)
+```
+
+# Get branch name
+
+```
+git rev-parse --abbrev-ref HEAD
+branch_name=$(git rev-parse --abbrev-ref HEAD)
+```

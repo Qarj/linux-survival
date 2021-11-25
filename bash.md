@@ -154,7 +154,7 @@ Will set TEAM to `noteam` if it is undefined
 
 ```sh
 if [[ "${TEAM:-noteam}" == "Skylark" ]]; then
-
+    echo SKylark
 fi
 ```
 
