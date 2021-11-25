@@ -1,0 +1,5 @@
+.idea
+.DS_Store
+README.md
+src/
+docker/
