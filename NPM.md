@@ -112,3 +112,11 @@ dist-tags:
 
 published a month ago by dougwilson <doug@somethingdoug.com>
 ```
+
+## get package version with grep
+
+```sh
+grep -Po '(?<="version": ")[0-9\.]+' package.json
+.
+1.0.0
+```
