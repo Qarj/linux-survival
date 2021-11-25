@@ -2,11 +2,11 @@
 
 # Core example showing
 
-- source
-- defining function, calling with parameter
-- setting output of shell command to variable
-- referring to variable
-- if statement checking exit code of previous command
+-   source
+-   defining function, calling with parameter
+-   setting output of shell command to variable
+-   referring to variable
+-   if statement checking exit code of previous command
 
 Note that double square bracket is sometimes needed for if due to escaping and expansion considerations.
 
@@ -36,10 +36,10 @@ search_item "window_close"
 
 # nested for loop example
 
-- random generated between 0 and 59
-- inner for loop using seq to loop from 1 to $POST_TOTAL
-- breaking out of outer loop
-- send F5
+-   random generated between 0 and 59
+-   inner for loop using seq to loop from 1 to $POST_TOTAL
+-   breaking out of outer loop
+-   send F5
 
 ```sh
 function post_macro {
@@ -146,4 +146,20 @@ done
 ```sh
 $BASH_VERSINFO      ${BASH_VERSINFO[0]:-0}
 $BASH_VERSION
+```
+
+# checking an environment variable that might be undefined
+
+Will set TEAM to `noteam` if it is undefined
+
+```sh
+if [[ "${TEAM:-noteam}" == "Skylark" ]]; then
+
+fi
+```
+
+Check if `var` is empty or undefined
+
+```sh
+[ -z "$var" ] && echo "Necessary info not provided, aborting." && exit 1
 ```
