@@ -103,3 +103,9 @@ repo_name=$(basename `git rev-parse --show-toplevel`)
 git rev-parse --abbrev-ref HEAD
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 ```
+
+# Show lots of SSH debug information
+
+```
+export GIT_SSH_COMMAND="ssh -vv"
+```
