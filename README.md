@@ -102,6 +102,8 @@ sudo apt autoremove
 
 ### [util](util.md)
 
+### [wsl Windows Subsystem for Linux](wsl.md)
+
 ## commands
 
 ### [misc](cmd.md) ps pkill tar rysnc
