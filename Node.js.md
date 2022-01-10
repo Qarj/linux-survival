@@ -1,31 +1,30 @@
 # Install Node
 
-# Ubuntu Install latest LTS version 16
+# Ubuntu 20.04
+
+Check latest script here: https://github.com/nvm-sh/nvm#installing-and-updating
 
 ```
-sudo apt install curl
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
-```
-curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-Check node and npm versions
-
-```batch
-node -v
-npm -v
-```
-
-# Change installed version of Node.js
+Restart bash.
 
 ```
-curl -fsSL https://deb.nodesource.com/setup_14.x | sudo -E bash -
-sudo apt-get install -y nodejs
+nvm ls-remote --lts
+nvm install 12
+.
+Downloading and installing node v12.22.8...
+Downloading https://nodejs.org/dist/v12.22.8/node-v12.22.8-linux-x64.tar.xz...
+############################################################################################################################################## 100.0%
+Computing checksum with sha256sum
+Checksums matched!
+Now using node v12.22.8 (npm v6.14.15)
+Creating default alias: default -> 12 (-> v12.22.8)
+.
 node --version
 .
-v14.18.1
+v12.22.8
 ```
 
 # Windows Install

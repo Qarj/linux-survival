@@ -4,6 +4,8 @@ https://docs.npmjs.com/cli-documentation/
 
 ## Change version of NPM you are using
 
+If npm has been installed via nvm, don't use the sudo.
+
 ```sh
 sudo npm install npm@7.24.2 -g
 sudo npm install npm@6.14.15 -g
