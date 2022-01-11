@@ -83,3 +83,51 @@ Might need to turn off compression:
 ```
 By default the VHDs for WSL 2 distros are stored in this path: C:\Users\[user]\AppData\Local\Packages\[distro]\LocalState\[distroPackageName]
 ```
+
+# xubuntu-desktop
+
+Add `/mnt` to PRUNEPATHS in `/etc/updatedb.conf`
+
+```
+sudo nano /etc/updatedb.conf
+```
+
+```
+PRUNEPATHS="/tmp /var/spool /media /var/lib/os-prober /var/lib/ceph /home/.ecryptfs /var/lib/schroot /mnt"
+```
+
+This will stop it getting stuck on mlocate when running `sudo tasksel install xubuntu-desktop` so it doesn't index the entire Windows drive.
+
+Follow instructions at
+https://medium.com/@japheth.yates/the-complete-wsl2-gui-setup-2582828f4577
+
+Modify instructions, in `.bashrc` put
+
+```
+export DISPLAY=10.44.x.x:0.0
+export LIBGL_ALWAYS_INDIRECT=1
+```
+
+Get the 10.44 address from `ipconfig` in Windows.
+
+Then in bash
+
+```
+sudo nano /etc/sudoers.d/dbus
+```
+
+Copy paste
+
+```
+test ALL = (root) NOPASSWD: /etc/init.d/dbus
+```
+
+Restart bash shell.
+
+Start XLaunch in Windows. Multiple Windows. Disable access control.
+
+Gedit should work.
+
+```
+gedit
+```
