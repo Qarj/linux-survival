@@ -37,7 +37,11 @@ Open up an administrator command prompt and install Chocolatey
 
 Install node.js
 
-```batch
+```
+choco install nodejs --version=12.13.0
+
+or for latest
+
 choco install nodejs
 ```
 
@@ -47,3 +51,6 @@ Close command prompt and open another one. Then check the versions.
 npm --version
 node --version
 ```
+
+# NVM Windows https://github.com/coreybutler/nvm-windows
+
