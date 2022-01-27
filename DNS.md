@@ -1,10 +1,13 @@
 # DNS
 
+Update - check networking.md for an alternate solution
+
 # Setting static DNS servers in Ubuntu
 
 https://www.tecmint.com/set-permanent-dns-nameservers-in-ubuntu-debian/
 
 Check symlink
+
 ```
 ls -l /etc/resolv.conf
 .
@@ -12,6 +15,7 @@ lrwxrwxrwx 1 root root 39 May  4 11:34 /etc/resolv.conf -> ../run/systemd/resolv
 ```
 
 Check current configuration
+
 ```
 cat /etc/resolv.conf
 .
@@ -65,22 +69,26 @@ Executing: /lib/systemd/systemd-sysv-install enable resolvconf
 ```
 
 Add your nameservers
+
 ```
 sudo gedit /etc/resolvconf/resolv.conf.d/head
 ```
 
 Note - ignore the message about not editing this file - the message is for people viewing `/etc/resolv.conf`
+
 ```
 nameserver 8.8.8.8
 nameserver 8.8.4.4
 ```
 
 Reboot (restart command given below didn't appear to update the DNS)
+
 ```
 sudo systemctl restart resolvconf.service
 ```
 
 Post reboot, check the symlink
+
 ```
 ls -l /etc/resolv.conf
 .
