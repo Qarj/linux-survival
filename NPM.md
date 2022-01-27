@@ -1,4 +1,6 @@
-# NPM Command line options
+# NPM Installation
+
+Look at `Node.js.md` and follow the `nvm` instructions.
 
 https://docs.npmjs.com/cli-documentation/
 

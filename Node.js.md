@@ -27,6 +27,12 @@ node --version
 v12.22.8
 ```
 
+Some npm packages require `build-essential` to work so install it now.
+
+```
+sudo apt install build-essential
+```
+
 # Windows Install
 
 Open up an administrator command prompt and install Chocolatey
@@ -53,4 +59,3 @@ node --version
 ```
 
 # NVM Windows https://github.com/coreybutler/nvm-windows
-
