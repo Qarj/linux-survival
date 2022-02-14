@@ -15,6 +15,7 @@ git config --global core.editor "code --wait"
 git config --global mergetool.keepBackup false
 git config --global alias.alias "! git config --get-regexp ^alias\. | sed -e s/^alias\.// -e s/\ /\ =\ /" --replace-all
 git config --global alias.changes "diff --name-status" --replace-all
+git config --global alias.files "diff-tree --no-commit-id --name-only -r" --replace-all
 git config --global alias.lg "log --oneline --all --graph" --replace-all
 git config --global alias.localb "branch -vv" --replace-all
 git config --global alias.meld "difftool -d" --replace-all
