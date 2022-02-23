@@ -33,7 +33,7 @@ Some npm packages require `build-essential` to work so install it now.
 sudo apt install build-essential
 ```
 
-# Windows Install
+# Windows Install - via Choco
 
 Open up an administrator command prompt and install Chocolatey
 
@@ -45,6 +45,7 @@ Install node.js
 
 ```
 choco install nodejs --version=12.13.0
+choco install nodejs --version=14.19.0
 
 or for latest
 
@@ -58,4 +59,23 @@ npm --version
 node --version
 ```
 
-# NVM Windows https://github.com/coreybutler/nvm-windows
+# Windows Install - NVM
+
+https://github.com/coreybutler/nvm-windows
+
+```
+choco install nvm
+```
+
+From new command prompt
+
+```
+nvm list available
+```
+
+Must install specific version
+
+```
+nvm install 14.19.0
+nvm use 14.19.0
+```
