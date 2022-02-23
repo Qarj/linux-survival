@@ -27,6 +27,14 @@ node --version
 v12.22.8
 ```
 
+Then add the following to the bottom of `.bashrc`
+
+```
+nvm use 14
+```
+
+Caution - version of npm will be changed, might need to reinstall it - `NPM.md`.
+
 Some npm packages require `build-essential` to work so install it now.
 
 ```
@@ -59,7 +67,11 @@ npm --version
 node --version
 ```
 
+Might have to reorder Windows path (check user as well as system path).
+
 # Windows Install - NVM
+
+This does not survive opening another command prompt, use the choco method.
 
 https://github.com/coreybutler/nvm-windows
 
