@@ -2,6 +2,15 @@
 
 https://linuxconfig.org/linux-commands
 
+## chmod
+
+Fix permissions for project cloned to /usr/local/bin
+
+```sh
+sudo find . -type d -exec chmod a+rwx {} \;
+sudo find . -type f -exec chmod a+rw {} \;
+```
+
 ## lshw - disk information
 
 sudo lshw -class disk
