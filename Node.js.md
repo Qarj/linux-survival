@@ -12,19 +12,14 @@ Restart bash.
 
 ```
 nvm ls-remote --lts
-nvm install 12
+nvm install 14
 .
-Downloading and installing node v12.22.8...
-Downloading https://nodejs.org/dist/v12.22.8/node-v12.22.8-linux-x64.tar.xz...
-############################################################################################################################################## 100.0%
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v12.22.8 (npm v6.14.15)
-Creating default alias: default -> 12 (-> v12.22.8)
-.
+Now using node v14.19.0 (npm v6.14.16).
 node --version
 .
-v12.22.8
+v14.19.0
 ```
 
 Then add the following to the bottom of `.bashrc`
