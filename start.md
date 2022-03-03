@@ -35,7 +35,6 @@ sudo chmod +x /usr/local/bin/start
 # start a command in a detached proces in Perl
 
 ```pl
-    my $_nohup_bash = qq{(nohup bash -c "$_command" > /dev/null 2>&1 &)}; #
+    my $_nohup_bash = qq{(nohup bash -c "$_command" > /dev/null 2>&1 &)};
     my $_result = `$_nohup_bash`;
-
 ```
