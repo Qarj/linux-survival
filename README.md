@@ -119,3 +119,8 @@ sudo apt autoremove
 ### [crontab](crontab.md)
 
 ### [bamboo](bamboo.md)
+
+# Top Answers
+
+https://stackoverflow.com/questions/399078/what-special-characters-must-be-escaped-in-regular-expressions
+https://meta.stackexchange.com/questions/184108/what-is-syntax-highlighting-and-how-does-it-work
