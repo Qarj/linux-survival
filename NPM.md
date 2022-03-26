@@ -6,6 +6,8 @@ https://docs.npmjs.com/cli-documentation/
 
 ## Change version of NPM you are using
 
+List of versions https://www.npmjs.com/package/npm?activeTab=versions
+
 If npm has been installed via nvm, don't use the sudo.
 
 ```sh

@@ -16,10 +16,10 @@ nvm install 14
 .
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v14.19.0 (npm v6.14.16).
+Now using node v14.19.1 (npm v6.14.16).
 node --version
 .
-v14.19.0
+v14.19.1
 ```
 
 Then add the following to the bottom of `.bashrc`
@@ -32,7 +32,7 @@ Caution - version of npm will be changed, might need to reinstall it - `NPM.md`.
 
 Some npm packages require `build-essential` to work so install it now.
 
-```
+```sh
 sudo apt install build-essential
 ```
 
