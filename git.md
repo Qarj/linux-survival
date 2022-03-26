@@ -6,7 +6,6 @@
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
 git config --global http.postBuffer 1048576000
-git config --global credential.helper manager-core --replace-all
 git config --global core.autocrlf false
 git config --global core.ignorecase false
 git config --global diff.tool meld
@@ -37,10 +36,16 @@ manager-core
 git credential-manager version
 ```
 
-Maybe deprecated
+Linux
 
 ```
 git config --global credential.helper store
+```
+
+Windows
+
+```
+git config --global credential.helper manager-core --replace-all
 ```
 
 ## See changes between latest and previous commit
