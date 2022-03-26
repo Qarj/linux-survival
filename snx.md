@@ -32,6 +32,7 @@ Run script
 ```sh
 cd $HOME/Downloads
 chmod +x snx_install_linux30.sh
+./snx_install_linux30.sh
 .
 Installation successfull
 ```
