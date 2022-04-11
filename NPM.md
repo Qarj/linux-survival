@@ -37,6 +37,12 @@ npm install --save-dev jest-puppeteer puppeteer jest
 
 Dev dependencies are not required for runtime.
 
+## Clear the global npm cache
+
+```sh
+npm cache clean --force
+```
+
 ## nodemon
 
 ```
