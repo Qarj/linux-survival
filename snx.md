@@ -55,6 +55,7 @@ Copy Paste
 server connect.company.com
 username user.name
 reauth yes
+debug yes
 ```
 
 Connect
@@ -67,4 +68,14 @@ Disconnect
 
 ```sh
 snx -d
+```
+
+# Debugging
+
+```sh
+cat $HOME/snx.elg
+```
+
+```sh
+sudo ldd /usr/bin/snx
 ```
