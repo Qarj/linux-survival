@@ -79,3 +79,42 @@ cat $HOME/snx.elg
 ```sh
 sudo ldd /usr/bin/snx
 ```
+
+# SNX 800007075
+
+https://unix.stackexchange.com/questions/450229/getting-checkpoint-vpn-ssl-network-extender-working-in-the-command-line/453727#453727
+
+```sh
+cd $HOME/Downloads
+mkdir 800007075
+cd 800007075
+wget https://starkers.keybase.pub/snx_install_linux30.sh?dl=1 -O snx_install.sh
+sudo dpkg --add-architecture i386
+sudo apt install libstdc++5:i386 libx11-6:i386 libpam0g:i386
+chmod a+rx snx_install.sh
+sudo ./snx_install.sh`
+```
+
+Check for missing libraries
+
+```sh
+sudo ldd /usr/bin/snx
+```
+
+Do initial connect
+
+```sh
+snx -s connect.company.com -u user.name
+```
+
+Check signature
+
+```sh
+cat /etc/snx/USER.db
+```
+
+# strongswan
+
+https://docs.strongswan.org/strongswan-docs/5.9/install/install.html
+
+https://community.checkpoint.com/t5/Remote-Access-VPN/3rd-party-or-OpenVPN-client-and-Check-Point-RA/td-p/48864

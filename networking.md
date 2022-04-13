@@ -26,7 +26,9 @@ Check what servers are currently being used by Ubuntu 20.04
 systemd-resolve --status | grep 'DNS Servers' -A2
 ```
 
-Update via config - might need to do both method 1 and method 2 together, then run this a few times
+Update via config - might need to do both method 1 and method 2 together, then run this a few times.
+
+If you do use method 2, need to update it also later when DNS server changes.
 
 ```
 sudo netplan apply
