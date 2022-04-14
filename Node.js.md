@@ -12,20 +12,17 @@ Restart bash.
 
 ```
 nvm ls-remote --lts
-nvm install 14
+nvm install 16
 .
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v14.19.1 (npm v6.14.16).
-node --version
-.
-v14.19.1
+Now using node v16.14.2 (npm v8.5.0).
 ```
 
 Then add the following to the bottom of `.bashrc`
 
 ```
-nvm use 14
+nvm use 16
 ```
 
 Caution - version of npm will be changed, might need to reinstall it - `NPM.md`.
