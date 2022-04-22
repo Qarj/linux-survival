@@ -66,6 +66,14 @@ git difftool -d master
 git remote prune origin
 ```
 
+## Undo last commit that has not been pushed upstream
+
+This will remove the local commit and unstage the changes.
+
+```sh
+git reset HEAD~
+```
+
 ## CentOs
 
 ```
