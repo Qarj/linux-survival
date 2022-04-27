@@ -46,11 +46,14 @@ Install node.js
 ```
 choco install nodejs --version=12.13.0
 choco install nodejs --version=14.19.0
+choco install nodejs-lts
 
 or for latest
 
 choco install nodejs
 ```
+
+Current lts is `16.15.0` https://community.chocolatey.org/packages/nodejs-lts
 
 Close command prompt and open another one. Then check the versions.
 
@@ -61,7 +64,9 @@ node --version
 
 Might have to reorder Windows path (check user as well as system path).
 
-# Windows Install - NVM
+Finally, go to `NPM.md` and install the required NPM version.
+
+# Windows Install - NVM - DO NOT USE, BUGGED!
 
 This does not survive opening another command prompt, use the choco method.
 
@@ -77,9 +82,9 @@ From new command prompt
 nvm list available
 ```
 
-Must install specific version
+Must install specific version, do not do `nvm install 16`
 
 ```
-nvm install 14.19.0
-nvm use 14.19.0
+nvm install 16.15.0
+nvm use 16.15.0
 ```

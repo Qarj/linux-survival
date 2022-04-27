@@ -2,6 +2,8 @@
 
 Look at `Node.js.md` and follow the `nvm` instructions.
 
+Then come back here and switch versions of NPM if needed (Windows).
+
 https://docs.npmjs.com/cli-documentation/
 
 ## Change version of NPM you are using
