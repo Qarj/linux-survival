@@ -137,7 +137,7 @@ bamboo.home=/home/test/bamboo-home
 
 # Start Bamboo
 
-```
+```sh
 /home/test/bamboo/bin/start-bamboo.sh
 .
 To run Bamboo in the foreground, start the server with start-bamboo.sh -fg
@@ -163,7 +163,7 @@ Tomcat started.
 
 http://localhost:8085/
 
-```
+```txt
 403
 App Not Assigned
 Sorry, you can't access Atlassian Cloud (MYA) because you are not assigned this app in Okta. If you're wondering why this is happening, please contact your administrator.
