@@ -46,7 +46,7 @@ mkdir ~/bamboo
 tar xvzf atlassian-bamboo-7.2.4.tar.gz -C ~/bamboo --strip-components=1
 ```
 
-## tr translate
+## tr translate lower case to upper case
 
 ```sh
 echo PumpkinsInHere | tr '[:lower:]' '[:upper:]'
