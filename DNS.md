@@ -94,3 +94,9 @@ ls -l /etc/resolv.conf
 .
 lrwxrwxrwx 1 root root 29 Aug 18 16:26 /etc/resolv.conf -> ../run/resolvconf/resolv.conf
 ```
+
+Debugging
+
+```sh
+dig time-a.nist.gov @8.8.8.8
+```
