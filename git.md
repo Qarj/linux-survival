@@ -2,7 +2,7 @@
 
 ## Setup new host
 
-```
+```sh
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
 git config --global http.postBuffer 1048576000
@@ -26,19 +26,27 @@ git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
 ```
 
-```
+```sh
 git config credential.helper
 .
 manager-core
 ```
 
+Or on macOS
+
+```sh
+git config credential.helper
+.
+osxkeychain
 ```
+
+```sh
 git credential-manager version
 ```
 
 Linux
 
-```
+```sh
 git config --global credential.helper store
 ```
 
@@ -94,32 +102,32 @@ grip
 
 ## Stop tracking a checked-in file
 
-```
+```sh
 git update-index --skip-worktree video.mp4
 ```
 
 ## Show lots of cloned repo info
 
-```
+```sh
 git remote show origin
 ```
 
 ## Get git repo name
 
-```
+```sh
 basename `git rev-parse --show-toplevel`
 repo_name=$(basename `git rev-parse --show-toplevel`)
 ```
 
 # Get branch name
 
-```
+```sh
 git rev-parse --abbrev-ref HEAD
 branch_name=$(git rev-parse --abbrev-ref HEAD)
 ```
 
 # Show lots of SSH debug information
 
-```
+```sh
 export GIT_SSH_COMMAND="ssh -vv"
 ```
