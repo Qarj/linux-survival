@@ -4,6 +4,23 @@
 nc -zv 127.0.0.1 80
 .
 Connection to 127.0.0.1 80 port [tcp/*] succeeded!
+.
+echo $?
+0
+```
+
+Timeout in 4 seconds
+
+```sh
+nc -zv unreachable.port.com 449 -w 4
+.
+nc: connect to unreachable.port.com port 449 (tcp) timed out: Operation now in progress
+nc: connect to unreachable.port.com port 449 (tcp) timed out: Operation now in progress
+nc: connect to unreachable.port.com port 449 (tcp) timed out: Operation now in progress
+nc: connect to unreachable.port.com port 449 (tcp) timed out: Operation now in progress
+.
+echo $?
+1
 ```
 
 ```
