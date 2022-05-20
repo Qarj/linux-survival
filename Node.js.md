@@ -4,24 +4,24 @@
 
 Check latest script here: https://github.com/nvm-sh/nvm#installing-and-updating
 
-```
+```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```
 
 Restart bash.
 
-```
+```sh
 nvm ls-remote --lts
 nvm install 16
 .
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v16.14.2 (npm v8.5.0).
+Now using node v16.15.0 (npm v8.5.5).
 ```
 
 Then add the following to the bottom of `.bashrc`
 
-```
+```sh
 nvm use 16
 ```
 
@@ -43,7 +43,7 @@ Open up an administrator command prompt and install Chocolatey
 
 Install node.js
 
-```
+```sh
 choco install nodejs --version=12.13.0
 choco install nodejs --version=14.19.0
 choco install nodejs-lts
@@ -57,7 +57,7 @@ Current lts is `16.15.0` https://community.chocolatey.org/packages/nodejs-lts
 
 Close command prompt and open another one. Then check the versions.
 
-```
+```sh
 npm --version
 node --version
 ```
