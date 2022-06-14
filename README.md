@@ -8,7 +8,7 @@ Reduce the frustration of linux administration!
 
 Alternative in TTY
 
-```
+```sh
 CTRL-ALT-F3
 pgrep chrome
 kill -9 1234
@@ -17,7 +17,7 @@ CTRL-ALT-F2
 
 Or from tty
 
-```
+```sh
 sudo service lightdm restart
 ```
 
@@ -64,6 +64,35 @@ sudo apt update
 apt list --upgradable
 sudo apt upgrade
 sudo apt autoremove
+```
+
+### send process to background then activate again
+
+```sh
+htop
+CTRL-Z
+fg
+```
+
+### maximise window to full screen toggle
+
+`F11`
+
+### decrease and increase terminal font size
+
+`Ctrl` + `-` / `Ctrl` + `=`
+
+### push history off screen
+
+`CTRL-L`
+
+### chain commands together regardless of error
+
+```sh
+some_failing_command; echo "always run"
+.
+-bash: some_failing_command: command not found
+always run
 ```
 
 ### [Desktop short cut to open File Manager as root](FileManagerSudo.md)
