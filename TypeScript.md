@@ -204,3 +204,114 @@ let employee: {
 employee.name = 'Maximilian';
 console.log(employee);
 ```
+
+## Using a type alias
+
+```ts
+type Employee = {
+    readonly id: number;
+    name: string;
+    faxNumber?: string | null;
+    retire: (date: Date) => void;
+};
+
+let employee: Employee = {
+    id: 1,
+    name: 'Max',
+    retire: (date: Date) => {
+        console.log(date);
+    },
+};
+```
+
+## Union types
+
+```ts
+function kgToLbs(weight: number | string): number {
+    if (typeof weight === 'number') return weight * 2.2046226218;
+    return parseFloat(weight) * 2.2046226218;
+}
+
+console.log(kgToLbs(70));
+console.log(kgToLbs('70kg'));
+```
+
+output
+
+```txt
+154.323583526
+154.323583526
+```
+
+## Intersection types
+
+```ts
+type Draggable = {
+    drag: () => void;
+};
+
+type Resizeable = {
+    resize: () => void;
+};
+
+type UIWidget = Draggable & Resizeable;
+
+let textBox: UIWidget = {
+    drag: () => {},
+    resize: () => {},
+};
+```
+
+## Literal types
+
+```ts
+let quantity: 50 | 100 = 50;
+quantity = 100;
+```
+
+or
+
+```ts
+type Amount = 50 | 100;
+let amount: Amount = 50;
+```
+
+## Nullable Types
+
+```ts
+function greet(name: string | null) {
+    if (name) console.log(name.toUpperCase());
+    else console.log('Hola!');
+}
+
+greet(null);
+```
+
+## Optional chaining
+
+```ts
+type Customer = {
+    birthday?: Date;
+};
+
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0 ? null : { birthday: new Date() };
+}
+
+let customer = getCustomer(0);
+console.log(customer?.birthday?.getFullYear());
+
+let log: any = null;
+log?.('Hello');
+```
+
+## Nullish Coalescing Operator (??)
+
+```ts
+let speed: number | null = null;
+let ride = {
+    speed: speed ?? 30,
+};
+```
+
+Assign speed to 30 if it is null or undefined, but not 0.
