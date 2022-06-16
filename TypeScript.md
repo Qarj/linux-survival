@@ -243,6 +243,20 @@ output
 154.323583526
 ```
 
+another example
+
+```ts
+type Bird = {
+    fly: () => void;
+};
+
+type Fish = {
+    swim(): void;
+};
+
+type Pet = Bird | Fish;
+```
+
 ## Intersection types
 
 ```ts
@@ -332,7 +346,7 @@ fax.value = '+7 (912) 123-45-67';
 
 ## Unknown type
 
-It is better to use the `unknown` type when converting JavaScript to TypeScript rather than the `any` type, since it forces us to do type checking.
+It is better to use the `unknown` type when converting JavaScript to TypeScript rather than the `any` type, since it forces us to do type narrowing.
 
 ```ts
 function render(document: unknown) {
