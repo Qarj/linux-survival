@@ -315,3 +315,48 @@ let ride = {
 ```
 
 Assign speed to 30 if it is null or undefined, but not 0.
+
+## Type assertions
+
+```js
+let phone = document.getElementById('phone') as HTMLInputElement;
+phone.value = '+7 (912) 123-45-67';
+```
+
+or
+
+```ts
+let fax = <HTMLInputElement>document.getElementById('fax');
+fax.value = '+7 (912) 123-45-67';
+```
+
+## Unknown type
+
+It is better to use the `unknown` type when converting JavaScript to TypeScript rather than the `any` type, since it forces us to do type checking.
+
+```ts
+function render(document: unknown) {
+    if (typeof document === 'string') document.toUpperCase();
+}
+```
+
+## Never type
+
+For functions that never return, use the `never` type.
+
+```ts
+function reject(message: string): never {
+    throw new Error(message);
+}
+
+function processEvents(): never {
+    while (true) {
+        // read message from a queue
+        // infinite loop
+    }
+}
+
+processEvents();
+console.log('Hello World');
+reject('Error');
+```
