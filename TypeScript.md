@@ -85,3 +85,122 @@ Add a preLaunchTask as follows
 ```
 
 Press `Launch Program` or `F5` to start debugging.
+
+## Types
+
+JavaScript
+
+-   number
+-   string
+-   boolean
+-   null
+-   undefined
+-   object
+
+TypeScript
+
+-   any
+-   unknown
+-   never
+-   enum
+-   tuple
+
+```ts
+let sales: number = 123_456_789;
+let course: string = 'TypeScript';
+let is_published: boolean = true;
+```
+
+TypeScript can infer the type of a variable
+
+```ts
+let sales = 123_456_789;
+let course = 'TypeScript';
+let is_published = true;
+let someVar;
+```
+
+`someVar` is of type `any`
+
+Can set TypeScript config option to false to infer types, not recommended
+
+```json
+"noImplicitAny": false /* Enable error reporting for expressions and declarations with an implied 'any' type. */,
+```
+
+then this will be possible
+
+```ts
+function render(document) {
+    console.log(document);
+}
+```
+
+tuple - array of fixed number of elements
+
+```ts
+let tuple: [number, string] = [1, 'hello'];
+```
+
+enum - enumeration
+
+```ts
+enum Size {
+    Small = 1,
+    Medium,
+    Large,
+} // PascalCase
+let mySize = Size.Medium;
+console.log(mySize);
+```
+
+If you assign to a constant, compiler will generate more optimised code
+
+```ts
+const enum Size {
+    Small = 1,
+    Medium,
+    Large,
+} // PascalCase
+let mySize = Size.Medium;
+console.log(mySize);
+```
+
+## Functions
+
+```ts
+function calculateTax(income: number, taxYear = 2022): number {
+    if (taxYear < 2022) return income * 0.25;
+    return income * 0.4;
+}
+
+calculateTax(100000);
+```
+
+3 suggested compiler options to enable
+
+```json
+"noUnusedLocals": true /* Enable error reporting when local variables aren't read. */,
+"noUnusedParameters": true /* Raise an error when a function parameter isn't read. */,
+// "exactOptionalPropertyTypes": true,               /* Interpret optional property types as written, rather than adding 'undefined'. */
+"noImplicitReturns": true /* Enable error reporting for codepaths that do not explicitly return in a function. */,
+```
+
+## Objects
+
+```ts
+let employee: {
+    readonly id: number;
+    name: string;
+    faxNumber?: string | null;
+    retire: (date: Date) => void;
+} = {
+    id: 1,
+    name: 'Max',
+    retire: (date: Date) => {
+        console.log(date);
+    },
+};
+employee.name = 'Maximilian';
+console.log(employee);
+```
