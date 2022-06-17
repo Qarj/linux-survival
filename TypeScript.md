@@ -565,3 +565,237 @@ ride2.start();
 
 console.log(Ride.activeRides);
 ```
+
+## Inheritance
+
+Can have `Parent / Base / Super` classes and `Child / Derived / Subclass` classes.
+
+Example Person <- Student or Teacher
+
+```ts
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    walk() {
+        console.log(`${this.fullName} is walking`);
+    }
+}
+
+class Student extends Person {
+    constructor(public studentId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    takeTest() {
+        console.log(`${this.fullName} is taking a test`);
+    }
+}
+
+let student = new Student(1, 'John', 'Doe');
+student.walk();
+student.takeTest();
+```
+
+## Method Overriding
+
+```ts
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    walk() {
+        console.log(`${this.fullName} is walking`);
+    }
+}
+
+class Teacher extends Person {
+    constructor(public teacherId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    override get fullName() {
+        return `Professor ${super.fullName}`;
+    }
+
+    teach() {
+        console.log(`${this.fullName} is teaching`);
+    }
+}
+
+let professor = new Teacher(1, 'Richard', 'Dawkins');
+professor.teach();
+```
+
+## Polymorphism
+
+Can handle multiple types of objects so long as they have the same parent class.
+
+```ts
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
+    walk() {
+        console.log(`${this.fullName} is walking`);
+    }
+}
+
+class Student extends Person {
+    constructor(public studentId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    takeTest() {
+        console.log(`${this.fullName} is taking a test`);
+    }
+}
+
+class Teacher extends Person {
+    constructor(public teacherId: number, firstName: string, lastName: string) {
+        super(firstName, lastName);
+    }
+
+    override get fullName() {
+        return `Professor ${super.fullName}`;
+    }
+
+    teach() {
+        console.log(`${this.fullName} is teaching`);
+    }
+}
+
+class Principal extends Person {
+    override get fullName() {
+        return `Principal ${super.fullName}`;
+    }
+}
+
+function printNames(people: Person[]) {
+    for (let person of people) {
+        console.log(person.fullName);
+    }
+}
+
+printNames([
+    new Student(1, 'John', 'Doe'),
+    new Student(2, 'Jane', 'Doe'),
+    new Teacher(1000, 'Sean', 'Carroll'),
+    new Principal('Sally', 'Smith'),
+]);
+```
+
+## Protected vs Private Members
+
+Protected members are members that can only be accessed by classes that are a subclass of the class that defines the member.
+
+Use with caution. Cam run into coupling issues.
+
+## Abstract Classes and Methods
+
+Use when it does not make sense to create and instance of the parent class, for example a shape.
+
+```ts
+abstract class Shape {
+    constructor(public colour: string) {}
+
+    abstract render(): void;
+}
+
+class Circle extends Shape {
+    constructor(public radius: number, colour: string) {
+        super(colour);
+    }
+
+    override render(): void {
+        console.log(`Render circle`);
+    }
+}
+
+let circle = new Circle(5, 'red');
+circle.render();
+```
+
+## Interfaces
+
+Consier an abstract class
+
+```ts
+abstract class Calendar {
+    constructor(public name: string) {}
+
+    abstract addEvent(): void;
+    abstract removeEvent(): void;
+}
+```
+
+As an interface it looks like this
+
+```ts
+interface Calendar {
+    name: string;
+    addEvent(): void;
+    removeEvent(): void;
+}
+```
+
+Can implement it like an abstract class
+
+```ts
+interface Calendar {
+    name: string;
+    addEvent(): void;
+    removeEvent(): void;
+}
+
+interface CloudCalendar extends Calendar {
+    sync(): void;
+}
+
+class GoogleCalender implements Calendar {
+    constructor(public name: string) {}
+    addEvent(): void {
+        throw new Error('Method not implemented.');
+    }
+    removeEvent(): void {
+        throw new Error('Method not implemented.');
+    }
+}
+```
+
+It is also possible to implement a type
+
+```ts
+type Person = {
+    name: string;
+};
+
+class Teacher implements Person {
+    constructor(public name: string) {}
+}
+```
+
+Can use one interface inside another
+
+```ts
+interface Address {
+    street: string;
+    city: string;
+    postCode: number;
+}
+
+interface Employee {
+    name: string;
+    salary: number;
+    address: Address;
+}
+```
