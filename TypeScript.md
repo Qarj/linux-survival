@@ -374,3 +374,194 @@ processEvents();
 console.log('Hello World');
 reject('Error');
 ```
+
+## Create a class
+
+```ts
+class Account {
+    id: number;
+    owner: string;
+    balance: number;
+
+    constructor(id: number, owner: string, balance: number) {
+        this.id = id;
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    deposit(amount: number) {
+        if (amount <= 0) throw new Error('Amount must be greater than 0');
+        this.balance += amount;
+    }
+}
+```
+
+## Create an instance of a class and use it
+
+```ts
+class Account {
+    id: number;
+    owner: string;
+    balance: number;
+
+    constructor(id: number, owner: string, balance: number) {
+        this.id = id;
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    deposit(amount: number) {
+        if (amount <= 0) throw new Error('Amount must be greater than 0');
+        this.balance += amount;
+    }
+}
+
+let account = new Account(1, 'John', 100);
+account.deposit(50);
+console.log(account.balance);
+console.log(account);
+console.log(typeof account);
+console.log(account instanceof Account);
+```
+
+output
+
+```sh
+tsc && node dist/index.js
+.
+150
+Account { id: 1, owner: 'John', balance: 150 }
+object
+true
+```
+
+## readonly property
+
+Making a class property readonly means it can only be set in the constructor
+
+```ts
+    readonly id: number;
+```
+
+## optional property
+
+Optional properties are properties that can be undefined.
+
+```ts
+    nickname?: string | null;
+```
+
+## Access Control Keywords
+
+`public` by default, `private` to access only within the class.
+
+By convention, the first letter of a private property is an underscore
+
+```ts
+    private _balance: number;
+```
+
+Can also make methods private
+
+```ts
+    private CalculateInterest(): number {
+        return this._balance * 0.01;
+    }
+```
+
+## Parameter Properties
+
+Properties can be defined in the constructor parameters. The `this.id = id` initialisation code is not required
+
+```ts
+class Account {
+    nickname?: string;
+
+    constructor(public readonly id: number, public owner: string, private _balance: number) {}
+
+    deposit(amount: number) {
+        if (amount <= 0) throw new Error('Amount must be greater than 0');
+        this._balance += amount;
+    }
+
+    getBalance(): number {
+        return this._balance;
+    }
+}
+```
+
+## Getters and Setters
+
+```ts
+class Account {
+    nickname?: string;
+
+    constructor(public readonly id: number, public owner: string, private _balance: number) {}
+
+    deposit(amount: number) {
+        if (amount <= 0) throw new Error('Amount must be greater than 0');
+        this._balance += amount;
+    }
+
+    get balance(): number {
+        return this._balance;
+    }
+
+    set balance(value: number) {
+        if (value < 0) throw new Error('Balance must be greater than 0');
+        this._balance = value;
+    }
+}
+
+let account = new Account(1, 'John', 100);
+account.deposit(50);
+console.log(account.balance);
+account.balance = 25;
+console.log(account.balance);
+```
+
+## Index Signatures
+
+TypeScript won't allow you to dynamically add properties to an object. So you need to do something like this
+
+```ts
+class SeatAssignment {
+    // Index signature property
+    [seatNumber: string]: string;
+}
+
+let seats = new SeatAssignment();
+seats['A1'] = 'John';
+seats.A2 = 'Mary';
+```
+
+## Static Members / Class Members
+
+Static members are members that are shared across all instances of a class.
+
+Can think of it as a class property rather than an instance property.
+
+```ts
+class Ride {
+    private static _activeRides: number = 0;
+
+    start() {
+        Ride._activeRides++;
+    }
+    stop() {
+        Ride._activeRides--;
+    }
+
+    static get activeRides() {
+        return Ride._activeRides;
+    }
+}
+
+let ride1 = new Ride();
+ride1.start();
+
+let ride2 = new Ride();
+ride2.start();
+
+console.log(Ride.activeRides);
+```
