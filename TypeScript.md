@@ -799,3 +799,287 @@ interface Employee {
     address: Address;
 }
 ```
+
+## Generic Classes
+
+Offer a way to create a class that can be used with multiple types
+
+```ts
+class KeyValuePair<T> {
+    constructor(public key: T, public value: string) {}
+}
+
+let pair1 = new KeyValuePair<string>('hello', 'world');
+let pair2 = new KeyValuePair<number>(1, 'world');
+let pair3 = new KeyValuePair<boolean>(true, 'world');
+```
+
+Compiler can infer the type of the generic class
+
+```ts
+let pair4 = new KeyValuePair('hello', 'world');
+```
+
+## Generic Functions
+
+```ts
+function wrapInArray<T>(value: T) {
+    return [value];
+}
+
+let numbers = wrapInArray(1);
+let strings = wrapInArray('hello');
+```
+
+Also works for methods.
+
+## Generic Interfaces
+
+```ts
+interface Result<T> {
+    data: T | null;
+    error: string | null;
+}
+
+function fetch<T>(url: string): Result<T> {
+    console.log(`Fetching ${url}`);
+    return { data: null, error: null };
+}
+
+interface User {
+    username: string;
+}
+
+interface Product {
+    title: string;
+}
+
+let result = fetch<User>('url');
+```
+
+## Generic Constraints
+
+Can constrain the type of a generic parameter
+
+```ts
+function echo<T extends number | string>(value: T): T {
+    return value;
+}
+
+echo('1');
+echo(1);
+```
+
+Must have a name property
+
+```ts
+function echo<T extends { name: string }>(value: T): T {
+    return value;
+}
+
+echo({ name: 'test', value: 1 });
+```
+
+Combine with interface
+
+```ts
+interface Person {
+    name: string;
+}
+
+function echo<T extends Person>(value: T): T {
+    return value;
+}
+
+echo({ name: 'test', value: 1 });
+```
+
+Can use classes
+
+```ts
+class Person {
+    constructor(public name: string) {}
+}
+
+class Customer extends Person {
+    constructor(name: string) {
+        super(name);
+    }
+}
+
+function echo<T extends Person>(value: T): T {
+    return value;
+}
+
+echo({ name: 'test', value: 1 });
+echo(new Customer('test'));
+echo(new Person('test'));
+```
+
+## Extending Generic Classes
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+class Store<T> {
+    protected _objects: T[] = [];
+
+    add(object: T) {
+        this._objects.push(object);
+    }
+}
+
+class CompressibleStore<T> extends Store<T> {
+    compress() {}
+}
+
+let store = new CompressibleStore<Product>();
+store.compress();
+
+class SearchableStore<T extends { name: string }> extends Store<T> {
+    find(name: string): T | undefined {
+        return this._objects.find((obj) => obj.name === name);
+    }
+}
+
+// Fix the generic type parameter
+class ProductStore extends Store<Product> {
+    filterByCategory(category: string) {
+        return this._objects.filter((obj) => obj.name === category);
+    }
+}
+```
+
+## keyof operator
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+class Store<T> {
+    protected _objects: T[] = [];
+
+    add(object: T) {
+        this._objects.push(object);
+    }
+
+    // T is Product
+    // keyof T => name | price
+    find(property: keyof T, value: unknown): T | undefined {
+        return this._objects.find((object) => object[property] === value);
+    }
+}
+
+class CompressibleStore<T> extends Store<T> {
+    compress() {}
+}
+
+class SearchableStore<T extends { name: string }> extends Store<T> {
+    search(name: string): T | undefined {
+        return this._objects.find((obj) => obj.name === name);
+    }
+}
+
+// Fix the generic type parameter
+class ProductStore extends Store<Product> {
+    filterByCategory(category: string) {
+        return this._objects.filter((obj) => obj.name === category);
+    }
+}
+
+let store = new Store<Product>();
+store.add({ name: 'test', price: 1 });
+store.add({ name: 'test2', price: 2 });
+store.find('name', 'test');
+// store.find('non-existing-property', 'test'); // correctly get compile error
+```
+
+## Type Mapping
+
+Create a read only copy
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+type ReadOnlyProduct = {
+    readonly [Property in keyof Product]: Product[Property];
+};
+
+let product: ReadOnlyProduct = {
+    name: 'A',
+    price: 1,
+};
+```
+
+With generics
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+type ReadOnly<T> = {
+    readonly [Property in keyof T]: T[Property];
+};
+
+let product: ReadOnly<Product> = {
+    name: 'A',
+    price: 1,
+};
+```
+
+Create some type aliases
+
+```ts
+interface Product {
+    name: string;
+    price: number;
+}
+
+type ReadOnly<T> = {
+    readonly [Property in keyof T]: T[Property];
+};
+
+type Optional<T> = {
+    [Property in keyof T]?: T[Property];
+};
+
+type Nullable<T> = {
+    [Property in keyof T]: T[Property] | null;
+};
+
+let product: ReadOnly<Product> = {
+    name: 'A',
+    price: 1,
+};
+```
+
+Utility types are built into TypeScript
+
+https://www.typescriptlang.org/docs/handbook/utility-types.html
+
+-   Partial<T>
+-   Required<T>
+-   Readonly<T>
+-   Record<K, Type>
+-   Pick<T, K>
+-   Omit<T, K>
+-   Exclude<UnionType, ExcludedMembers>
+-   Extract<Type, Union>
+-   NonNullable<T>
+-   Parameters<T>
+-   ConstructorParameters<T>
+-   ReturnType<T>
+-   InstanceType<T>
+-   ThisParameterType<T>
+-   OmitThisParameter<T>
+-   ThisType<T>
