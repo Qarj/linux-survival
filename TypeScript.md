@@ -1083,3 +1083,310 @@ https://www.typescriptlang.org/docs/handbook/utility-types.html
 -   ThisParameterType<T>
 -   OmitThisParameter<T>
 -   ThisType<T>
+
+## Decorators
+
+are experimental, need to enable in tsconfig.json
+
+```json
+    "experimentalDecorators": true /* Enable experimental support for TC39 stage 2 draft decorators. */,
+```
+
+## Class Decorators
+
+```ts
+function Component(constructor: Function) {
+    console.log('Component decorator called');
+    constructor.prototype.uniqueId = Date.now();
+    constructor.prototype.insertInDOM = () => {
+        console.log('Inserting component in DOM');
+    };
+}
+
+@Component
+class ProfileComponent {}
+```
+
+## Parameterised Decorators
+
+Simple example
+
+```ts
+function Component(value: number) {
+    return (constructor: Function) => {
+        console.log('Component decorator called');
+        constructor.prototype.options = value;
+        constructor.prototype.uniqueId = Date.now();
+        constructor.prototype.insertInDOM = () => {
+            console.log('Inserting component in DOM');
+        };
+    };
+}
+
+@Component(1)
+class ProfileComponent {}
+```
+
+Object example
+
+```ts
+type ComponentOptions = {
+    selector: string;
+};
+
+function Component(options: ComponentOptions) {
+    return (constructor: Function) => {
+        console.log('Component decorator called');
+        constructor.prototype.options = options;
+        constructor.prototype.uniqueId = Date.now();
+        constructor.prototype.insertInDOM = () => {
+            console.log('Inserting component in DOM');
+        };
+    };
+}
+
+@Component({ selector: '#my-profile' })
+class ProfileComponent {}
+```
+
+## Decorator Composition
+
+```ts
+type ComponentOptions = {
+    selector: string;
+};
+
+function Component(options: ComponentOptions) {
+    return (constructor: Function) => {
+        console.log('Component decorator called');
+        constructor.prototype.options = options;
+        constructor.prototype.uniqueId = Date.now();
+        constructor.prototype.insertInDOM = () => {
+            console.log('Inserting component in DOM');
+        };
+    };
+}
+
+function Pipe(constructor: Function) {
+    console.log('Pipe decorator called');
+    constructor.prototype.pipe = true;
+}
+
+@Component({ selector: '#my-profile' })
+@Pipe
+class ProfileComponent {}
+```
+
+Will be called in the reverse order, output
+
+```txt
+Pipe decorator called
+Component decorator called
+```
+
+## Method Decorators
+
+Need to use function expression when redefining the method to access `this`
+
+```ts
+function Log(target: any, methodName: string, descriptor: PropertyDescriptor) {
+    const original = descriptor.value as Function;
+    descriptor.value = function (...args: any) {
+        console.log('Before');
+        original.call(this, ...args);
+        console.log('After');
+    };
+}
+
+class Person {
+    @Log
+    say(message: string) {
+        console.log(`Person says ${message}`);
+    }
+}
+
+let person = new Person();
+person.say('Hello');
+```
+
+## Accessor Decorators
+
+```ts
+function Capitalize(target: any, methodName: string, descriptor: PropertyDescriptor) {
+    const original = descriptor.get;
+    descriptor.get = function () {
+        const result = original!.call(this);
+        return typeof result === 'string' ? result.toUpperCase() : result;
+    };
+    return descriptor;
+}
+
+class Person {
+    constructor(public firstName: string, public lastName: string) {}
+
+    @Capitalize
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+}
+
+let person = new Person('john', 'doe');
+console.log(person.fullName);
+```
+
+## Property Decorators
+
+```ts
+function MinLength(length: number) {
+    return (target: any, propertyName: string) => {
+        let value: string;
+
+        const descriptor: PropertyDescriptor = {
+            get() {
+                return value;
+            },
+            set(newValue: string) {
+                if (newValue.length < length) {
+                    throw new Error(`${propertyName} must be at least ${length} characters long`);
+                }
+                value = newValue;
+            },
+        };
+
+        Object.defineProperty(target, propertyName, descriptor);
+    };
+}
+
+class User {
+    @MinLength(4)
+    password: string;
+
+    constructor(password: string) {
+        this.password = password;
+    }
+}
+
+let user = new User('abc');
+console.log(user.password);
+```
+
+Will throw error at runtime.
+
+## Parameter Decorators
+
+```ts
+type WatchedParameter = {
+    methodName: string;
+    parameterIndex: number;
+};
+
+const watchedParameters: WatchedParameter[] = [];
+
+function Watch(target: any, methodName: string, parameterIndex: number) {
+    watchedParameters.push({
+        methodName,
+        parameterIndex,
+    });
+}
+
+class Vehicle {
+    move(@Watch speed: number) {}
+}
+
+console.log(watchedParameters);
+```
+
+## Modules
+
+```ts
+class Circle {
+    constructor(public radius: number) {
+        this.radius = radius;
+    }
+    get area() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+
+class Square {
+    constructor(public length: number) {
+        this.length = length;
+    }
+    get area() {
+        return this.length * this.length;
+    }
+}
+
+export { Circle, Square };
+```
+
+```ts
+import { Circle } from './shapes';
+
+let circle = new Circle(10);
+console.log(circle.area);
+```
+
+## Default exports
+
+```ts
+export default class Store {}
+
+export enum Format {
+    Raw,
+    Compressed,
+}
+```
+
+```ts
+import Store, { Format } from './storage';
+```
+
+## Wildcard Imports
+
+```ts
+import * as Shapes from './shapes';
+
+let circle = new Shapes.Circle(10);
+```
+
+## Re-exporting
+
+shapes/circle.ts
+
+```ts
+export class Circle {
+    constructor(public radius: number) {
+        this.radius = radius;
+    }
+    get area() {
+        return Math.PI * this.radius * this.radius;
+    }
+}
+```
+
+shapes/square.ts
+
+```ts
+export class Square {
+    constructor(public length: number) {
+        this.length = length;
+    }
+    get area() {
+        return this.length * this.length;
+    }
+}
+```
+
+shapes/index.ts
+
+```ts
+export { Circle } from './Circle';
+export { Square } from './Square';
+```
+
+./index.ts
+
+```ts
+import { Circle, Square } from './shapes';
+```
