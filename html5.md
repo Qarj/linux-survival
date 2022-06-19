@@ -352,7 +352,7 @@ better for screen readers
 </html>
 ```
 
-# Div
+# Div - generic container
 
 `div` is a block level element. They always start on a new line. They take the full width of the container.
 
@@ -382,7 +382,7 @@ better for screen readers
 </html>
 ```
 
-# Span
+# Span - generic container
 
 `span` is an inline element, it will not take the entire width of the container.
 
@@ -405,3 +405,56 @@ better for screen readers
     </body>
 </html>
 ```
+
+## Semantic elements
+
+Helps search engines and screen readers. Also enables browser features.
+
+examples
+
+| semantic element | about                                                   |
+| ---------------- | ------------------------------------------------------- |
+| `<article>`      | Self contained piece of content                         |
+| `<figure>`       | Image or diagram, can provide `<figcaption>`            |
+| `<mark>`         | Highlighted text - yellow by default                    |
+| `<time>`         | Date and time - can include machine readable `datetime` |
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <style></style>
+    </head>
+    <body>
+        <article class="article">
+            <h1>Article title</h1>
+            <p>Published <time datetime="2021-01-01 17:15">January 1 2021 05:15pm</time></p>
+            <p>
+                <mark>Lorem</mark> ipsum dolor sit amet consectetur adipisicing elit. Et, eum nisi, quia magnam dolor
+                unde officia, modi dolore sunt cum totam placeat error corrupti repellat doloremque amet labore itaque
+                architecto. Ratione ipsum atque hic quaerat harum eos optio dicta eveniet ducimus reiciendis cumque,
+                quisquam numquam aut! Eius impedit nisi quod animi aspernatur ut recusandae facilis, quisquam a! A, ipsa
+                ab. Odio aliquam rem fugit enim laborum sit labore commodi dicta perferendis nam a natus modi sequi, ex
+                vitae officia sunt corrupti quis eius nesciunt quia earum voluptas deserunt. Dolorem, animi.
+            </p>
+            <figure>
+                <img src="./images/Photo.png" alt="Some photo" />
+                <figcaption>Me getting ready for battle.</figcaption>
+            </figure>
+        </article>
+    </body>
+</html>
+```
+
+## Structure a Web Page
+
+| element     | about                      |
+| ----------- | -------------------------- |
+| `<main>`    | Main content, one per page |
+| `<section>` | Sub content                |
+| `<header>`  | Page header                |
+| `<footer>`  | Page footer                |
+| `<aside>`   | Sidebar                    |
+| `<nav>`     | Navigation                 |
