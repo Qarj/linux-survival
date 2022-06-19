@@ -1,0 +1,7 @@
+# Node
+node_modules/
+
+# Typescript
+*.js.map
+*.js.LINTED.js
+dist/

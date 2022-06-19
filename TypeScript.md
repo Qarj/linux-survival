@@ -1564,3 +1564,77 @@ becomes
 ```
 
 Should work on tab, might need to invoke suggestions.
+
+## Node, Express and TypeScript
+
+```sh
+mkdir reminders-api
+cd reminders-api
+npm init -y
+npm i --save-dev ts-node
+```
+
+set script
+
+```json
+  "scripts": {
+    "start": "ts-node index.ts"
+  },
+```
+
+Run from command line
+
+```sh
+npx ts-node index.ts
+```
+
+Install ts-node globally to drop the npx.
+
+## Set up Express project
+
+```sh
+npm i express
+npm i --save-dev typescript @types/node @types/express
+tsc --init
+.
+Created a new tsconfig.json with:
+                                                                                                                     TS
+  target: es2016
+  module: commonjs
+  strict: true
+  esModuleInterop: true
+  skipLibCheck: true
+  forceConsistentCasingInFileNames: true
+
+
+You can learn more at https://aka.ms/tsconfig
+
+```
+
+```sh
+npm i --save-dev nodemon
+```
+
+```json
+  "scripts": {
+    "start": "nodemon index.ts"
+  },
+```
+
+## Very simple express app
+
+```ts
+import express from 'express';
+const app = express();
+const port = 8000;
+
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
+
+app.listen(port, () => console.log(`Server started, port ${port}`));
+```
+
+## Status
+
+By convention, when creating a new object the return code status should be 201.
