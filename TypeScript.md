@@ -1390,3 +1390,177 @@ export { Square } from './Square';
 ```ts
 import { Circle, Square } from './shapes';
 ```
+
+## Using JavaScript in TypeScript
+
+enable config
+
+```json
+        "module": "commonjs" /* Specify what module code is generated. */,
+        "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
+```
+
+commonjs is more compatible with modules.
+
+## Type Checking JS Code
+
+config option
+
+```json
+        "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
+```
+
+Can disable type checking
+
+```js
+// @ts-nocheck
+export function calculateTax(amount) {
+    return amount * 0.08;
+}
+```
+
+## Use JSDoc to provide type information in js files
+
+```js
+/**
+ * Calculate income tax.
+ * @param {number} amount - Net salary after expenses
+ * @returns {number}
+ */
+export function calculateTax(amount) {
+    return amount * 0.08;
+}
+```
+
+## Creating Declaration Files
+
+tax.d.ts created for tax.js
+
+```ts
+export declare function calculateTax(income: number): number;
+```
+
+## Using Definitely Typed Declaration Files
+
+There are declaration files for popular libraries.
+
+```sh
+npm i lodash
+npm i --save-dev @types/lodash
+```
+
+Some libraries have TypeScript definitions.
+
+## Using React with TypeScript
+
+https://reactjs.org/docs/static-type-checking.html#adding-typescript-to-a-project
+
+https://react-typescript-cheatsheet.netlify.app/docs/basic/setup/
+
+```sh
+npx create-react-app reminders-app --template typescript
+.
+Need to install the following packages:
+  create-react-app
+Ok to proceed? (y) y
+npm WARN deprecated tar@2.2.2: This version of tar is no longer supported, and will not receive security updates. Please upgrade asap.
+
+Creating a new React app in reminders-app.
+
+Installing packages. This might take a couple of minutes.
+Installing react, react-dom, and react-scripts with cra-template-typescript...
+
+
+added 1383 packages in 53s
+
+192 packages are looking for funding
+  run `npm fund` for details
+
+Installing template dependencies using npm...
+npm WARN deprecated source-map-resolve@0.6.0: See https://github.com/lydell/source-map-resolve#deprecated
+
+added 39 packages, and changed 1 package in 3s
+
+192 packages are looking for funding
+  run `npm fund` for details
+
+We detected TypeScript in your project (src/App.test.tsx) and created a tsconfig.json file for you.
+
+Your tsconfig.json has been populated with default values.
+
+Removing template package using npm...
+
+
+removed 1 package, and audited 1422 packages in 2s
+
+192 packages are looking for funding
+  run `npm fund` for details
+
+6 high severity vulnerabilities
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.
+
+Success! Created reminders-app at reminders-app
+Inside that directory, you can run several commands:
+
+  npm start
+    Starts the development server.
+
+  npm run build
+    Bundles the app into static files for production.
+
+  npm test
+    Starts the test runner.
+
+  npm run eject
+    Removes this tool and copies build dependencies, configuration files
+    and scripts into the app directory. If you do this, you can’t go back!
+
+We suggest that you begin by typing:
+
+  cd reminders-app
+  npm start
+
+Happy hacking!
+```
+
+## Adding Bootstrap
+
+```sh
+npm i bootstrap
+```
+
+Add to index.tsx
+
+```ts
+import 'bootstrap/dist/css/bootstrap.css';
+```
+
+## Creating a Component - Title
+
+install extension `Reactjs code snippets`
+
+`rsf` react stateless function
+
+## Calling the Backend
+
+jsonplaceholder.typicode.com
+
+## Emet abbreviation
+
+```sh
+label+input.form-control+button.btn.btn-primary.rounded-pill;
+```
+
+becomes
+
+```tsx
+    <label htmlFor=""></label>
+    <input type="text" className="form-control" />
+    <button className="btn btn-primary rounded-pill"></button>
+```
+
+Should work on tab, might need to invoke suggestions.
