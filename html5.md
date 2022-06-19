@@ -222,3 +222,186 @@ www.caniuse.com
 ```
 
 `audio` tag works like the `video` tag
+
+## Unordered list
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Unordered List</title>
+        <style>
+            ul {
+                list-style-type: square;
+            }
+        </style>
+    </head>
+    <body>
+        <ul>
+            <li>About me</li>
+            <li>
+                Courses
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>JavaScript</li>
+                </ul>
+            </li>
+            <li>Subscribe</li>
+            <li>Contact me</li>
+        </ul>
+    </body>
+</html>
+```
+
+## Ordered list
+
+vscode shortcut `ol>li*3`
+
+```html
+<ol>
+    <li>Preheat the oven</li>
+    <li>Place the ingredients on the crust</li>
+    <li>Put the pizza in the oven for 22 mins</li>
+</ol>
+```
+
+## Description list
+
+```html
+<dl>
+    <dt>Title</dt>
+    <dd>The Ultimate HTML and CSS Course</dd>
+    <dt>Author</dt>
+    <dd>Mosh Hamedani</dd>
+    <dt>Skills</dt>
+    <dd>HTML</dd>
+    <dd>CSS</dd>
+    <dd>Responsive Design</dd>
+    <dd>Search Engine Optimisation</dd>
+</dl>
+```
+
+will render like
+
+```txt
+Title
+    The Ultimate HTML and CSS Course
+Author
+    Mosh Hamedani
+Skills
+    HTML
+    CSS
+    Responsive Design
+    Search Engine Optimisation
+```
+
+## Semantic table
+
+better for screen readers
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Semantic Table</title>
+        <style>
+            table,
+            td,
+            th {
+                border: 1px solid grey;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            tfoot {
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Expenses</th>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <th>Cost</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Marketing</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>Accounting</td>
+                    <td>$200</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <th>Total</th>
+                    <th>$300</th>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>
+```
+
+# Div
+
+`div` is a block level element. They always start on a new line. They take the full width of the container.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <style>
+            div.product {
+                background-color: gold;
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="product">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a href="../index.html">Home page</a>
+        </div>
+        <div class="product">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <a href="../index.html">Home page</a>
+        </div>
+    </body>
+</html>
+```
+
+# Span
+
+`span` is an inline element, it will not take the entire width of the container.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <style>
+            .highlight {
+                background-color: yellow;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            <span class="highlight">Lorem</span> ipsum dolor sit amet consectetur adipisicing elit. Aliquid, laboriosam.
+        </p>
+    </body>
+</html>
+```
