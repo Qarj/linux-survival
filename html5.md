@@ -297,7 +297,7 @@ Skills
     Search Engine Optimisation
 ```
 
-## Semantic table
+## Semantic table with header and footer
 
 better for screen readers
 
