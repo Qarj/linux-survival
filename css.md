@@ -699,3 +699,11 @@ tbody tr:nth-child(odd) {
     background-color: #eef7ff;
 }
 ```
+
+## Box model
+
+margin -> border -> padding -> content
+
+Use margin to space out content to take advantage of margin collapsing.
+
+Padding is used to add space around the content to the border.
