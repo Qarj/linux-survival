@@ -707,3 +707,81 @@ margin -> border -> padding -> content
 Use margin to space out content to take advantage of margin collapsing.
 
 Padding is used to add space around the content to the border.
+
+content-box is the default box sizing method
+
+-   100px for the content width, 2*20px for the padding, 2*10px for the border = 160px width
+
+```css
+.box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    padding: 20px;
+    border: 10px solid orange;
+    box-sizing: content-box;
+}
+```
+
+broder-box makes the width and height be calculated from the border
+
+-   So 2*20px for the padding, 2*10px for the border leaves 40px for the content width
+
+```css
+.box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    padding: 20px;
+    border: 10px solid orange;
+    box-sizing: border-box;
+}
+```
+
+The width and height properties are only applied to block level elements.
+
+## Universal selector Change the default from content-box to border-box
+
+```css
+* {
+    box-sizing: border-box;
+}
+```
+
+But does not apply to pseudo elements!
+
+So do this
+
+```css
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+```
+
+## Put two boxes beside each other with inline-block
+
+```css
+.box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    padding: 20px;
+    border: 10px solid orange;
+    box-sizing: border-box;
+    display: inline-block;
+}
+```
+
+There will be a space between the boxes with inline-block
+
+```html
+<span class="box">Box</span> <span class="box">Box</span>
+```
+
+But if you put the two spans right beside each other, the space goes away
+
+```html
+<span class="box">Box</span><span class="box">Box</span>
+```
