@@ -785,3 +785,170 @@ But if you put the two spans right beside each other, the space goes away
 ```html
 <span class="box">Box</span><span class="box">Box</span>
 ```
+
+## Overflow
+
+If your content is too big for the box, by default it will overflow.
+
+You can choose to hide, or have scroll bars. `auto` is a good option.
+
+```css
+.box {
+    border: 3px solid gold;
+    width: 150px;
+    height: 150px;
+    overflow: auto;
+}
+```
+
+## Measurement Units
+
+`px` is absolute
+
+`%` is relative to the container size
+
+`vw` and `vh` are relative to the viewport size
+
+`em` and `rem` are relative to the font size
+
+If you set the width to 10em, that would be 10 times the font size of the element.
+If it doesn't have a font size, it inherits it from the parent element.
+By default it is 16px for the `html` element.
+
+If you set the height to 95vh, that would be 95% of the viewport height.
+
+`div` elements have a 0 height by default, the height will grow according to content.
+
+If you use `rem` then it is 10x the font size of the root elment.
+
+In `html` element, can set the font-size to `62.5%` which would be 10px be default - easier for making calculations.
+
+## Positioning
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="boxes">
+            <div class="box box-one"></div>
+            <div class="box box-two"></div>
+            <div class="box box-three"></div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.boxes {
+    border: 3px solid lightgrey;
+    position: relative;
+}
+
+.box {
+    width: 5rem;
+    height: 5rem;
+}
+
+.box-one {
+    background-color: gold;
+}
+
+.box-two {
+    background-color: tomato;
+    position: relative;
+    left: 4rem;
+    bottom: 4rem;
+    z-index: -3;
+}
+
+.box-three {
+    background-color: dodgerblue;
+}
+```
+
+Set the position to `relative`.
+
+Can use `left` `right` `top` `bottom` to move the container around.
+
+`z-index` defaults to 0, lower numbers make it further away, higher numbers closer.
+
+If you set the `boxes` class to `relative` you can then make `box-two` have
+an `absolute` position as follows
+
+```css
+.box-two {
+    background-color: tomato;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 99999;
+}
+```
+
+It will be removed from the flow of the page, so `box-three` will move up.
+
+With `fixed` position the container stays in place even on scroll.
+
+## Floating Elements
+
+`parent` elements do not see floated elements.
+
+When we use floats we should `clear` afterwards.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <article class="tweet clearfix">
+            <div class="avatar"></div>
+            <p>Lorem ipsum dolor sit amet.</p>
+        </article>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.tweet {
+    border: 3px solid lightgrey;
+}
+
+.clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.avatar {
+    width: 5rem;
+    height: 5rem;
+    background-color: gold;
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.clear {
+    clear: both;
+}
+```
+
+[clearfix](images/clearfix.png)
