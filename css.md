@@ -1103,3 +1103,225 @@ flex: 1 1 15rem;
 ```
 
 1st value will be grow, second value shrink and third value basis.
+
+## Grid
+
+```css
+.container {
+    display: grid;
+    grid-template-rows: repeat(3, 100px);
+    grid-template-columns: repeat(2, 100px);
+    grid-template: repeat(3, 100px) / repeat(2, 100px);
+    border: 3px solid lightgrey;
+}
+```
+
+longform syntax
+
+```css
+grid-template-rows: repeat(3, 100px);
+grid-template-columns: repeat(2, 100px);
+```
+
+shorthand syntax
+
+```css
+grid: repeat(3, 100px) / repeat(2, 100px);
+```
+
+aligning items (default is `stretch`)
+
+-   `justify-items` (horizontal)
+-   `align-items` (vertical)
+
+aligning content
+
+```css
+justify-content: center;
+align-content: center;
+height: 90vh;
+```
+
+Fractions instead of percentages
+
+```css
+grid-template: repeat(3, 100px) / 100px 30fr 70fr;
+```
+
+`30fr` is 30% of the (remaining) available space, whereas specifying `30%` would be 30% content space.
+
+gap longhand
+
+```css
+row-gap: 10px;
+column-gap: 10px;
+```
+
+gap shorthand
+
+```css
+gap: 10px;
+```
+
+Placing items with
+
+-   `grid-row`
+-   `grid-column`
+-   `grid-area` (shorthand)
+
+Make box one span two columns
+
+```css
+.box-one {
+    grid-column: 1 / span 2;
+}
+```
+
+Using named areas
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="box box-one">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+            <div class="box box-four">D</div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template: 100px auto 100px / 30fr 70fr;
+    grid-template-areas:
+        'header  header'
+        'sidebar main'
+        '.       footer';
+    row-gap: 10px;
+    column-gap: 10px;
+    gap: 10px;
+    border: 3px solid lightgrey;
+    height: 90vh;
+}
+
+.box {
+    background-color: gold;
+}
+
+.box-one {
+    grid-area: header;
+}
+
+.box-four {
+    grid-area: footer;
+}
+```
+
+![grid-namedAreas](images/grid-namedAreas.png)
+
+## Hiding Elements
+
+Set `display: none;` removes the element entirely including the space it would take.
+
+Set `visibility: hidden;` hides the element but keeps the space it would take.
+
+## Media Queries for Responsive Design
+
+To provide different styles for different screen sizes, use media queries.
+
+Take a mobile first approach, and do media queries for the desktop.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cumque provident totam id asperiores? Ad
+                    sit voluptates dignissimos recusandae. Maiores odit dignissimos veniam, quibusdam est eius non rerum
+                    dolorum sunt recusandae.
+                </p>
+            </div>
+            <div class="box">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem voluptatum facere aliquam
+                    aperiam rerum quasi atque deserunt harum, sequi dicta commodi totam!
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.box {
+    background: gold;
+    padding: 1rem;
+}
+
+.box:nth-of-type(2) {
+    background: dodgerblue;
+}
+
+@media screen and (min-width: 600px) {
+    .container {
+        flex-direction: row;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .container {
+        flex-direction: row;
+    }
+    .box {
+        background: greenyellow;
+    }
+}
+
+@media print {
+    body {
+        font-size: 12pt;
+    }
+
+    .box {
+        padding: 0.5cm;
+        background: white;
+    }
+}
+```
+
+![responsive1](images/responsive1.png)
+
+![responsive2](images/responsive2.png)
+
+![responsive3](images/responsive3.png)
