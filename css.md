@@ -951,4 +951,4 @@ body {
 }
 ```
 
-[clearfix](images/clearfix.png)
+![clearfix](images/clearfix.png)
