@@ -457,4 +457,4 @@ examples
 | `<header>`  | Page header                |
 | `<footer>`  | Page footer                |
 | `<aside>`   | Sidebar                    |
-| `<nav>`     | Navigation                 |
+| `<nav>`     | Navigation, nav-bar        |

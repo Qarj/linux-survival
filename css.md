@@ -953,7 +953,7 @@ body {
 
 ![clearfix](images/clearfix.png)
 
-User `FlexBox` and `Grid` instead, `Floating Elements` is a legacy approach.
+Use `FlexBox` and `Grid` instead, `Floating Elements` is a legacy approach.
 
 ## FlexBox
 
@@ -1176,6 +1176,69 @@ Make box one span two columns
     grid-column: 1 / span 2;
 }
 ```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <main class="container">
+            <img src="https://source.unsplash.com/collection/190727/800x600?1" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?2" alt="" class="photo big" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?3" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?4" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?5" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?6" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?7" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?8" alt="" class="photo" />
+            <img src="https://source.unsplash.com/collection/190727/800x600?9" alt="" class="photo" />
+        </main>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.container {
+    display: grid;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.photo {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+@media screen and (min-width: 768px) {
+    .container {
+        grid-template: 50fr 50fr / 50fr 50fr;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .container img:nth-of-type(3) {
+        grid-column: 2 / 4;
+        grid-row: 1 / 3;
+    }
+}
+```
+
+![grid-spans](images/grid-spans.png)
 
 Using named areas
 
