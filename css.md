@@ -952,3 +952,154 @@ body {
 ```
 
 ![clearfix](images/clearfix.png)
+
+User `FlexBox` and `Grid` instead, `Floating Elements` is a legacy approach.
+
+## FlexBox
+
+Used for laying out elements in one direction.
+
+There is a main axis and a cross axis.
+
+It depends on whether you are using `row` or `column` for the `flex-direction`.
+
+Align items with `justify-content` (main axis) and `align-items` (cross axis).
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.container {
+    border: 3px solid lightgrey;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.box {
+    width: 5rem;
+    height: 5rem;
+    background: gold;
+    margin: 1rem;
+}
+```
+
+![flexbox-center](images/flexbox-center.png)
+
+`justify-content` other options:
+
+-   `space-evenly`
+-   `space-around`
+-   `space-between`
+-   `flex-start`
+-   `flex-end`
+
+`align-content` gives control over wrapped content
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="box">A</div>
+            <div class="box">B</div>
+            <div class="box">C</div>
+            <div class="box">D</div>
+            <div class="box">E</div>
+            <div class="box">F</div>
+            <div class="box">G</div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+}
+
+.container {
+    border: 3px solid lightgrey;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    height: 90vh;
+}
+
+.box {
+    width: 5rem;
+    height: 5rem;
+    background: gold;
+    margin: 1rem;
+}
+```
+
+![flexbox-align-content](images/flexbox-align-content.png)
+
+It is also possible to move one of the boxes to a different position.
+
+This will move the box to the top
+
+```css
+.box-one {
+    align-self: flex-start;
+}
+```
+
+Size items with
+
+-   `flex-basis`
+-   `flex-grow`
+-   `flex-shrink`
+-   `flex`
+
+Grow the items
+
+```css
+flex-grow: 1;
+```
+
+Shrink the items
+
+```css
+flex-shrink: 1;
+```
+
+Assign different numbers to the boxes to control their relative size.
+
+Using `flex` shorthand
+
+```css
+flex: 1 1 15rem;
+```
+
+1st value will be grow, second value shrink and third value basis.
