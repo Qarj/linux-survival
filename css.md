@@ -1388,3 +1388,150 @@ body {
 ![responsive2](images/responsive2.png)
 
 ![responsive3](images/responsive3.png)
+
+## Styling fonts
+
+Web safe fonts
+
+```css
+body {
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+    font-weight: 600;
+    font-style: italic;
+    font-size: 1rem;
+    color: #333;
+}
+```
+
+## Embedding Web Fonts
+
+Free fonts on [Font Squirrel](https://www.fontsquirrel.com)
+
+-   Open Sans
+
+Font formats
+
+-   TTF
+-   OTF
+-   EOT
+-   WOFF
+-   WOFF 2.0
+
+WOFF and WOFF 2.0 are compressed versions of the TTF and OTF files.
+
+Use the Webfont Generator feature of Font Squirrel to generate the necessary files.
+
+Then add them to your project.
+
+```css
+@font-face {
+    font-family: 'opensans';
+    src: url('fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'), url('fonts/open-sans/opensans-regular-webfont.woff')
+            format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'opensans';
+    src: url('fonts/open-sans/opensans-bold-webfont.woff2') format('woff2'), url('fonts/open-sans/opensans-bold-webfont.woff')
+            format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+    margin: 10px;
+    font-family: 'opensans', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+p {
+    font-size: 1rem;
+    color: #111;
+}
+```
+
+Can reduce the font size by removing unneeded characters from the font.
+This is the `Expert Mode` on font squirrel.
+
+`font-display` of `optional` is recommended for web fonts.
+
+```css
+@font-face {
+    font-family: 'opensans';
+    src: url('fonts/open-sans/opensans-regular-webfont.woff2') format('woff2'), url('fonts/open-sans/opensans-regular-webfont.woff')
+            format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: optional;
+}
+```
+
+## Font-Services
+
+Lots of free fonts on [Google Web Fonts](https://fonts.google.com).
+
+Paid fonts
+
+-   Adobe Fonts (fonts.adobe.com)
+-   fonts.com
+-   fontdeck.com
+
+Put the links google gives you in the `<head>` of your HTML before your own stylesheets
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Roboto:wght@700&display=optional"
+    rel="stylesheet"
+/>
+```
+
+They can then be used by name
+
+```css
+body {
+    margin: 10px;
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+}
+```
+
+## System font stack
+
+If you don't care that the fonts are different on different platforms, you can use the system font stack.
+
+These tend to be modern fonts, better than the web safe fonts. But the web page will look different between platforms.
+
+```css
+body {
+    margin: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+}
+
+h1 {
+    font-family: 'Segoe UI';
+}
+
+p {
+    font-size: 1rem;
+    color: #111;
+}
+```
