@@ -1535,3 +1535,253 @@ p {
     color: #111;
 }
 ```
+
+## Sizing Fonts
+
+Go to [Type Scale](https://type-scale.com/) to help choose the right font sizes.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia pariatur distinctio quibusdam cum quo rem
+            velit delectus officiis? Autem dolor sit recusandae ducimus similique. Deleniti sint laudantium quaerat
+            ullam ipsa? Tempore magni adipisci dicta. Vitae laboriosam nemo amet rerum accusamus esse iste. Deserunt
+            ipsa, repudiandae aut minus perspiciatis delectus provident animi eos soluta? Odit, laborum quos corrupti
+            quaerat aliquid ipsum! Pariatur, nemo! Atque, quis quisquam dolores inventore eius eaque praesentium
+            blanditiis maxime nemo repudiandae unde mollitia, saepe nobis est ad dicta exercitationem soluta, vitae
+            delectus debitis laudantium facere eveniet neque. Nostrum molestiae provident dignissimos quaerat autem
+            rerum cumque cupiditate nesciunt sunt eos eius fuga odit nihil alias placeat quibusdam excepturi consectetur
+            enim, quis voluptas vero praesentium! Asperiores dolorem officiis vero? Facilis totam asperiores magnam
+            accusamus animi ipsam iusto laudantium dolor, porro error officiis labore minus vel ab sit sint quia
+            perferendis harum recusandae provident consequuntur omnis? Quibusdam reiciendis vero provident!
+        </p>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 4.209rem;
+}
+
+h2 {
+    font-size: 3.157rem;
+}
+
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 130%;
+    }
+}
+```
+
+## Vertical Spacing
+
+Law of proximity - objects close to each other are related.
+
+As a rule of thumb, the top margin should be greater than the bottom margin.
+
+```css
+h1 {
+    margin: 3rem 0 1rem;
+}
+```
+
+If you don't supply a unit to the `line-height` it will be treated as a multiplier from the font size.
+
+```css
+body {
+    font-size: 1rem;
+    line-height: 1.5;
+}
+```
+
+## Horizontal Spacing
+
+```css
+body {
+    letter-spacing: 1px;
+    word-spacing: 2px;
+}
+```
+
+Ideal line length is between 50 - 70 characters.
+
+Set the width of the line to 50 zeros, (is are smaller)
+
+```css
+p {
+    width: 50ch;
+}
+```
+
+## Formatting Text
+
+-   text-align
+-   text-indent
+-   text-decoration
+-   text-transform
+-   white-space
+-   column-\*
+-   direction
+
+Select the p elements after the first one and indent
+
+```css
+p + p {
+    text-indent: 1rem;
+}
+```
+
+Underline text
+
+```css
+p {
+    text-decoration: underline;
+}
+```
+
+Strike through / line through
+
+```css
+p {
+    text-decoration: line-through;
+}
+```
+
+Make text uppercase or lowercase, or capitalize first letter of each word
+
+```css
+p {
+    text-transform: lowercase;
+}
+```
+
+Turn off line wrap
+
+```css
+p {
+    white-space: nowrap;
+}
+```
+
+Truncate text with three dots ... when it is too long
+
+```css
+p {
+    border: 3px solid gold;
+    width: 50ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
+
+Multi column text
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <h1>Heading 1</h1>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Officia pariatur distinctio quibusdam cum quo rem
+            velit delectus officiis? Autem dolor sit recusandae ducimus similique. Deleniti sint laudantium quaerat
+            ullam ipsa? Tempore magni adipisci dicta. Vitae laboriosam nemo amet rerum accusamus esse iste. Deserunt
+            ipsa, repudiandae aut minus perspiciatis delectus provident animi eos soluta?
+        </p>
+        <p>Another paragraph starts here.</p>
+        <p>And yet another</p>
+    </body>
+</html>
+```
+
+```css
+body {
+    margin: 10px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h1 {
+    font-size: 4.209rem;
+}
+
+h2 {
+    font-size: 3.157rem;
+}
+
+h1 {
+    margin: 3rem 0 1rem;
+}
+
+p {
+    width: 50ch;
+    column-count: 2;
+    column-gap: 2rem;
+    column-rule: 3px dotted #999;
+}
+
+p + p {
+    text-indent: 1rem;
+}
+
+@media screen and (min-width: 400px) {
+    html {
+        font-size: 130%;
+    }
+}
+```
+
+![multicolumn](images/multicolumn.png)
+
+Set the text direction to right-to-left
+
+```css
+p {
+    direction: rtl;
+}
+```
