@@ -1210,7 +1210,6 @@ body {
 .container {
     display: grid;
     align-items: center;
-    justify-content: flex-start;
     gap: 10px;
 }
 
@@ -1991,3 +1990,166 @@ body {
 ```
 
 ![right-arrow-clip](images/right-arrow-clip.png)
+
+## Filters
+
+Google `css filter functions`.
+
+```css
+.meal {
+    filter: grayscale(70%) brightness(0.5) blur(2px);
+}
+
+.meal:hover {
+    filter: none;
+}
+```
+
+## Supporting High-density Screens
+
+iPhone 4 has a physical resolution of 960 x 640, but a logical resolution of 480 x 320. Device Pixel Ratio = 2
+
+Compression of 7 on jpeg is ok.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <img
+            src="images/meal.jpg"
+            alt="A bowl of salmon and curry"
+            class="meal"
+            srcset="images/meal.jpg 1x, images/meal@2x.jpg 2x, images/meal@3x.jpg 3x"
+        />
+    </body>
+</html>
+```
+
+```css
+.meal {
+    width: 400px;
+}
+```
+
+## Resolution Switching
+
+Use [Responsive Breakpoints](https://responsivebreakpoints.com) to help determine the breakpoints.
+
+Here we set the breakpoints in the html and don't need css.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <img
+            src="images/meal.jpg"
+            alt="A bowl of salmon and curry"
+            class="meal"
+            srcset="images/meal.jpg 400w, images/meal@2x.jpg 800w, images/meal@3x.jpg 1200w"
+            sizes="(max-width: 500px) 100vw, (max-width: 700px) 50vw, 33vw"
+        />
+    </body>
+</html>
+```
+
+## Modern Image Formats
+
+Go to [Cloud Convert](https://www.cloudconvert.com/) to convert images to WebP.
+
+For browsers that don't support it, can provide fallback
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <picture>
+            <source type="image/webp" srcset="images/meal.webp 1x, images" />
+            <source type="image/jpeg" srcset="images/meal.jpg 1x, images" />
+            <img src="images/meal.jpg" alt="A bowl of salmon and curry" />
+        </picture>
+    </body>
+</html>
+```
+
+## Art Direction
+
+Showing different images based on media queries. Mobile, tablet, desktop.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <picture>
+            <source media="(max-width: 500px)" srcset="images/meal-cropped.jpg" />
+            <source media="(min-width: 501px)" srcset="images/meal.jpg" />
+            <img src="images/meal.jpg" alt="A bowl of salmon and curry" />
+        </picture>
+    </body>
+</html>
+```
+
+## SVG Images - Scalable Vector Graphics
+
+Go to [SVG Backgrounds](https://www.svgbackgrounds.com/) to get nice svg backgrounds.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>HTML</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <img class="ufo" src="images/ufo.svg" alt="Unidentified Flying Object" />
+    </body>
+</html>
+```
+
+```css
+html {
+    font-size: 62.5%;
+}
+
+body {
+    margin: 10px;
+    background: url(../images/constellation.svg);
+}
+
+.ufo {
+    width: 100px;
+}
+```
+
+## Icon Fonts
+
+-   Font Awesome
+-   Ionicons
+-   Material Design Icons
+
+Go to [Font Awesome](https://fontawesome.com/) to get the icons.
