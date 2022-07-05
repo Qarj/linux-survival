@@ -24,6 +24,7 @@ git config --global alias.summary "shortlog -n -s -e" --replace-all
 git config --global alias.pruneremote "remote prune origin" --replace-all
 git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
+git config --global pull.rebase false
 ```
 
 ```sh
