@@ -138,10 +138,16 @@ downloads image instead of displaying it
 <a href="./images/Photo.png" download>My Photo </a>
 ```
 
-jump to anchor tag
+create an anchor tag
 
 ```html
-<a href="#section-css">CSS</a>
+<a name="section-css">CSS Section</a>
+```
+
+jump to anchor tag (will work on initial page load also, no JavaScript required)
+
+```html
+<a href="#section-css">Jump to CSS section</a>
 ```
 
 jump to top
