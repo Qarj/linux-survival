@@ -464,3 +464,107 @@ examples
 | `<footer>`  | Page footer                |
 | `<aside>`   | Sidebar                    |
 | `<nav>`     | Navigation, nav-bar        |
+
+## Forms
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My web page</title>
+        <style></style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="name">Name</label>
+                <input id="name" type="text" />
+            </div>
+            <div>
+                <label for="email">Email</label>
+                <input id="email" type="email" />
+            </div>
+            <button type="submit">Register</button>
+            <button type="reset">Clear</button>
+        </form>
+    </body>
+</html>
+```
+
+## Datalist
+
+Use built in browser feature to provide a list of options for a user to select.
+
+Every browser implements this feature differently.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <input type="text" list="countries" autocomplete="off" />
+            <datalist id="countries">
+                <option data-value="1">Australia</option>
+                <option>Canada</option>
+                <option>India</option>
+                <option>United States</option>
+            </datalist>
+        </form>
+    </body>
+</html>
+```
+
+```css
+form {
+    width: 50%;
+    padding: 2rem;
+}
+
+textarea {
+    resize: none;
+}
+```
+
+## Dropdowns
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <select>
+                <optgroup label="Front-end Courses">
+                    <option value="1">HTML</option>
+                    <option value="2">CSS</option>
+                    <option value="3">JavaScript</option>
+                </optgroup>
+                <optgroup label="Back-end Courses">
+                    <option value="10">Node.js</option>
+                    <option value="11">ASP.NET</option>
+                    <option value="12">Django</option>
+                </optgroup>
+            </select>
+        </form>
+    </body>
+</html>
+```
+
+Can apply attributes like
+
+-   `multiple` to allow multiple selections (to select element)
+-   `selected` to select an option by default
+-   `disabled` to disable an option (will not be selectable)
