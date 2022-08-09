@@ -568,3 +568,193 @@ Can apply attributes like
 -   `multiple` to allow multiple selections (to select element)
 -   `selected` to select an option by default
 -   `disabled` to disable an option (will not be selectable)
+
+## Checkboxes
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <div>
+                <input type="checkbox" id="front-end" />
+                <label class="label-inline" for="front-end">Front-end</label>
+            </div>
+            <div>
+                <input type="checkbox" id="back-end" checked />
+                <label class="label-inline" for="back-end">Back-end</label>
+            </div>
+        </form>
+    </body>
+</html>
+```
+
+## Radio Buttons
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <div>
+                <input type="radio" name="membership" id="silver" checked />
+                <label class="label-inline" for="silver">Silver</label>
+            </div>
+            <div>
+                <input type="radio" name="membership" id="gold" />
+                <label class="label-inline" for="gold">Gold</label>
+            </div>
+        </form>
+    </body>
+</html>
+```
+
+## Sliders
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <input type="range" min="0" max="100" value="70" />
+        </form>
+    </body>
+</html>
+```
+
+## File Uploads
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <input type="file" accept=".jpg" />
+        </form>
+    </body>
+</html>
+```
+
+## Grouping Related Fields
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Billing Address</legend>
+                <input type="text" /><input type="text" /><input type="text" />
+            </fieldset>
+            <fieldset>
+                <legend>Payment</legend>
+                <input type="text" /><input type="text" /><input type="text" />
+            </fieldset>
+        </form>
+    </body>
+</html>
+```
+
+## Hidden Fields
+
+For sending required info back to the server.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <input type="hidden" name="course-id" value="1234" />
+        </form>
+    </body>
+</html>
+```
+
+## Form Validation
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form>
+            <input type="text" required minlength="3" maxlength="10" />
+            <input type="email" />
+            <input type="date" />
+            <input type="password" />
+            <input type="number" min="-5" max="15" />
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+```
+
+## Form Submission using Formspree
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>My form</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+        <!-- Milligram CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" />
+    </head>
+    <body>
+        <form action="https://formspree.io/f/mjvzvkbv" method="POST">
+            <input type="text" placeholder="Name" name="name" />
+            <input type="text" placeholder="Email" name="email" />
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
+```
