@@ -2295,3 +2295,220 @@ Makes nice forms by default with just a 2.5 KB download.
     </body>
 </html>
 ```
+
+## Transform
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="box1">Lorem, ipsum dolor sit amet consectetur adipisicing blit.</div>
+        <div class="box2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div class="box3">Lorem, ipsum dolor sit amet consectetur adipisicing slit.</div>
+        <div class="box4">Lorem, ipsum dolor sit amet consectetur adipisicing xlit.</div>
+    </body>
+</html>
+```
+
+```css
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box1,
+.box2,
+.box3,
+.box4 {
+    width: 100px;
+    height: 100px;
+    background: gold;
+}
+
+.box1:hover {
+    transform: scale(1.5);
+}
+
+.box2:hover {
+    transform: rotate(15deg);
+}
+
+.box3:hover {
+    transform: skew(15deg);
+}
+
+.box4:hover {
+    transform: translate(45px, 45px) rotate(15deg);
+}
+```
+
+## 3D Transforms
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="box1">Lorem, ipsum dolor sit amet consectetur adipisicing blit.</div>
+        <div class="box2">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</div>
+        <div class="box3">Lorem, ipsum dolor sit amet consectetur adipisicing slit.</div>
+        <div class="container">
+            <div class="box">Lorem, ipsum dolor sit amet consectetur adipisicing qlit.</div>
+            <div class="box">Lorem, ipsum dolor sit amet consectetur adipisicing alit.</div>
+        </div>
+    </body>
+</html>
+```
+
+```css
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box,
+.box1,
+.box2,
+.box3,
+.box4 {
+    width: 100px;
+    height: 100px;
+    background: gold;
+}
+
+.box1:hover {
+    transform: perspective(200px) translateZ(-50px);
+}
+
+.box2:hover {
+    transform: perspective(200px) rotateY(45deg);
+}
+
+.box3:hover {
+    transform: perspective(200px) rotateY(45deg);
+    transform-origin: 0 50%;
+}
+
+.container {
+    perspective: 200px;
+}
+
+.container:hover .box {
+    transform: rotateY(45deg);
+    transform-origin: 0 50%;
+}
+```
+
+## Transitions
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="box">Lorem, ipsum dolor sit amet consectetur adipisicing alit.</div>
+    </body>
+</html>
+```
+
+```css
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), background 0.5s;
+}
+/* transition: transform 0.5s ease-in; */
+
+.box:hover {
+    transform: rotate(45deg);
+    background: dodgerblue;
+}
+```
+
+## Animations
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Login</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="box">Lorem, ipsum dolor sit amet consectetur adipisicing alit.</div>
+    </body>
+</html>
+```
+
+```css
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    25% {
+        transform: scale(1.3);
+    }
+    50% {
+        transform: rotate(45deg);
+        background: tomato;
+    }
+    100% {
+        transform: rotate(0);
+    }
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background: gold;
+    animation-name: pop;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-out;
+    animation-direction: alternate;
+}
+```
+
+Go to https://animate.style and find any animations. You will be happy.
