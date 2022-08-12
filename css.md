@@ -2512,3 +2512,130 @@ body {
 ```
 
 Go to https://animate.style and find any animations. You will be happy.
+
+## Naming conventions
+
+Choose a naming convention and stick to it.
+
+## Sections in Stylesheet
+
+```css
+/* Global styles */
+
+/* Basic styles */
+
+/* Typography */
+
+/* Forms */
+
+/* Navigation Bar */
+```
+
+## Crafting selectors
+
+-   don't make too specific
+-   define the classes you need
+-   avoid !important
+-   sort properties in alphabetical order
+-   take advantage of inheritance
+
+## CSS Variables
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Variables</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="one">One</div>
+        <div class="two">Two</div>
+    </body>
+</html>
+```
+
+```css
+:root {
+    --color-primary: #ffdd36;
+    --border-size: 2px;
+    --border-radius: 10px;
+}
+
+.one {
+    background: var(--color-primary);
+}
+
+.two {
+    background: var(--color-primary);
+}
+```
+
+## Object Oriented Principles
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Object Oriented CSS</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <header class="hero"><button class="btn btn-primary">Sign up</button></header>
+        <aside class="side-bar"><button class="btn btn-secondary">Contact</button></aside>
+    </body>
+</html>
+```
+
+```css
+.btn {
+    background: gold;
+    border: 0;
+    border-radius: 30px;
+    padding: 1rem 2rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+        'Helvetica Neue', sans-serif;
+}
+
+.btn-primary {
+    background: gold;
+}
+
+.btn-secondary {
+    background: dodgerblue;
+}
+```
+
+## Popular naming convention - BEM - Block Element Modifier
+
+Use two hyphens to separate a block from a modifier.
+
+Use two underscores to separate a block from an element.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>BEM - Block Element Modifier</title>
+        <link rel="stylesheet" href="css/normalize.css" />
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <div class="card card--popular"></div>
+        <header class="card__header">
+            <span class="card__price"></span>
+        </header>
+        <div class="card__body">
+            <button class="btn"></button>
+        </div>
+    </body>
+</html>
+```
