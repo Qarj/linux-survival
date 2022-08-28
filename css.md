@@ -2639,3 +2639,14 @@ Use two underscores to separate a block from an element.
     </body>
 </html>
 ```
+
+## Getting newlines to work with React e.g \n for newlines in JSON
+
+https://tomoharutsutsumi.medium.com/making-new-line-in-react-and-json-4607aa8827ff
+
+```css
+.card {
+    white-space: pre-line;
+}
+```
+
