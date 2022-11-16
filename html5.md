@@ -873,3 +873,37 @@ body {
     color: #6c757d;
 }
 ```
+
+## Emojis
+
+https://unicode-table.com/en/274C/
+
+e.g. 🔍 ❌
+
+magnifying glass, cross mark
+
+## target element based on focus of another element
+
+```css
+.cross {
+    opacity: 0;
+}
+
+.input-jobtitle:focus ~ .cross {
+    opacity: 1;
+}
+```
+
+Or possibly use + instead of ~
+
+## Target an element based on if the placeholder is being shown
+
+```css
+.cross {
+    opacity: 0;
+}
+
+.input-jobtitle:not(:placeholder-shown) ~ .cross {
+    opacity: 1;
+}
+```

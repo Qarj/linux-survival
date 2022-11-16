@@ -44,3 +44,38 @@ sudo apt install --no-install-recommends yarn
 ```
 
 Note: removing `--no-install-recommends` will install node js also.
+
+## Clear an input field in react / next.js
+
+```tsx
+import { useRef } from 'react';
+
+const inputRef = useRef(null);
+const onCrossClick = () => {
+    // @ts-ignore
+    inputRef.current.value = '';
+};
+
+return (
+    <div>
+        <div className="item input-container">
+            <span>🔍</span>
+            <input
+                className="input-jobtitle"
+                type="text"
+                placeholder="Search job title/skill"
+                ref={inputRef}
+                onChange={(e) => {
+                    send({
+                        type: 'Job title changed',
+                        value: e.target.value,
+                    });
+                }}
+            ></input>
+            <span onClick={onCrossClick} className="cross">
+                ❌
+            </span>
+        </div>
+    </div>
+);
+```

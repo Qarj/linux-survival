@@ -177,6 +177,31 @@ Will make all general siblings p elements red:
 }
 ```
 
+## Has Selector
+
+Target a class or element based on the status of another class or element.
+
+```html
+<div className="feedback-selection">
+    <input className="hidden-rb" type="radio" id="feedback5" name="feedback" value="😍" />
+    <label htmlFor="feedback5">😍</label>
+</div>
+```
+
+```css
+.feedback-selection:has(:checked) {
+    background-color: rgb(204, 229, 255);
+}
+
+.hidden-rb {
+    display: none;
+}
+```
+
+This example will change the background colour of the parent element when the child element is checked.
+
+Supported from mid-2022 in Chrome and Safari. https://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector
+
 ## Pseudo-class Selectors
 
 First child
@@ -2649,4 +2674,3 @@ https://tomoharutsutsumi.medium.com/making-new-line-in-react-and-json-4607aa8827
     white-space: pre-line;
 }
 ```
-
