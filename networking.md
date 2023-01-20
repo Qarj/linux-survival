@@ -1,4 +1,6 @@
-# Check port reachable
+## Check connectivity to a port
+
+Check port reachable on a host, server port reachable, host port reachable
 
 ```
 nc -zv 127.0.0.1 80
