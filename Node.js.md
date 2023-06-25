@@ -5,24 +5,24 @@
 Check latest script here: https://github.com/nvm-sh/nvm#installing-and-updating
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 
 Restart bash.
 
 ```sh
 nvm ls-remote --lts
-nvm install 16
+nvm install 18
 .
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v16.15.0 (npm v8.5.5).
+Now using node v18.16.1 (npm v9.5.1)
 ```
 
-Then add the following to the bottom of `.bashrc`
+Then add the following to the middle of `.bashrc`, also moving up the nvm code appended to the end.
 
 ```sh
-nvm use 16
+nvm use 18
 ```
 
 Caution - version of npm will be changed, might need to reinstall it - `NPM.md`.
