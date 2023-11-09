@@ -1,6 +1,6 @@
-# Install Node
+# Node.js
 
-# Ubuntu 20.04
+## Ubuntu 20.04
 
 Check latest script here: https://github.com/nvm-sh/nvm#installing-and-updating
 
@@ -33,7 +33,7 @@ Some npm packages require `build-essential` to work so install it now.
 sudo apt install build-essential
 ```
 
-# Windows Install - via Choco
+## Windows Install - via Choco
 
 Open up an administrator command prompt and install Chocolatey
 
@@ -66,7 +66,7 @@ Might have to reorder Windows path (check user as well as system path).
 
 Finally, go to `NPM.md` and install the required NPM version.
 
-# Windows Install - NVM - DO NOT USE, BUGGED!
+## Windows Install - NVM - DO NOT USE, BUGGED!
 
 This does not survive opening another command prompt, use the choco method.
 
@@ -87,4 +87,28 @@ Must install specific version, do not do `nvm install 16`
 ```
 nvm install 16.15.0
 nvm use 16.15.0
+```
+
+## Debugging uncaught exceptions
+
+```js
+process.on('uncaughtException', (err) => {
+    console.log('Caught uncaught exception: ', err);
+    fs.writeFileSync(
+        '/Users/tim.buckland/stacks/unhandled_exception.log',
+        `Caught exception: ${err}\n${err.stack}`,
+        'utf8',
+    );
+    process.exit(1);
+});
+
+process.on('unhandledRejection', (reason, promise) => {
+    console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+    fs.writeFileSync(
+        '/Users/tim.buckland/stacks/unhandled_rejection.log',
+        `Unhandled Rejection at: ${promise}\nReason: ${reason}`,
+        'utf8',
+    );
+    process.exit(1);
+});
 ```
