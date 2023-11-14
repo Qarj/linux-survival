@@ -83,6 +83,13 @@ This will remove the local commit and unstage the changes.
 git reset HEAD~
 ```
 
+## Force git to recognise file or folder case changes e.g example -> Example
+
+```sh
+git rm -r --cached .
+git add --all .
+```
+
 ## CentOs
 
 ```
