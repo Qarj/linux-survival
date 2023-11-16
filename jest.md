@@ -12,3 +12,14 @@ npm i -D @types/jest@26
 ```sh
 npm run test -- --testRegex "src/__tests__/*.ts"
 ```
+
+## TextDecoder is not defined
+
+Put at top of test file
+
+```ts
+import { TextEncoder, TextDecoder } from 'util';
+Object.assign(global, { TextDecoder, TextEncoder });
+```
+
+In theory it should work in jest.setup.tsx but it didn't for me.
