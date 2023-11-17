@@ -112,3 +112,42 @@ process.on('unhandledRejection', (reason, promise) => {
     process.exit(1);
 });
 ```
+
+## Rest client extension for vscode
+
+Install
+
+```
+code --install-extension humao.rest-client
+```
+
+```
+# Get all books
+GET http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Add new book
+POST http://localhost:3001/books HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "The Lord of the Rings"
+}
+
+###
+
+# Update book by id
+PUT http://localhost:3001/books/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Dark rings of the lord"
+}
+
+###
+
+# Delete book by id
+DELETE http://localhost:3001/books/1 HTTP/1.1
+```
