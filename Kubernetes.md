@@ -55,6 +55,22 @@ kube-system   kube-scheduler-minikube            1/1     Running   0            
 kube-system   storage-provisioner                1/1     Running   1 (109s ago)   2m2s
 ```
 
+## Setup kubectl alias in `.bashrc`
+
+```sh
+alias kubectl="minikube kubectl --"
+```
+
+Start new terminal
+
+```sh
+kubectl version
+.
+Client Version: v1.28.3
+Kustomize Version: v5.0.4-0.20230601165947-6ce0bf390ce3
+Server Version: v1.28.3
+```
+
 ## Setup Dashboard and start browser in terminal
 
 ```sh
@@ -73,4 +89,18 @@ minikube dashboard
 🤔  Verifying proxy health ...
 🎉  Opening http://127.0.0.1:39007/api/v1/namespaces/kubernetes-dashboard/services/http:kubernetes-dashboard:/proxy/ in your default browser...
 Opening in existing browser session.
+```
+
+## Install Ingress Nginx on minikube
+
+```sh
+minikube addons enable ingress
+.
+💡  ingress is an addon maintained by Kubernetes. For any concerns contact minikube on GitHub.
+You can view the list of minikube maintainers at: https://github.com/kubernetes/minikube/blob/master/OWNERS
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20231011-8b53cabe0
+    ▪ Using image registry.k8s.io/ingress-nginx/controller:v1.9.4
+    ▪ Using image registry.k8s.io/ingress-nginx/kube-webhook-certgen:v20231011-8b53cabe0
+🔎  Verifying ingress addon...
+🌟  The 'ingress' addon is enabled
 ```
