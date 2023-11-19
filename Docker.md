@@ -101,3 +101,31 @@ cat /etc/resolv.conf
 ```
 
 In addition to this, it might be necessary to go into the network settings and specify a manual IPv4 Method.
+
+## Common commands
+
+```sh
+docker build -t qarj/posts .
+docker run [image id or image tag]
+docker run -it qarj/posts sh
+docker ps
+docker exec -it [container id] [command]
+docker logs [container id]
+docker run -it qarj/posts sh
+```
+
+CTRL+P+Q to exit container without stopping it.
+CTRL+D to exit container and stop it.
+
+Getting logs
+
+```sh
+docker run qarj/posts
+```
+
+Then in another terminal
+
+```sh
+docker ps
+docker logs [container id]
+```
