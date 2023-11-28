@@ -113,6 +113,20 @@ process.on('unhandledRejection', (reason, promise) => {
 });
 ```
 
+## trap SIGINT & SIGTERM
+
+```js
+process.on('SIGINT', () => {
+    console.log('SIGINT signal received.');
+    process.exit(0);
+});
+
+process.on('SIGTERM', () => {
+    console.log('SIGTERM signal received.');
+    process.exit(0);
+});
+```
+
 ## Rest client extension for vscode
 
 Install
