@@ -151,3 +151,9 @@ Content-Type: application/json
 # Delete book by id
 DELETE http://localhost:3001/books/1 HTTP/1.1
 ```
+
+## Running npm scripts in parallel
+
+```json
+    "start:dev": "cross-env NODE_ENV=development npm-run-all --parallel watch:client watch:server",
+```
