@@ -139,3 +139,10 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 ```sh
 export GIT_SSH_COMMAND="ssh -vv"
 ```
+
+## Take master version of conflicted file after git pull origin master
+
+```sh
+git checkout --theirs -- path/to/conflicted_file.ext
+git add path/to/conflicted_file.ext
+```
