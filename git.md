@@ -59,19 +59,19 @@ git config --global credential.helper manager-core --replace-all
 
 ## See changes between latest and previous commit
 
-```
+```sh
 git difftool -d HEAD^ HEAD
 ```
 
 ## See changes between commits to my current branch and master
 
-```
+```sh
 git difftool -d master
 ```
 
 ## Prune local branches not on remote
 
-```
+```sh
 git remote prune origin
 ```
 
@@ -92,7 +92,7 @@ git add --all .
 
 ## CentOs
 
-```
+```sh
 su -
 gpasswd -a test wheel
 usermod -aG wheel test
@@ -102,7 +102,7 @@ sudo yum install git
 
 ## Preview Markdown of README.md
 
-```
+```sh
 pip install grip
 cd repo
 grip
