@@ -138,3 +138,9 @@ import { cleanup } from '@testing-library/react';
 import 'web-streams-polyfill/es2018';
 afterEach(cleanup);
 ```
+
+## Example of a jest.setup.tsx
+
+```ts
+jest.retryTimes(2, { logErrorsBeforeRetry: true });
+```
