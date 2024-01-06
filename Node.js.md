@@ -131,11 +131,11 @@ process.on('SIGTERM', () => {
 
 Install
 
-```
+```sh
 code --install-extension humao.rest-client
 ```
 
-```
+```sh
 # Get all books
 GET http://localhost:3001/books HTTP/1.1
 Content-Type: application/json
@@ -171,3 +171,23 @@ DELETE http://localhost:3001/books/1 HTTP/1.1
 ```json
     "start:dev": "cross-env NODE_ENV=development npm-run-all --parallel watch:client watch:server",
 ```
+
+## Readline to go back to previous line and write over it
+
+```js
+import chalk from 'chalk';
+import readline from 'readline';
+
+// Write a line to the console
+process.stdout.write('This is a line\n');
+
+// Move the cursor up one line and to the start of the line
+readline.cursorTo(process.stdout, 0, process.stdout.rows - 2);
+
+// Clear the line the cursor is currently on
+readline.clearLine(process.stdout, 0);
+
+process.stdout.write(chalk.yellow(`...\n`));
+```
+
+With chalk you can use `\b` to go back one character and write over it. But it will not go back to the previous line.
