@@ -1,0 +1,14 @@
+@examples = {{examples}}
+@chat_history = {{chat_history}}
+@user_utterance = {{user_utterance}}
+@agent_scratchpad = {{agent_scratchpad}}
+@current_search_state = {{current_search_state}}
+
+### local
+
+POST http://localhost:8080/v1/engine HTTP/1.1
+Content-Type: application/json
+
+{
+    "test": "Here are some examples: {{examples}}",
+}
