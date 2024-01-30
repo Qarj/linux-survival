@@ -144,3 +144,9 @@ afterEach(cleanup);
 ```ts
 jest.retryTimes(2, { logErrorsBeforeRetry: true });
 ```
+
+## Example forcing console logs to be shown even when an expect fails
+
+```json
+    "test:focus": "cross-even TEST=1 node --inspect node_modules/.bin/jest --config ./jestconfig.int.json --runInBand myTest.int.spec.ts",
+```
