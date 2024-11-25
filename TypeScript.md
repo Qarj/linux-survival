@@ -1,39 +1,53 @@
 # TypeScript
 
-```sh
-npm install -g typescript
-tsc -v
-.
-Version 4.7.3
-```
+## Setup new project
 
 ```sh
-tsc index.ts
+mkdir my-typescript-project
+cd my-typescript-project
+npm init -y
+npm install --save-dev typescript
+npm install --save-dev ts-node
+npx tsc --init
 ```
+
+Example config file:
+
+```json
+{
+    "compilerOptions": {
+        "target": "es6", // Specify ECMAScript target version
+        "module": "commonjs", // Specify module code generation
+        "strict": true, // Enable all strict type-checking options
+        "esModuleInterop": true, // Enables emit interoperability between CommonJS and ES Modules
+        "skipLibCheck": true, // Skip type checking of declaration files
+        "forceConsistentCasingInFileNames": true // Disallow inconsistently-cased references to the same file
+    },
+    "include": ["src/**/*"], // Include all files in the src directory
+    "exclude": ["node_modules"] // Exclude node_modules directory
+}
+```
+
+Create a file `src/index.ts` with the following content:
+
+```typescript
+// src/index.ts
+const greet = (name: string): string => {
+    return `Hello, ${name}!`;
+};
+
+console.log(greet('World'));
+```
+
+Run the code with `npx ts-node src/index.ts`.
+
+To compile
 
 ```sh
-tsc --init
-.
-Created a new tsconfig.json with:
-                                                                                                                     TS
-  target: es2016
-  module: commonjs
-  strict: true
-  esModuleInterop: true
-  skipLibCheck: true
-  forceConsistentCasingInFileNames: true
-
-
-You can learn more at https://aka.ms/tsconfig
+npx tsc
 ```
 
-In tsconfig.json, you can remove target and hit `CTRL+SPACE` to see the available options
-
-```sh
-    "target": "ES2016",
-```
-
-Suggested config
+## Suggested config
 
 ```json
 {
