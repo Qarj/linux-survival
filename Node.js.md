@@ -1,28 +1,30 @@
 # Node.js
 
-## Ubuntu 20.04
+## Ubuntu 24.04
 
 Check latest script here: https://github.com/nvm-sh/nvm#installing-and-updating
 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+sudo apt install curl
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 ```
 
 Restart bash.
 
 ```sh
 nvm ls-remote --lts
-nvm install 18
+nvm install 22
 .
 Computing checksum with sha256sum
 Checksums matched!
-Now using node v18.16.1 (npm v9.5.1)
+Now using node v22.13.1 (npm v10.9.2)
+Creating default alias: default -> 22 (-> v22.13.1)
 ```
 
 Then add the following to the middle of `.bashrc`, also moving up the nvm code appended to the end.
 
 ```sh
-nvm use 18
+nvm use 22
 ```
 
 Caution - version of npm will be changed, might need to reinstall it - `NPM.md`.
