@@ -90,6 +90,8 @@ git rm -r --cached .
 git add --all .
 ```
 
+Might need to use `--no-verify`.
+
 ## CentOs
 
 ```sh
@@ -139,6 +141,10 @@ branch_name=$(git rev-parse --abbrev-ref HEAD)
 ```sh
 export GIT_SSH_COMMAND="ssh -vv"
 ```
+
+When connecting for the first time:
+
+-   need type "yes" explicitly instead of pressing enter when it asks for "Are you sure you want to continue connecting"
 
 ## Take master version of conflicted file after git pull origin master
 
