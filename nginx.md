@@ -1,85 +1,84 @@
-# Install nginx
+# nginx
 
-Installing on Ubuntu 20.04.
+## Install nginx
 
-```
+Installing on Ubuntu 24.04.
+
+```sh
 lsb_release -a
 .
 No LSB modules are available.
 Distributor ID:	Ubuntu
-Description:	Ubuntu 20.04.3 LTS
-Release:	20.04
-Codename:	focal
+Description:	Ubuntu 24.04.2 LTS
+Release:	24.04
+Codename:	noble
 ```
 
-```
-cd ~/Downloads
-wget http://nginx.org/keys/nginx_signing.key
-sudo apt-key add nginx_signing.key
-sudo nano /etc/apt/sources.list.d/nginx.list
+```sh
+sudo apt install nginx
 ```
 
-Copy paste
-
-```
-deb [arch=amd64] http://nginx.org/packages/mainline/ubuntu/ focal nginx
-```
-
-```
+```sh
 sudo apt update
 sudo apt install nginx
 systemctl status nginx
 .
-● nginx.service - nginx - high performance web server
-     Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)
-     Active: inactive (dead)
-       Docs: https://nginx.org/en/docs/
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/usr/lib/systemd/system/nginx.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2025-04-03 20:34:29 BST; 37s ago
+       Docs: man:nginx(8)
+    Process: 1401626 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 1401628 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
 ```
 
-```
+```sh
 nginx -V
 .
-nginx version: nginx/1.21.3
-built by gcc 9.3.0 (Ubuntu 9.3.0-10ubuntu2)
-built with OpenSSL 1.1.1f  31 Mar 2020
+nginx version: nginx/1.24.0 (Ubuntu)
+built with OpenSSL 3.0.13 30 Jan 2024
 TLS SNI support enabled
-configure arguments: --prefix=/etc/nginx --sbin-path=/usr/sbin/nginx --modules-path=/usr/lib/nginx/modules --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --pid-path=/var/run/nginx.pid --lock-path=/var/run/nginx.lock --http-client-body-temp-path=/var/cache/nginx/client_temp --http-proxy-temp-path=/var/cache/nginx/proxy_temp --http-fastcgi-temp-path=/var/cache/nginx/fastcgi_temp --http-uwsgi-temp-path=/var/cache/nginx/uwsgi_temp --http-scgi-temp-path=/var/cache/nginx/scgi_temp --user=nginx --group=nginx --with-compat --with-file-aio --with-threads --with-http_addition_module --with-http_auth_request_module --with-http_dav_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_realip_module --with-http_secure_link_module --with-http_slice_module --with-http_ssl_module --with-http_stub_status_module --with-http_sub_module --with-http_v2_module --with-mail --with-mail_ssl_module --with-stream --with-stream_realip_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-cc-opt='-g -O2 -fdebug-prefix-map=/data/builder/debuild/nginx-1.21.3/debian/debuild-base/nginx-1.21.3=. -fstack-protector-strong -Wformat -Werror=format-security -Wp,-D_FORTIFY_SOURCE=2 -fPIC' --with-ld-opt='-Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,--as-needed -pie'
+configure arguments: --with-cc-opt='-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/build/nginx-5QYLpr/nginx-1.24.0=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -fcf-protection -fdebug-prefix-map=/build/nginx-5QYLpr/nginx-1.24.0=/usr/src/nginx-1.24.0-2ubuntu7.3 -fPIC -Wdate-time -D_FORTIFY_SOURCE=3' --with-ld-opt='-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now -fPIC' --prefix=/usr/share/nginx --conf-path=/etc/nginx/nginx.conf --http-log-path=/var/log/nginx/access.log --error-log-path=stderr --lock-path=/var/lock/nginx.lock --pid-path=/run/nginx.pid --modules-path=/usr/lib/nginx/modules --http-client-body-temp-path=/var/lib/nginx/body --http-fastcgi-temp-path=/var/lib/nginx/fastcgi --http-proxy-temp-path=/var/lib/nginx/proxy --http-scgi-temp-path=/var/lib/nginx/scgi --http-uwsgi-temp-path=/var/lib/nginx/uwsgi --with-compat --with-debug --with-pcre-jit --with-http_ssl_module --with-http_stub_status_module --with-http_realip_module --with-http_auth_request_module --with-http_v2_module --with-http_dav_module --with-http_slice_module --with-threads --with-http_addition_module --with-http_flv_module --with-http_gunzip_module --with-http_gzip_static_module --with-http_mp4_module --with-http_random_index_module --with-http_secure_link_module --with-http_sub_module --with-mail_ssl_module --with-stream_ssl_module --with-stream_ssl_preread_module --with-stream_realip_module --with-http_geoip_module=dynamic --with-http_image_filter_module=dynamic --with-http_perl_module=dynamic --with-http_xslt_module=dynamic --with-mail=dynamic --with-stream=dynamic --with-stream_geoip_module=dynamic
 ```
 
-# Start nginx
+## Start nginx
 
-```
+```sh
 sudo systemctl start nginx
-.
-Job for nginx.service failed because the control process exited with error code.
-See "systemctl status nginx.service" and "journalctl -xe" for details.
 ```
 
 Will not work if port 80 already in use.
 
-# Create localhost entries for local development sites
+## Create localhost entries for local development sites
 
-```
+```sh
 sudo nano /etc/hosts
 ```
 
 Add lines
 
 ```
-127.0.0.1 www.totaljobs.local.com
-127.0.0.1 www.caterer.local.com
-127.0.0.1 www.cwjobs.local.co.uk
-127.0.0.1 local.stepstone.de
-127.0.0.1 local.stepstone.fr
+127.0.0.1 local.com
 ```
 
-# Create self signed certificate for local.com
+## Create self signed certificate for iridium.home
 
 https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
 
-Don not use domains `.dev` or `.app` - they are owned by Google and HSTS is permanently enabled!
+Do not use domains `.dev` or `.app` - they are owned by Google and HSTS is permanently enabled! Full list:
 
 ```
+1. **.dev**
+2. **.app**
+3. **.page**
+4. **.foo**
+5. **.zip**
+6. **.mov**
+7. **.phd**
+8. **.prof**
+9. **.nexus**
+```
+
+```sh
 sudo openssl req -x509 -nodes -days 825 -newkey rsa:2048 -keyout /etc/ssl/private/localdev-selfsigned.key -out /etc/ssl/certs/localdev-selfsigned.crt
 ```
 
@@ -95,27 +94,27 @@ local.com
 admin@local.local
 ```
 
-Generate strong security
+Generate strong security (takes a while)
 
-```
+```sh
 sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096
 ```
 
 Create a config snippet to point to the SSL Key and Certificate
 
-```
+```sh
 sudo mkdir /etc/nginx/snippets
 sudo nano /etc/nginx/snippets/localdev-self-signed.conf
 ```
 
 Copy paste into `localdev-self-signed.conf`
 
-```
+```txt
 ssl_certificate /etc/ssl/certs/localdev-selfsigned.crt;
 ssl_certificate_key /etc/ssl/private/localdev-selfsigned.key;
 ```
 
-```
+```sh
 sudo nano /etc/nginx/snippets/ssl-params.conf
 ```
 
@@ -142,61 +141,129 @@ resolver_timeout 5s;
 # add_header X-XSS-Protection "1; mode=block";
 ```
 
-# Configure nginx
+## Configure nginx
 
 First examine the default configuration.
 
-```
+```sh
 cd /etc/nginx
 cat nginx.conf
 .
-user  nginx;
-worker_processes  auto;
-
-error_log  /var/log/nginx/error.log notice;
-pid        /var/run/nginx.pid;
-
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+error_log /var/log/nginx/error.log;
+include /etc/nginx/modules-enabled/*.conf;
 
 events {
-    worker_connections  1024;
+	worker_connections 768;
+	# multi_accept on;
 }
-
 
 http {
-    include       /etc/nginx/mime.types;
-    default_type  application/octet-stream;
 
-    log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
-                      '$status $body_bytes_sent "$http_referer" '
-                      '"$http_user_agent" "$http_x_forwarded_for"';
+	##
+	# Basic Settings
+	##
 
-    access_log  /var/log/nginx/access.log  main;
+	sendfile on;
+	tcp_nopush on;
+	types_hash_max_size 2048;
+	# server_tokens off;
 
-    sendfile        on;
-    #tcp_nopush     on;
+	# server_names_hash_bucket_size 64;
+	# server_name_in_redirect off;
 
-    keepalive_timeout  65;
+	include /etc/nginx/mime.types;
+	default_type application/octet-stream;
 
-    #gzip  on;
+	##
+	# SSL Settings
+	##
 
-    include /etc/nginx/conf.d/*.conf;
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2 TLSv1.3; # Dropping SSLv3, ref: POODLE
+	ssl_prefer_server_ciphers on;
+
+	##
+	# Logging Settings
+	##
+
+	access_log /var/log/nginx/access.log;
+
+	##
+	# Gzip Settings
+	##
+
+	gzip on;
+
+	# gzip_vary on;
+	# gzip_proxied any;
+	# gzip_comp_level 6;
+	# gzip_buffers 16 8k;
+	# gzip_http_version 1.1;
+	# gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript;
+
+	##
+	# Virtual Host Configs
+	##
+
+	include /etc/nginx/conf.d/*.conf;
+	include /etc/nginx/sites-enabled/*;
 }
+
+
+#mail {
+#	# See sample authentication script at:
+#	# http://wiki.nginx.org/ImapAuthenticateWithApachePhpScript
+#
+#	# auth_http localhost/auth.php;
+#	# pop3_capabilities "TOP" "USER";
+#	# imap_capabilities "IMAP4rev1" "UIDPLUS";
+#
+#	server {
+#		listen     localhost:110;
+#		protocol   pop3;
+#		proxy      on;
+#	}
+#
+#	server {
+#		listen     localhost:143;
+#		protocol   imap;
+#		proxy      on;
+#	}
+#}
 ```
 
-The last line tells us that we can add configuration files to the `/etc/nginx/conf.d` folder and they'll automatically get included.
+The `include /etc/nginx/conf.d/*.conf;` line tells us that we can add configuration files to the `/etc/nginx/conf.d` folder and they'll automatically get included.
 
-Disable the nginx `default.conf`
-
+```sh
+sudo ls -asl /etc/nginx/conf.d/
+.
+total 8
+4 drwxr-xr-x 2 root root 4096 Mar 31 19:38 .
+4 drwxr-xr-x 8 root root 4096 Apr  3 20:46 ..
+.
+sudo ls -asl /etc/nginx/sites-enabled
+.
+total 8
+4 drwxr-xr-x 2 root root 4096 Apr  3 20:34 .
+4 drwxr-xr-x 8 root root 4096 Apr  3 20:46 ..
+0 lrwxrwxrwx 1 root root   34 Apr  3 20:34 default -> /etc/nginx/sites-available/default
 ```
+
+Disable the nginx `default.conf` if it is present
+
+```sh
 sudo mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
 ```
 
-# Simple configuration example
+## Simple configuration example - totaljobs
 
 Create the local development nginx configuration
 
-```
-sudo subl /etc/nginx/conf.d/localdev.conf
+```sh
+sudo touch /etc/nginx/conf.d/localdev.conf
+sudocode /etc/nginx/conf.d/localdev.conf
 ```
 
 Copy Paste
@@ -251,23 +318,71 @@ server {
 }
 ```
 
-# Test the config
+## Simple configuration example - local.com for ib
 
+Create the local development nginx configuration
+
+```sh
+sudo touch /etc/nginx/conf.d/localdev.conf
+sudocode /etc/nginx/conf.d/localdev.conf
 ```
+
+Copy Paste
+
+```bash
+server {
+    # handle very large response headers
+    proxy_busy_buffers_size     512k;
+    proxy_buffers             4 512k;
+    proxy_buffer_size           256k;
+
+    listen 443 ssl;                                  # ip v4
+    listen [::]:443 ssl;                             # ip v6
+    server_name local.com;
+    include snippets/localdev-self-signed.conf;
+    include snippets/ssl-params.conf;
+
+    # divert /portal
+    location /portal/ {
+        add_header X-Local "/portal/ pointing to local port";            # add response header
+        proxy_set_header Host "local.com";
+        proxy_set_header X-Origin-Host "local.com";
+        proxy_pass http://127.0.0.1:5500/;
+    }
+
+
+    # pass everything else to port 5000
+    location / {
+        add_header X-Local "From upstream development environment";     # add response header
+
+        proxy_set_header Accept-Encoding "";                            # turn off encoding so we can rewrite the html with the sub_filter
+        proxy_pass https://127.0.0.1:5000/;
+
+        # overwriting the existing header might need to be done after the proxy_pass
+        proxy_hide_header strict-transport-security;
+        #add_header Strict-Transport-Security "max-age=0; includeSubDomains" always;  # to force browser to overwrite previously stored value
+    }
+
+}
+```
+
+## Test the config
+
+```sh
 sudo nginx -t
 .
-nginx: [warn] "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/localdev-selfsigned.crt"
+2025/04/03 21:27:23 [warn] 1411920#1411920: "ssl_stapling" ignored, issuer certificate not found for certificate "/etc/ssl/certs/localdev-selfsigned.crt"
 nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
 nginx: configuration file /etc/nginx/nginx.conf test is successful
 ```
 
-# Restart nginx
+## Restart nginx
 
-```
+```sh
 sudo systemctl restart nginx
 ```
 
-# Test & Debug
+## Test & Debug - totaljobs config
 
 Navigate to https://www.totaljobs.local/
 
@@ -281,19 +396,35 @@ If there is HSTS error
 
 Use curl to see the response header
 
-```
+```sh
 curl --insecure --head https://www.totaljobs.local/
 ```
 
 See the error log
 
-```
+```sh
 cat /var/log/nginx/error.log
 ```
 
-# Advanced nginx example - handle multiple servers with regex
+## Test & Debug - ib config
 
-```bash
+Navigate to https://local.com/portal/vibePosition-try2-mod.html
+
+Use curl to see the response header
+
+```sh
+curl --insecure --head https://local.com/v1/api/iserver/accounts
+```
+
+See the error log
+
+```sh
+cat /var/log/nginx/error.log
+```
+
+## Advanced nginx example - handle multiple servers with regex
+
+```sh
 server {
     # handle very large response headers
     proxy_busy_buffers_size   512k;
@@ -342,7 +473,7 @@ server {
 }
 ```
 
-# Test advanced example
+## Test advanced example
 
 https://www.caterer.local.com/
 http://www.caterer.local.com:8090/
