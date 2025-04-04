@@ -1,8 +1,12 @@
 # Java
 
+## classpath errors with VSCode after adding a new subproject
+
+CTRL + SHIFT + P --> Java: Clean Java Language Server Workspace
+
 ## Install Java 8 SDK
 
-```
+```sh
 sudo apt install openjdk-8-jdk openjdk-8-jre
 java -version
 .
@@ -16,10 +20,10 @@ OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
 ```
 ls /usr/lib/jvm/java-8-openjdk-amd64/
 .
-ASSEMBLY_EXCEPTION  bin  docs  include  jre  lib  man  src.zip  THIRD_PARTY_README
+ASSEMBLY_EXCEPTION bin docs include jre lib man src.zip THIRD_PARTY_README
 ```
 
-```
+```sh
 gedit /home/$USER/.bashrc
 .
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
