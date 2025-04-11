@@ -4,6 +4,10 @@
 
 CTRL + SHIFT + P --> Java: Clean Java Language Server Workspace
 
+## suggestions
+
+Windows key + , --> suggestions (MacOS)
+
 ## Install Java 8 SDK
 
 ```sh
