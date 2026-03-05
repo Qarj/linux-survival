@@ -25,6 +25,9 @@ git config --global alias.pruneremote "remote prune origin" --replace-all
 git config --global alias.unstage "restore --staged" --replace-all
 git config --global alias.unstageall "restore --staged ." --replace-all
 git config --global pull.rebase false
+git config --global core.pager cat
+export PAGER=cat
+export GIT_PAGER=cat
 ```
 
 ```sh
@@ -144,7 +147,7 @@ export GIT_SSH_COMMAND="ssh -vv"
 
 When connecting for the first time:
 
--   need type "yes" explicitly instead of pressing enter when it asks for "Are you sure you want to continue connecting"
+- need type "yes" explicitly instead of pressing enter when it asks for "Are you sure you want to continue connecting"
 
 ## Take master version of conflicted file after git pull origin master
 
