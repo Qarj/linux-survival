@@ -1,4 +1,11 @@
 {
+    "rest-client.environmentVariables": {
+        "$shared": {
+            "version": "v1",
+            "dev-api-key": "redacted",
+            "prod-api-key": "redacted"
+        }
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "[python]": {
         "editor.formatOnSave": true,
