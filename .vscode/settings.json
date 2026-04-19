@@ -1,13 +1,11 @@
 {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
     "editor.formatOnSave": true,
     "editor.formatOnPaste": false,
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "python.formatting.provider": "none",
-    "python.formatting.blackArgs": ["--line-length", "120"],
-    "python.formatting.autopep8Args": ["--max-line-length=120"],
     "search.exclude": {
         "**/.git": true,
         "**/cypress/results": true,
@@ -17,5 +15,8 @@
         "**/test-results": true,
         "**/test-reports*": true,
         "**/screenshots": true
+    },
+    "chat.tools.terminal.autoApprove": {
+        "aws": true
     }
 }
