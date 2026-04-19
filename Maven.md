@@ -1,6 +1,6 @@
 # Maven
 
-```
+```sh
 sudo apt remove maven
 
 https://github.com/wolf99/dotfiles/blob/master/how-to-update-maven.md
@@ -16,18 +16,18 @@ sudo mv apache-maven-$latest_maven /opt/maven/
 ls /opt/maven
 ```
 
-```
+```sh
 sudo vi /etc/profile.d/maven.sh
 ```
 
 SHIFT-INS to paste:
 
-```
+```sh
 export MAVEN_HOME=/opt/maven
 export PATH=${MAVEN_HOME}/bin:${PATH}
 ```
 
-```
+```sh
 sudo chmod +x /etc/profile.d/maven.sh
 source /etc/profile.d/maven.sh
 mvn --version
@@ -41,7 +41,7 @@ OS name: "linux", version: "5.4.0-31-generic", arch: "amd64", family: "unix"
 
 Check `MAVEN_HOME`
 
-```
+```sh
 printenv | grep MAVEN
 .
 MAVEN_HOME=/opt/maven
