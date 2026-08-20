@@ -3,6 +3,9 @@
 ## Setup new host
 
 ```sh
+mkdir -p "$HOME/.config/git"
+touch "$HOME/.config/git/ignore"
+git config --global core.excludesFile "$HOME/.config/git/ignore"
 git config --global user.email "tim@gmail.com"
 git config --global user.name "Tim Buckland"
 git config --global http.postBuffer 1048576000
